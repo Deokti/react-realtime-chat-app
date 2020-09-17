@@ -1,11 +1,16 @@
 import React from "react";
 import Input from "../../input";
+
 import userIcon from "../../../assets/icon/user.svg";
 import mainIcon from "../../../assets/icon/mail.svg";
 import passwordIcon from "../../../assets/icon/password.svg";
 import passwordRepeatIcon from "../../../assets/icon/password-repeat.svg";
+
 import { Link } from "react-router-dom";
 import { TypeUserRegister } from "./register-logic";
+
+import './register.scss';
+import '../form.scss';
 
 type TypeUserRegisterTemplate = {
   userRegistration: TypeUserRegister,
@@ -23,12 +28,12 @@ const RegisterTemplate: React.FC<TypeUserRegisterTemplate> = (
   }: TypeUserRegisterTemplate) => {
   return (
     <section className="register all-page">
-      <form className='register-form' onSubmit={onHandlerSubmit}>
-        <div className="register-form__header">
-          <h2 className="register-form__title">Регистрация для ReactChat</h2>
+      <form className='form-auth register-form' onSubmit={onHandlerSubmit}>
+        <div className="form-auth__header register-form__header">
+          <h2 className="form-auth__title register-form__title">Регистрация для ReactChat</h2>
         </div>
 
-        <div className="register-form__container">
+        <div className="form-auth__container register-form__container">
           <div className="register-form__content">
             <Input
               icon={userIcon}
@@ -66,7 +71,7 @@ const RegisterTemplate: React.FC<TypeUserRegisterTemplate> = (
               className={`${addErrorClassForInput(isValidFormError, 'заполнены')} ${addErrorClassForInput(isValidFormError, 'парол')}`}
               onChange={onHandlerChange} />
           </div>
-          <button className="button button-register-form" disabled={disable}>Зарегистрироваться</button>
+          <button className="button button-auth-form" disabled={disable}>Зарегистрироваться</button>
         </div>
       </form>
 
@@ -76,8 +81,8 @@ const RegisterTemplate: React.FC<TypeUserRegisterTemplate> = (
         </div>
       )}
 
-      <div className="register-redirect">
-        <p className="register-redirect__text">
+      <div className="auth-redirect">
+        <p className="auth-redirect__text">
           Уже зарегистрированы? <Link to="/login-page">Войти</Link>
         </p>
       </div>

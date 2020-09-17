@@ -4,8 +4,6 @@ import RegisterTemplate from "./register-template";
 import firebase from "../../../firebase";
 import md5 from "md5";
 
-import './register.scss';
-
 export type TypeUserRegister = {
   username: string,
   email: string,
