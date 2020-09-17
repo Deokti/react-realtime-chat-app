@@ -11,13 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/form.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +56,9 @@
       <updated>1600278647097</updated>
       <workItem from="1600278649537" duration="9840000" />
       <workItem from="1600288514829" duration="2856000" />
-      <workItem from="1600362618626" duration="9274000" />
+      <workItem from="1600362618626" duration="9527000" />
+      <workItem from="1600374469341" duration="99000" />
+      <workItem from="1600375330431" duration="93000" />
     </task>
     <servers />
   </component>
@@ -85,22 +82,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600279505374" />
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600365777108">
+    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777108" />
-    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600282389278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

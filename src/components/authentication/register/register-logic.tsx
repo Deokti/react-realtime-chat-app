@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useMemo } from "react";
 import RegisterTemplate from "./register-template";
 
 import firebase from "../../../firebase";
@@ -13,13 +13,15 @@ export type TypeUserRegister = {
 }
 
 const RegisterLogic: React.FC<TypeUserRegister> = () => {
-  const [ userRegistration, setUserRegistration ] = useState<TypeUserRegister>({
+  const initialUserRegistration = useMemo(() => ({
     username: '',
     email: '',
     password: '',
     passwordRepeat: '',
     usersDatabase: firebase.database().ref('users')
-  });
+  }), []);
+
+  const [ userRegistration, setUserRegistration ] = useState<TypeUserRegister>(initialUserRegistration);
   const [ isValidFormError, setIsValidFormError ] = useState<string>('');
   const [ disable, setDisable ] = useState<boolean>(false);
 
@@ -89,7 +91,10 @@ const RegisterLogic: React.FC<TypeUserRegister> = () => {
       setDisable(true);
       createUserWithEmailAndPassword(firebase)
         .then(() => console.log('Пользователь сохранен!'))
-        .then(() => setDisable(false))
+        .then(() => {
+          setDisable(false);
+          setUserRegistration(initialUserRegistration);
+        })
         .catch((error: { message: React.SetStateAction<string>; }) => {
           console.error(error);
           setIsValidFormError(error.message);
