@@ -11,18 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/form.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +61,7 @@
       <updated>1600278647097</updated>
       <workItem from="1600278649537" duration="9840000" />
       <workItem from="1600288514829" duration="2856000" />
-      <workItem from="1600362618626" duration="7416000" />
+      <workItem from="1600362618626" duration="9274000" />
     </task>
     <servers />
   </component>
