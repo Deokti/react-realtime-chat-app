@@ -9,11 +9,12 @@ type TypeInput = {
   name: string,
   value?: string
   type: string
+  className?: any,
 }
 
-const Input: React.FC<TypeInput> = ({icon, name, placeholder, onChange, value, type}: TypeInput) => {
+const Input: React.FC<TypeInput> = ({icon, name, placeholder, onChange, value, type, className}: TypeInput) => {
   return (
-    <div className="input-template">
+    <div className={`input-template ${className}`}>
       <img src={icon} alt="icon" className="input-template__icon" />
       <input
         type={type}
