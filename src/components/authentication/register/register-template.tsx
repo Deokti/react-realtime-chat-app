@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import Input from "../../input";
 
 import userIcon from "../../../assets/icon/user.svg";
@@ -11,20 +11,23 @@ import { TypeUserRegister } from "./register-logic";
 
 import './register.scss';
 import '../form.scss';
+import AuthButton from "../auth-button";
+import AuthErrorMessage from "../auth-error-message";
 
 type TypeUserRegisterTemplate = {
   userRegistration: TypeUserRegister,
   disable: boolean
   addErrorClassForInput(validFormError: string, includes: string): string
   isValidFormError: string
-  onHandlerChange: any
-  onHandlerSubmit: any
+  onHandlerChange(event: FormEvent<HTMLInputElement>): void
+  onHandlerSubmit(event: FormEvent): void
+  loading: boolean
 }
 
 const RegisterTemplate: React.FC<TypeUserRegisterTemplate> = (
   {
     onHandlerSubmit, addErrorClassForInput, isValidFormError,
-    userRegistration, onHandlerChange, disable
+    userRegistration, onHandlerChange, disable, loading
   }: TypeUserRegisterTemplate) => {
   return (
     <section className="register all-page">
@@ -71,15 +74,12 @@ const RegisterTemplate: React.FC<TypeUserRegisterTemplate> = (
               className={`${addErrorClassForInput(isValidFormError, 'заполнены')} ${addErrorClassForInput(isValidFormError, 'парол')}`}
               onChange={onHandlerChange} />
           </div>
-          <button className="button button-auth-form" disabled={disable}>Зарегистрироваться</button>
+
+          <AuthButton disable={disable} loading={loading} label="Зарегистрироваться" />
         </div>
       </form>
 
-      {isValidFormError.length > 0 && (
-        <div className="register-error">
-          <p>{isValidFormError}</p>
-        </div>
-      )}
+      {isValidFormError.length > 0 && <AuthErrorMessage message={isValidFormError} />}
 
       <div className="auth-redirect">
         <p className="auth-redirect__text">

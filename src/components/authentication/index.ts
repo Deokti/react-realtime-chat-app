@@ -1,4 +1,4 @@
 import RegisterLogic from "./register/register-logic";
-import Login from "./login/login";
+import LoginLogic from "./login/login-logic";
 
-export { RegisterLogic, Login };
+export { RegisterLogic, LoginLogic };

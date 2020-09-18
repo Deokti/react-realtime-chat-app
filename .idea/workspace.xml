@@ -11,13 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/form.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/styles/transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/add-error-class-for-input.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/auth-button.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/auth-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/auth-error-message.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/auth-error-message.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/login/login-logic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/login/login-template.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/is-valid-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/form.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +49,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -61,7 +75,11 @@
       <updated>1600278647097</updated>
       <workItem from="1600278649537" duration="9840000" />
       <workItem from="1600288514829" duration="2856000" />
-      <workItem from="1600362618626" duration="9274000" />
+      <workItem from="1600362618626" duration="9527000" />
+      <workItem from="1600374469341" duration="99000" />
+      <workItem from="1600375330431" duration="678000" />
+      <workItem from="1600436232459" duration="5315000" />
+      <workItem from="1600441571141" duration="180000" />
     </task>
     <servers />
   </component>
@@ -81,29 +99,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="586" y="197" key="#Inspections" timestamp="1600437255493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="197" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1600437255493" />
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600440454567">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600440454567" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600279505374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600279505374" />
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600365777108">
+    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777108" />
-    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600365777109">
+    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600282389278">
+    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600440119763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600282389278" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600440119763" />
   </component>
 </project>
