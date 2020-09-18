@@ -11,26 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/transition.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/add-error-class-for-input.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/auth-button.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/auth-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-button/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/auth-error-message.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/auth-error-message.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/auth-error-message/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/login/login-logic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/login/login-template.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/is-valid-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/action-creators/get-and-set-user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/update-current-user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,8 @@
       <workItem from="1600374469341" duration="99000" />
       <workItem from="1600375330431" duration="678000" />
       <workItem from="1600436232459" duration="5315000" />
-      <workItem from="1600441571141" duration="180000" />
+      <workItem from="1600441571141" duration="412000" />
+      <workItem from="1600451015778" duration="5935000" />
     </task>
     <servers />
   </component>
@@ -103,10 +99,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="197" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1600437255493" />
-    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600440454567">
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600451433085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600440454567" />
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600451433085" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600279505374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -127,6 +123,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state x="568" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600451536413">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="568" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600451536413" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600440119763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

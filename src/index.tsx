@@ -1,31 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import App from './components/app';
-import { RegisterLogic, LoginLogic } from './components/authentication';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import MainRoot from "./main-root";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 
 import * as serviceWorker from './serviceWorker';
 
 
-const MainRoot: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/registration-page" component={RegisterLogic} />
-        <Route path="/login-page" component={LoginLogic} />
-      </Switch>
-    </BrowserRouter>
-  )
-}
-
 ReactDOM.render(
   <React.StrictMode>
-    <MainRoot />
+    <Provider store={store}>
+      <BrowserRouter>
+        <MainRoot />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
 
 serviceWorker.unregister();
