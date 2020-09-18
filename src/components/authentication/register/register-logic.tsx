@@ -3,6 +3,8 @@ import RegisterTemplate from "./register-template";
 
 import firebase from "../../../firebase";
 import md5 from "md5";
+import isValidForm from "./is-valid-form";
+import addErrorClassForInput from "../add-error-class-for-input";
 
 export type TypeUserRegister = {
   username: string,
@@ -24,40 +26,11 @@ const RegisterLogic: React.FC<TypeUserRegister> = () => {
   const [ userRegistration, setUserRegistration ] = useState<TypeUserRegister>(initialUserRegistration);
   const [ isValidFormError, setIsValidFormError ] = useState<string>('');
   const [ disable, setDisable ] = useState<boolean>(false);
+  const [ loading, setLoading ] = useState<boolean>(false);
 
   const onHandlerChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     setUserRegistration((currentState) => ({ ...currentState, [name]: value.trim() }));
-  }
-
-  // Проверяем форму на пустоту
-  const isValidEmpty = ({ username, email, password, passwordRepeat }: TypeUserRegister) => {
-    return !username.trim().length || !email.trim().length || !password.trim().length || !passwordRepeat.trim().length
-  }
-
-  // Проверяем пароль на соблюдение некоторых правил
-  const isValidPassword = (password: string, passwordRepeat: string) => {
-    if (password.length < 6 && passwordRepeat.length < 6) {
-      setIsValidFormError('Пароль должен быть длиннее 6 символов');
-      return false;
-    } else if (password !== passwordRepeat) {
-      setIsValidFormError('Пароли не совпадают');
-      return false;
-    }
-
-    return true;
-  }
-
-  // Валидируем форму, вызвав ранее созданные функции для валидации
-  const isValidForm = () => {
-    if (isValidEmpty(userRegistration)) {
-      setIsValidFormError('Все поля должны быть заполнены');
-      return false;
-    } else if (!isValidPassword(userRegistration.password, userRegistration.passwordRepeat)) {
-      return false;
-    }
-
-    return true;
   }
 
   const saveUserInRealtimeDatabase = (createdUser: any) => {
@@ -86,12 +59,15 @@ const RegisterLogic: React.FC<TypeUserRegister> = () => {
   // и его фотографию photoURL, после чего сохраняем данные
   const onHandlerSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (isValidForm()) {
+    if (isValidForm(userRegistration, setIsValidFormError)) {
       setIsValidFormError('');
       setDisable(true);
+      setLoading(true);
+
       createUserWithEmailAndPassword(firebase)
         .then(() => console.log('Пользователь сохранен!'))
         .then(() => {
+          setLoading(false);
           setDisable(false);
           setUserRegistration(initialUserRegistration);
         })
@@ -99,12 +75,9 @@ const RegisterLogic: React.FC<TypeUserRegister> = () => {
           console.error(error);
           setIsValidFormError(error.message);
           setDisable(false);
+          setLoading(false);
         })
     }
-  }
-
-  const addErrorClassForInput = (validFormError: string, includes: string) => {
-    return validFormError.toLowerCase().includes(includes) ? 'input-error' : '';
   }
 
   return (
@@ -114,7 +87,8 @@ const RegisterLogic: React.FC<TypeUserRegister> = () => {
       isValidFormError={isValidFormError}
       userRegistration={userRegistration}
       onHandlerChange={onHandlerChange}
-      disable={disable} />
+      disable={disable}
+      loading={loading}/>
   )
 }
 

@@ -6,21 +6,4 @@
     min-height: 360px;
     padding-bottom: 20px;
   }
-  &-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-top: 20px;
-    height: 60px;
-    width: 100%;
-    background-color: #fff6f6;
-    box-shadow: 0 0 0 1px #e0b4b4 inset, 0 0 0 0 transparent;
-    border-radius: 4px;
-    p {
-      margin-bottom: 0;
-      font-size: 16px;
-      color: #9f3a38;
-    }
-  }
 }
