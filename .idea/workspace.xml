@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="6210e4d3-de9f-473d-b952-3a46b74b1bc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
@@ -16,6 +17,12 @@
       <change beforePath="$PROJECT_DIR$/src/assets/styles/bootstrap-reboot.min.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+=======
+    <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
+>>>>>>> fb0f4feec8f1b718a46d8ccf3f089cfaf3e85c33
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +38,21 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+=======
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+>>>>>>> fb0f4feec8f1b718a46d8ccf3f089cfaf3e85c33
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -47,12 +63,91 @@
       <created>1600802211501</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1600802211501</updated>
       <workItem from="1600802213384" duration="96000" />
+=======
+      <updated>1600278647097</updated>
+      <workItem from="1600278649537" duration="9840000" />
+      <workItem from="1600288514829" duration="2856000" />
+      <workItem from="1600362618626" duration="9527000" />
+      <workItem from="1600374469341" duration="99000" />
+      <workItem from="1600375330431" duration="678000" />
+      <workItem from="1600436232459" duration="5315000" />
+      <workItem from="1600441571141" duration="412000" />
+      <workItem from="1600451015778" duration="6069000" />
+      <workItem from="1600611880046" duration="149000" />
+      <workItem from="1600638128526" duration="129000" />
+      <workItem from="1600648884488" duration="84000" />
+      <workItem from="1600649063495" duration="67000" />
+      <workItem from="1600721459162" duration="101000" />
+      <workItem from="1600722650404" duration="222000" />
+>>>>>>> fb0f4feec8f1b718a46d8ccf3f089cfaf3e85c33
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="586" y="197" key="#Inspections" timestamp="1600437255493">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="197" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1600437255493" />
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600451433085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600451433085" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600279505374">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600279505374" />
+    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1600638193652">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600638193652" />
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600372162648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600372162648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600372162648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600372162648">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state x="735" y="178" key="SettingsEditor" timestamp="1600721550982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="735" y="178" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600721550982" />
+    <state x="568" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600451536413">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="568" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600451536413" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600440119763">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600440119763" />
+  </component>
+>>>>>>> fb0f4feec8f1b718a46d8ccf3f089cfaf3e85c33
 </project>
