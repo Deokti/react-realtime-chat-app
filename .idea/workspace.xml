@@ -11,21 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creators/get-and-set-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/update-current-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -75,7 +64,13 @@
       <workItem from="1600375330431" duration="678000" />
       <workItem from="1600436232459" duration="5315000" />
       <workItem from="1600441571141" duration="412000" />
-      <workItem from="1600451015778" duration="5935000" />
+      <workItem from="1600451015778" duration="6069000" />
+      <workItem from="1600611880046" duration="149000" />
+      <workItem from="1600638128526" duration="129000" />
+      <workItem from="1600648884488" duration="84000" />
+      <workItem from="1600649063495" duration="67000" />
+      <workItem from="1600721459162" duration="101000" />
+      <workItem from="1600722650404" duration="222000" />
     </task>
     <servers />
   </component>
@@ -107,6 +102,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600279505374" />
+    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1600638193652">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600638193652" />
     <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600372162648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -123,6 +122,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600372162648" />
+    <state x="735" y="178" key="SettingsEditor" timestamp="1600721550982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="735" y="178" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600721550982" />
     <state x="568" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600451536413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
