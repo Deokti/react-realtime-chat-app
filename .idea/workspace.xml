@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/register-logic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/authentication/register/register-template.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6210e4d3-de9f-473d-b952-3a46b74b1bc5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/login/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/register/register.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/register/register.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icon/mail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icon/password-repeat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icon/password.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icon/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/bootstrap-reboot.min.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,83 +25,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1hbTA2XJvtsYGhyFLL3cythSuQF" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1hsaMnyDty8lputEIVLOZIPh8BU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\src" />
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\src\components\authentication\register" />
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\src\components\authentication\login" />
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-realtime-chat-app\src\components\app" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a866817a-13f5-4822-9913-f5ea303b4d02" name="Default Changelist" comment="" />
-      <created>1600278647097</created>
+      <changelist id="6210e4d3-de9f-473d-b952-3a46b74b1bc5" name="Default Changelist" comment="" />
+      <created>1600802211501</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1600278647097</updated>
-      <workItem from="1600278649537" duration="9840000" />
-      <workItem from="1600288514829" duration="2856000" />
-      <workItem from="1600362618626" duration="7416000" />
+      <updated>1600802211501</updated>
+      <workItem from="1600802213384" duration="96000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600279505374">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600279505374" />
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1600365777109">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1600365777109">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1600365777108">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777108" />
-    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1600365777109">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600365777109" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600282389278">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600282389278" />
   </component>
 </project>
