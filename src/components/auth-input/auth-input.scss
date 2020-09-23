@@ -1,0 +1,48 @@
+@import "../../assets/styles/variables";
+
+.auth-input {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  margin-bottom: 25px;
+  &__write {
+    width: 100%;
+    height: 100%;
+    color: $main-color;
+    border: none;
+    border-bottom: 1px solid $description-color;
+    background-color: transparent;
+    font-size: 15px;
+    &::placeholder {
+      font-weight: 300;
+      color: $main-color;
+    }
+    &:focus {
+      outline: none;
+      border-bottom-color: #ada4b3;
+    }
+    &:focus ~ .auth-input__description {
+      font-size: 11px;
+      transform: translateY(-180%);
+      color: #ada4b3;
+      text-transform: uppercase;
+    }
+  }
+  &__hollow ~ .auth-input__description {
+    font-size: 11px;
+    transform: translateY(-180%);
+    color: #ada4b3;
+    text-transform: uppercase;
+  }
+  &__description {
+    pointer-events: none;
+    transition: all .1s ease-in;
+    position: absolute;
+    color: $description-color;
+    font-weight: 300;
+    font-size: 15px;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../assets/styles/variables";
+
+.button {
+  border: none;
+  background-color: $background-button;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 40px;
+}

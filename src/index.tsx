@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import { BrowserRouter } from 'react-router-dom';
+
+import MainRoot from "./main-root";
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <MainRoot />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
