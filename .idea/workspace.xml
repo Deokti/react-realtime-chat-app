@@ -23,33 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/button.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/fonts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/transition.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HOC/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth-input/auth-input.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth-input/auth-input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth-input/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/email-icon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/password-repeat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/password.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/user.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/form-redirect.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600862444507</updated>
       <workItem from="1600862447813" duration="377000" />
-      <workItem from="1600862847737" duration="15381000" />
+      <workItem from="1600862847737" duration="18647000" />
     </task>
     <servers />
   </component>
@@ -118,10 +98,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600875514280" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600877955096">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600879588609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600877955096" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600879588609" />
     <state x="491" y="151" key="SettingsEditor" timestamp="1600864691766">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -138,9 +118,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600878248583" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600878772227">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600879522564">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600878772227" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600879522564" />
   </component>
 </project>

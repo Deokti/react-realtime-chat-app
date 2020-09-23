@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import AuthInput from "../../auth-input";
 import { withAuthForm } from "../../HOC";
+import { Link } from 'react-router-dom';
 
-import '../auth.scss';
 import './login.scss';
+import '../form-redirect.scss';
 
 type TUserLogin = {
   email: string
@@ -23,8 +24,9 @@ const Login = () => {
       <AuthInput label="Email" name="email" onChange={whenChangingText} value={userLogin.email} />
       <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingText} value={userLogin.password} />
       <button className="button button-auth-form">Войти</button>
+      <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
     </form>
   )
 };
 
-export default withAuthForm()('Войти', Login, 'Ещё не зарегистрированы?', '/register-page');
+export default withAuthForm()('Войти', Login);
