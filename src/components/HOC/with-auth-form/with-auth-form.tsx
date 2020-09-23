@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import './with-auth-form.scss';
 
-const withAuthForm = () => (title: string, Wrapper: React.FC, redirect: string, to: string) => {
+const withAuthForm = () => (title: string, Wrapper: React.FC) => {
   return (props: any) => {
     return (
       <section className="auth">
@@ -15,8 +14,6 @@ const withAuthForm = () => (title: string, Wrapper: React.FC, redirect: string, 
           <div className="auth-form">
             <Wrapper {...props} />
           </div>
-
-          <Link className="auth-redirect" to={to}>{redirect}</Link>
         </div>
       </section>
     )
