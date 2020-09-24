@@ -23,18 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/auth/register/is-valid-form.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/button.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/transition.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/transition.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth-input/auth-input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth-input/auth-input.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/form-redirect.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/form-redirect.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +74,7 @@
       <workItem from="1600862847737" duration="18717000" />
       <workItem from="1600882269283" duration="77000" />
       <workItem from="1600882402441" duration="54000" />
-      <workItem from="1600983167979" duration="6322000" />
+      <workItem from="1600983167979" duration="6523000" />
     </task>
     <servers />
   </component>
