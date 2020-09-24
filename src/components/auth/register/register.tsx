@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import AuthInput from "../../auth-input";
+import Button from '../../button';
+import isFormValid from './is-valid-form';
+import md5 from 'md5';
+
 import { withAuthForm } from "../../HOC";
 import { Link } from "react-router-dom";
-import { auth } from "../../../config/firebase";
-import md5 from 'md5';
+import { auth, database } from "../../../config/firebase";
 
 import './register.scss';
 import '../form-redirect.scss';
 
-type TUserRegister = {
+export type TUserRegister = {
   username: string
   email: string
   password: string
@@ -16,68 +19,55 @@ type TUserRegister = {
 }
 
 const Register: React.FC = () => {
-  const [ userRegister, setUserRegister ] = useState<TUserRegister>({
+  const initialUserRegister = useMemo<TUserRegister>(() => ({
     username: '',
     email: '',
     password: '',
     passwordRepeat: '',
-  });
-  const [ registerError, setRegisterError ] = useState<string>('');
+  }), []);
+
+  const [userRegister, setUserRegister] = useState<TUserRegister>(initialUserRegister);
+  const [registerError, setRegisterError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const whenChangingText = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     setUserRegister((prevState: TUserRegister) => ({ ...prevState, [name]: value.trim() }))
   }
 
-  const isFormEmpty = ({ username, email, password, passwordRepeat }: TUserRegister) => {
-    return !username.trim().length
-      || !email.trim().length
-      || !password.trim().length
-      || !passwordRepeat.trim().length
-  }
-
-  const isPasswordValid = (password: string, passwordRepeat: string) => {
-    if (password.length < 6 && passwordRepeat.length < 6) {
-      setRegisterError('Длина пароля должна быть больше 6 символов!');
-      return false;
-    } else if (password !== passwordRepeat) {
-      setRegisterError('Пароли не совпадают!');
-      return false;
-    }
-
-    return true;
-  }
-
-  const isFormValid = () => {
-    if (isFormEmpty(userRegister)) {
-      setRegisterError('Все поля должны быть заполнены!');
-      return false
-    } else if (!isPasswordValid(userRegister.password, userRegister.passwordRepeat)) {
-      return false
-    }
-
-    return true;
+  const onCreatedUserWithDatabase = (createdUser: any) => {
+    return database.ref('users').child(createdUser.user.uid).set({
+      username: createdUser.user.displayName,
+      avatar: createdUser.user.photoURL
+    });
   }
 
   const onCreateUserWithEmailAndPassword = () => {
     return auth
       .createUserWithEmailAndPassword(userRegister.email, userRegister.password)
-      .then((createUser: any) => {
-        createUser.user.updateProfile({
+      .then((createdUser: any) => {
+        createdUser.user.updateProfile({
           displayName: userRegister.username,
-          photoURL: `https://www.gravatar.com/avatar/${md5(createUser.user.email)}?d=mp&f=y`
-        })
-        return createUser;
+          photoURL: `https://www.gravatar.com/avatar/${md5(createdUser.user.email)}?d=mp&f=y`
+        }).then(() => onCreatedUserWithDatabase(createdUser))
       })
   }
 
   const whenSubmittingForm = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isFormValid()) {
+    if (isFormValid(userRegister, setRegisterError)) {
+      setLoading(true);
+      setRegisterError('');
       onCreateUserWithEmailAndPassword()
+        .then(() => console.log('Пользователь сохранён!'))
+        .then(() => {
+          setLoading(false);
+          setUserRegister(initialUserRegister);
+        })
         .catch((error: any) => {
           setRegisterError(error.message);
+          setLoading(false);
         })
     }
   }
@@ -87,11 +77,15 @@ const Register: React.FC = () => {
       <AuthInput label="Имя пользователя" name="username" onChange={whenChangingText} value={userRegister.username} />
       <AuthInput label="Email" name="email" onChange={whenChangingText} value={userRegister.email} />
       <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingText}
-                 value={userRegister.password} />
+        value={userRegister.password} />
       <AuthInput label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingText}
-                 value={userRegister.passwordRepeat} />
-      <button className="button button-auth-form">Зарегистрироваться</button>
+        value={userRegister.passwordRepeat} />
+
+      <Button className="button-auth-form" loading={loading}>Регистрация</Button>
+
       <Link to="/login-page" className="form-redirect">Уже зарегистрированы?</Link>
+
+      { registerError.length > 0 ? <span className="form-error">{registerError}</span> : '' }
     </form>
   )
 };

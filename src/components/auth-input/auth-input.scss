@@ -3,7 +3,7 @@
 .auth-input {
   position: relative;
   width: 100%;
-  height: 35px;
+  height: 30px;
   margin-bottom: 25px;
   &__write {
     width: 100%;
@@ -19,19 +19,19 @@
     }
     &:focus {
       outline: none;
-      border-bottom-color: #ada4b3;
+      border-bottom-color: $form-focus;
     }
     &:focus ~ .auth-input__description {
       font-size: 11px;
       transform: translateY(-180%);
-      color: #ada4b3;
+      color: $form-focus;
       text-transform: uppercase;
     }
   }
   &__hollow ~ .auth-input__description {
     font-size: 11px;
     transform: translateY(-180%);
-    color: #ada4b3;
+    color:$form-focus;
     text-transform: uppercase;
   }
   &__description {
