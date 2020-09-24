@@ -6,7 +6,8 @@ import { Login, Register } from './components/auth';
 
 import './assets/styles/bootstrap-reboot.min.scss';
 import './assets/styles/fonts.scss';
-import './assets/styles/button.scss';
+import './assets/styles/transition.scss';
+
 
 const MainRoot = () => {
   return (

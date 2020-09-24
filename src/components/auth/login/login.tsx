@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AuthInput from "../../auth-input";
+import Button from '../../button';
 import { withAuthForm } from "../../HOC";
 import { Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ const Login = () => {
     <form className="login">
       <AuthInput label="Email" name="email" onChange={whenChangingText} value={userLogin.email} />
       <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingText} value={userLogin.password} />
-      <button className="button button-auth-form">Войти</button>
+      <Button className="button-auth-form">Войти</Button>
       <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
     </form>
   )
