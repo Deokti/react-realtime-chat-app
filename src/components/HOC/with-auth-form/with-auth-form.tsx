@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import './with-auth-form.scss';
+import { RouteComponentProps } from "react-router-dom";
+
+export type TWithAuthForm = {
+  hasError?: string
+  setHasError?: (error: string) => void
+  loading?: boolean
+  setLoading?: (state: boolean) => void
+  history?: RouteComponentProps
+  location?: RouteComponentProps
+  match?: RouteComponentProps
+  staticContext?: any
+  children?: React.ReactNode;
+}
 
 const withAuthForm = () => (title: string, Wrapper: React.FC) => {
-  return (props: any) => {
+  return (props: TWithAuthForm) => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<string>('');
+
     return (
       <section className="auth">
         <div className="auth-wrapper">
@@ -12,7 +28,12 @@ const withAuthForm = () => (title: string, Wrapper: React.FC) => {
           </header>
 
           <div className="auth-form">
-            <Wrapper {...props} />
+            <Wrapper
+              hasError={hasError}
+              setHasError={setHasError}
+              loading={loading}
+              setLoading={setLoading}
+              {...props} />
           </div>
         </div>
       </section>

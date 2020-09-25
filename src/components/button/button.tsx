@@ -10,7 +10,7 @@ type TButton = {
 }
 
 const Button: React.FC<TButton> = ({ children, className, loading = false }: TButton) => {
-  return <button className={`button ${className}`}>
+  return <button className={`button ${className} ${loading ? 'button-loading' : ''}`}>
     {loading ? <Spinner /> : children}
   </button>
 };
