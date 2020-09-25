@@ -33,7 +33,7 @@ const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setH
     setUserRegister((prevState: TUserRegister) => ({ ...prevState, [name]: value.trim() }))
   }
 
-  const onCreatedUserWithDatabase = (createdUser: any) => {
+  const onCreatedUserInDatabase = (createdUser: any) => {
     return database.ref('users').child(createdUser.user.uid).set({
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL
@@ -47,7 +47,7 @@ const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setH
         createdUser.user.updateProfile({
           displayName: userRegister.username,
           photoURL: `https://www.gravatar.com/avatar/${md5(createdUser.user.email)}?d=mp&f=y`
-        }).then(() => onCreatedUserWithDatabase(createdUser))
+        }).then(() => onCreatedUserInDatabase(createdUser))
       })
   }
 
