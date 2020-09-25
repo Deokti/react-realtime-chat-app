@@ -7,6 +7,7 @@ import md5 from 'md5';
 import { withAuthForm } from "../../HOC";
 import { Link } from "react-router-dom";
 import { auth, database } from "../../../config/firebase";
+import { TWithAuthForm } from "../../HOC/with-auth-form/with-auth-form";
 
 import './register.scss';
 import '../form-redirect.scss';
@@ -18,24 +19,21 @@ export type TUserRegister = {
   passwordRepeat: string
 }
 
-const Register: React.FC = () => {
+const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setHasError }:TWithAuthForm) => {
   const initialUserRegister = useMemo<TUserRegister>(() => ({
     username: '',
     email: '',
     password: '',
     passwordRepeat: '',
   }), []);
-
   const [userRegister, setUserRegister] = useState<TUserRegister>(initialUserRegister);
-  const [registerError, setRegisterError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
 
   const whenChangingText = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     setUserRegister((prevState: TUserRegister) => ({ ...prevState, [name]: value.trim() }))
   }
 
-  const onCreatedUserWithDatabase = (createdUser: any) => {
+  const onCreatedUserInDatabase = (createdUser: any) => {
     return database.ref('users').child(createdUser.user.uid).set({
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL
@@ -49,25 +47,26 @@ const Register: React.FC = () => {
         createdUser.user.updateProfile({
           displayName: userRegister.username,
           photoURL: `https://www.gravatar.com/avatar/${md5(createdUser.user.email)}?d=mp&f=y`
-        }).then(() => onCreatedUserWithDatabase(createdUser))
+        }).then(() => onCreatedUserInDatabase(createdUser))
       })
   }
 
   const whenSubmittingForm = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isFormValid(userRegister, setRegisterError)) {
-      setLoading(true);
-      setRegisterError('');
+    if (isFormValid(userRegister, setHasError)) {
+      if (setLoading) setLoading(true);
+      if (setHasError) setHasError('');
+
       onCreateUserWithEmailAndPassword()
         .then(() => console.log('Пользователь сохранён!'))
         .then(() => {
-          setLoading(false);
+          if (setLoading) setLoading(false);
           setUserRegister(initialUserRegister);
         })
         .catch((error: any) => {
-          setRegisterError(error.message);
-          setLoading(false);
+          if (setHasError) setHasError(error.message);
+          if (setLoading) setLoading(false);
         })
     }
   }
@@ -85,7 +84,7 @@ const Register: React.FC = () => {
 
       <Link to="/login-page" className="form-redirect">Уже зарегистрированы?</Link>
 
-      { registerError.length > 0 ? <span className="form-error">{registerError}</span> : '' }
+      { hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : '' }
     </form>
   )
 };
