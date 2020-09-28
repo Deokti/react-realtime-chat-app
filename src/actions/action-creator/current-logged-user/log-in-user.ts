@@ -1,8 +1,8 @@
-import { TYPES } from "../TYPES";
+import { TYPESFORUSER } from "../../TYPES";
 
 const getLogInUser = (user: any) => {
   return {
-    type: TYPES.LOG_IN_USER,
+    type: TYPESFORUSER.LOG_IN_USER,
     payload: user
   }
 }

@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import AuthInput from "../../auth-input";
 import Button from '../../button';
 
-import { withAuthForm } from "../../HOC";
+import { withAuthForm, withHandlerInput } from "../../HOC";
 import { Link } from 'react-router-dom';
 import { auth } from '../../../config/firebase';
-import { TWithAuthForm } from "../../HOC/with-auth-form/with-auth-form";
+import compose from "../../../utils/compose";
 
 import './login.scss';
 import '../form-redirect.scss';
@@ -15,15 +15,17 @@ type TUserLogin = {
   password: string
 }
 
-const Login: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setHasError }: TWithAuthForm) => {
-  const initialUserLogin = useMemo<TUserLogin>(() => ({ email: '', password: '' }), [])
-  const [ userLogin, setUserLogin ] = useState<TUserLogin>(initialUserLogin);
+type TLogin = {
+  hasError: string
+  setHasError: (error: string) => void
+  loading: boolean
+  setLoading: (state: boolean) => void
+  input: TUserLogin
+  setInput: (state: TUserLogin) => any
+  whenChangingInput: (state: string) => void
+}
 
-  const whenChangingText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.currentTarget;
-    setUserLogin((prevState: TUserLogin) => ({ ...prevState, [name]: value }))
-  }
-
+const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, input, whenChangingInput, setInput }: TLogin) => {
   const onFormValid = ({ email, password }: TUserLogin) => {
     if (setHasError && (!email && !password)) {
       setHasError('Все поля должны быть заполнены!')
@@ -34,29 +36,27 @@ const Login: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setHasE
   const whenSubmittingForm = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (onFormValid(userLogin)) {
-      if (setLoading) setLoading(true);
-      if (setHasError) setHasError('');
-      auth.signInWithEmailAndPassword(userLogin.email, userLogin.password)
-        .then((signInUser) => {
-          console.log('signInUser:', signInUser);
-        })
+    if (onFormValid(input)) {
+      setLoading(true);
+      setHasError('');
+      auth.signInWithEmailAndPassword(input.email, input.password)
+        .then((signInUser) => console.log('Пользователь вошёл в систему:', signInUser))
         .then(() => {
-          if (setLoading) setLoading(false);
-          setUserLogin(initialUserLogin);
+          setLoading(false);
+          setInput({ email: '', password: '' });
         })
         .catch((error) => {
-          if (setLoading) setLoading(false);
-          if (setHasError) setHasError(error.message);
+          setLoading(false);
+          setHasError(error.message);
         })
     }
   }
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
-      <AuthInput label="Email" name="email" onChange={whenChangingText} value={userLogin.email} />
-      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingText}
-                 value={userLogin.password} />
+      <AuthInput label="Email" name="email" onChange={whenChangingInput} value={input.email} />
+      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingInput}
+                 value={input.password} />
       <Button className="button-auth-form" loading={loading}>Войти</Button>
       <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
 
@@ -65,4 +65,8 @@ const Login: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setHasE
   )
 };
 
-export default withAuthForm()('Войти', Login);
+export default compose(
+  withAuthForm('Войти'),
+  withHandlerInput({ email: '', password: '' })
+)(Login);
+

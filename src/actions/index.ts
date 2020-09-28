@@ -1,8 +1,10 @@
-import { TYPES } from "./TYPES";
-import getLogInUser from "./action-creator/log-in-user";
+import { TYPESFORUSER } from "./TYPES";
+import getLogInUser from "./action-creator/current-logged-user/log-in-user";
+import logOutUser from "./action-creator/current-logged-user/log-out-user";
 
 export {
-  TYPES,
-  getLogInUser
+  TYPESFORUSER,
+  getLogInUser,
+  logOutUser
 };
 
