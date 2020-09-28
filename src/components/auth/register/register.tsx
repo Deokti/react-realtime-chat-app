@@ -1,13 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import AuthInput from "../../auth-input";
 import Button from '../../button';
 import isFormValid from './is-valid-form';
 import md5 from 'md5';
 
-import { withAuthForm } from "../../HOC";
+import { withAuthForm, withHandlerInput } from "../../HOC";
 import { Link } from "react-router-dom";
 import { auth, database } from "../../../config/firebase";
-import { TWithAuthForm } from "../../HOC/with-auth-form/with-auth-form";
+import compose from "../../../utils/compose";
 
 import './register.scss';
 import '../form-redirect.scss';
@@ -19,20 +19,17 @@ export type TUserRegister = {
   passwordRepeat: string
 }
 
-const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setHasError }:TWithAuthForm) => {
-  const initialUserRegister = useMemo<TUserRegister>(() => ({
-    username: '',
-    email: '',
-    password: '',
-    passwordRepeat: '',
-  }), []);
-  const [userRegister, setUserRegister] = useState<TUserRegister>(initialUserRegister);
+type TRegisterForm = {
+  hasError: string
+  setHasError: (error: string) => void
+  loading: boolean
+  setLoading: (state: boolean) => void
+  input: TUserRegister
+  setInput: (state: TUserRegister) => any
+  whenChangingInput: (state: string) => void
+}
 
-  const whenChangingText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.currentTarget;
-    setUserRegister((prevState: TUserRegister) => ({ ...prevState, [name]: value.trim() }))
-  }
-
+const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
   const onCreatedUserInDatabase = (createdUser: any) => {
     return database.ref('users').child(createdUser.user.uid).set({
       username: createdUser.user.displayName,
@@ -42,10 +39,10 @@ const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setH
 
   const onCreateUserWithEmailAndPassword = () => {
     return auth
-      .createUserWithEmailAndPassword(userRegister.email, userRegister.password)
+      .createUserWithEmailAndPassword(input.email, input.password)
       .then((createdUser: any) => {
         createdUser.user.updateProfile({
-          displayName: userRegister.username,
+          displayName: input.username,
           photoURL: `https://www.gravatar.com/avatar/${md5(createdUser.user.email)}?d=mp&f=y`
         }).then(() => onCreatedUserInDatabase(createdUser))
       })
@@ -54,39 +51,53 @@ const Register: React.FC<TWithAuthForm> = ({ loading, setLoading, hasError, setH
   const whenSubmittingForm = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isFormValid(userRegister, setHasError)) {
-      if (setLoading) setLoading(true);
-      if (setHasError) setHasError('');
+    if (isFormValid(input, setHasError)) {
+     setLoading(true);
+      setHasError('');
 
       onCreateUserWithEmailAndPassword()
         .then(() => console.log('Пользователь сохранён!'))
         .then(() => {
-          if (setLoading) setLoading(false);
-          setUserRegister(initialUserRegister);
+          setLoading(false);
+          setInput({
+            username: '',
+            email: '',
+            password: '',
+            passwordRepeat: '',
+          });
         })
         .catch((error: any) => {
-          if (setHasError) setHasError(error.message);
-          if (setLoading) setLoading(false);
+          setHasError(error.message);
+          setLoading(false);
         })
     }
   }
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
-      <AuthInput label="Имя пользователя" name="username" onChange={whenChangingText} value={userRegister.username} />
-      <AuthInput label="Email" name="email" onChange={whenChangingText} value={userRegister.email} />
-      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingText}
-        value={userRegister.password} />
-      <AuthInput label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingText}
-        value={userRegister.passwordRepeat} />
+      <AuthInput label="Имя пользователя" name="username" onChange={whenChangingInput} value={input.username} />
+      <AuthInput label="Email" name="email" onChange={whenChangingInput} value={input.email} />
+      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingInput}
+                 value={input.password} />
+      <AuthInput label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingInput}
+                 value={input.passwordRepeat} />
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 
       <Link to="/login-page" className="form-redirect">Уже зарегистрированы?</Link>
 
-      { hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : '' }
+      {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}
     </form>
   )
 };
 
-export default withAuthForm()('Регистрация', Register);
+export default compose(
+  withAuthForm('Регистрация'),
+  withHandlerInput({
+    username: '',
+    email: '',
+    password: '',
+    passwordRepeat: '',
+  })
+)(Register)
+

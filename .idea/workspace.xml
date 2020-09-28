@@ -23,24 +23,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/log-in-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/log-in-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/compose.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HOC/with-handler-input/with-handler-input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/control-panel-popup.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/control-panel-popup.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icon/logo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HOC/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/spinner-loader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +75,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/control-panel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,7 +88,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\control-panel" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\actions\action-creator\current-logged-user" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\HOC\with-auth-form" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components" />
     </key>
@@ -91,7 +110,8 @@
       <workItem from="1600882269283" duration="77000" />
       <workItem from="1600882402441" duration="54000" />
       <workItem from="1600983167979" duration="6597000" />
-      <workItem from="1601044296646" duration="8119000" />
+      <workItem from="1601044296646" duration="8371000" />
+      <workItem from="1601314285441" duration="14898000" />
     </task>
     <servers />
   </component>
@@ -119,6 +139,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1601049705364" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1601317583295">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1601317583295" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600879588609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -139,9 +163,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600878248583" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601052228365">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601329247154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601052228365" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601329247154" />
   </component>
 </project>

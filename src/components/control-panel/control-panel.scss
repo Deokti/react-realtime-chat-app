@@ -1,0 +1,15 @@
+@import "../../assets/styles/variables";
+
+.control-panel {
+  position: relative;
+  width: 100px;
+  height: 100%;
+  background-color: $control-panel-background;
+  padding: 15px 20px;
+  &__header {
+    text-align: center;
+  }
+  &__avatar {
+    padding-top: 60px;
+  }
+}

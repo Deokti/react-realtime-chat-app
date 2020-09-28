@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from '../icon';
+import { SpinnerLoader } from '../icon';
 
 import './button.scss';
 
@@ -11,7 +11,7 @@ type TButton = {
 
 const Button: React.FC<TButton> = ({ children, className, loading = false }: TButton) => {
   return <button className={`button ${className} ${loading ? 'button-loading' : ''}`}>
-    {loading ? <Spinner /> : children}
+    {loading ? <SpinnerLoader /> : children}
   </button>
 };
 

@@ -1,22 +1,9 @@
 import React, { useState } from "react";
 
 import './with-auth-form.scss';
-import { RouteComponentProps } from "react-router-dom";
 
-export type TWithAuthForm = {
-  hasError?: string
-  setHasError?: (error: string) => void
-  loading?: boolean
-  setLoading?: (state: boolean) => void
-  history?: RouteComponentProps
-  location?: RouteComponentProps
-  match?: RouteComponentProps
-  staticContext?: any
-  children?: React.ReactNode;
-}
-
-const withAuthForm = () => (title: string, Wrapper: React.FC) => {
-  return (props: TWithAuthForm) => {
+const withAuthForm = (title: string) => (Wrapper: React.FC) => {
+  return (props: any) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [hasError, setHasError] = useState<string>('');
 

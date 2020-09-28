@@ -1,8 +1,8 @@
-import updateLogInUser from "./log-in-user";
+import updateCurrentLoggedUser from "./current-logged-user";
 import { combineReducers } from "redux";
 
 const rootReducers = combineReducers({
-  logInUser: updateLogInUser
+  currentLoggedUser: updateCurrentLoggedUser
 });
 
 export default rootReducers;

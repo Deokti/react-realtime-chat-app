@@ -1,5 +1,6 @@
-const TYPES = {
+const TYPESFORUSER = {
   LOG_IN_USER: 'LOG_IN_USER',
+  LOG_OUT_USER: 'LOG_OUT_USER'
 };
 
-export { TYPES };
+export { TYPESFORUSER };
