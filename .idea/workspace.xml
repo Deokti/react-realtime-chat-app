@@ -23,38 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HOC/with-handler-input/with-handler-input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/control-panel-popup.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/control-panel-popup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-popup/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/control-panel/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icon/logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-status/control-panel-status.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-status/control-panel-status.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-status/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icon/channels-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icon/chats-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/icon/favorites-icon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HOC/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/icon/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/spinner-loader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/control-panel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/icon" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -83,18 +62,19 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.SCSS" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\control-panel" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\actions\action-creator\current-logged-user" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\HOC\with-auth-form" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\icon" />
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\control-panel" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -111,7 +91,9 @@
       <workItem from="1600882402441" duration="54000" />
       <workItem from="1600983167979" duration="6597000" />
       <workItem from="1601044296646" duration="8371000" />
-      <workItem from="1601314285441" duration="14898000" />
+      <workItem from="1601314285441" duration="15428000" />
+      <workItem from="1601330279695" duration="21000" />
+      <workItem from="1601400759377" duration="3964000" />
     </task>
     <servers />
   </component>
@@ -135,10 +117,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="806" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1600983401415" />
-    <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601049705364">
+    <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601403042599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1601049705364" />
+    <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1601403042599" />
     <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1601317583295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -147,10 +129,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600879588609" />
-    <state x="491" y="151" key="SettingsEditor" timestamp="1600864691766">
+    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1601403192722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="491" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600864691766" />
+    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601403192722" />
+    <state x="491" y="151" key="SettingsEditor" timestamp="1601329943119">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="491" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601329943119" />
     <state x="560" y="129" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600872340016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

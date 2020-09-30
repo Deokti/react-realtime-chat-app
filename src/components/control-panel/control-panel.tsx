@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Logo } from "../icon";
 import ControlPanelAvatar from "./control-panel-avatar";
 import ControlPanelPopup from "./control-panel-popup";
+import ControlPanelStatus from "./control-panel-status";
+import { connect } from "react-redux";
 
 import './control-panel.scss';
-import { connect } from "react-redux";
 
 type TControlPanel = {
   logInUser: any
@@ -25,6 +26,10 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
       <div className="control-panel__avatar">
         <ControlPanelAvatar openPopup={openPopup} avatarLink={logInUser && logInUser.photoURL} username={logInUser && logInUser.displayName} />
         <ControlPanelPopup popup={showPopup} closePopup={closePopup} username={logInUser && logInUser.displayName} />
+      </div>
+
+      <div className="control-panel__status">
+        <ControlPanelStatus />
       </div>
     </div>
   )
