@@ -2,14 +2,14 @@ import React, { useCallback, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import App from "./components/app";
+import Spinner from "./components/spinner";
 import { Login, Register } from './components/auth';
 import { auth } from "./config/firebase";
 
+import compose from "./utils/compose";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { getLogInUser, logOutUser } from './actions';
-import compose from "./utils/compose";
-import Spinner from "./components/spinner";
 
 import './assets/styles/bootstrap-reboot.min.scss';
 import './assets/styles/fonts.scss';

@@ -1,0 +1,18 @@
+@import "../../assets/styles/variables";
+
+.channels-panel {
+  background-color: $form-background;
+  height: 100%;
+  width: 330px;
+  &__header {
+    padding: 20px 30px;
+  }
+  &__heading {
+    font-weight: 300;
+    font-size: 28px;
+    color: #E3EAEE;
+  }
+  &__list {
+    padding-top: 50px;
+  }
+}

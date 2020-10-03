@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthInput from "../../auth-input";
+import Input from "../../input";
 import Button from '../../button';
 import isFormValid from './is-valid-form';
 import md5 from 'md5';
@@ -31,7 +31,7 @@ type TRegisterForm = {
 
 const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
   const onCreatedUserInDatabase = (createdUser: any) => {
-    return database.ref('users').child(createdUser.user.uid).set({
+    return database.ref('USERS').child(createdUser.user.uid).set({
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL
     });
@@ -75,12 +75,12 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
-      <AuthInput label="Имя пользователя" name="username" onChange={whenChangingInput} value={input.username} />
-      <AuthInput label="Email" name="email" onChange={whenChangingInput} value={input.email} />
-      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingInput}
-                 value={input.password} />
-      <AuthInput label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingInput}
-                 value={input.passwordRepeat} />
+      <Input label="Имя пользователя" name="username" onChange={whenChangingInput} value={input.username} />
+      <Input label="Email" name="email" onChange={whenChangingInput} value={input.email} />
+      <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
+             value={input.password} />
+      <Input label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingInput}
+             value={input.passwordRepeat} />
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 

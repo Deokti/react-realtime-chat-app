@@ -1,0 +1,33 @@
+@import "../../../assets/styles/variables";
+
+.channels-panel-list {
+  list-style: none;
+  padding-left: 0;
+  &__item {
+    position: relative;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 17px;
+    color: #E3EAEE;
+    margin-bottom: 20px;
+    z-index: 5;
+    &-label {
+      padding-left: 30px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $channel-panel-item-active;
+      opacity: 0;
+      z-index: -1;
+    }
+    &.active {
+      &::before { opacity: 1; }
+    }
+  }
+}

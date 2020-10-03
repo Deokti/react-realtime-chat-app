@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Logo } from "../icon";
 import ControlPanelAvatar from "./control-panel-avatar";
-import ControlPanelPopup from "./control-panel-popup";
-import ControlPanelStatus from "./control-panel-status";
+import ControlPanelMenu from "./control-panel-menu";
+import ControlPanelModal from "./control-panel-modal";
+import ControlPanelFilter from "./control-panel-filter";
 import { connect } from "react-redux";
 
 import './control-panel.scss';
@@ -12,10 +13,14 @@ type TControlPanel = {
 }
 
 const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => {
-  const [ showPopup, setShowPopup ] = useState<boolean>(false);
+  const [ showMenu, setShowMenu ] = useState<boolean>(false);
+  const [ showModal, setShowModal ] = useState<boolean>(false);
 
-  const openPopup = () => setShowPopup(true);
-  const closePopup = () => setShowPopup(false);
+  const openMenu = () => setShowMenu(true);
+  const closeMenu = () => setShowMenu(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className="control-panel">
@@ -24,13 +29,29 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
       </header>
 
       <div className="control-panel__avatar">
-        <ControlPanelAvatar openPopup={openPopup} avatarLink={logInUser && logInUser.photoURL} username={logInUser && logInUser.displayName} />
-        <ControlPanelPopup popup={showPopup} closePopup={closePopup} username={logInUser && logInUser.displayName} />
+        <ControlPanelAvatar
+          openMenu={openMenu}
+          avatarLink={logInUser && logInUser.photoURL}
+          username={logInUser && logInUser.displayName}
+        />
+
+        <ControlPanelMenu
+          menu={showMenu}
+          closeMenu={closeMenu}
+          username={logInUser && logInUser.displayName} openModal={openModal}
+        />
       </div>
 
       <div className="control-panel__status">
-        <ControlPanelStatus />
+        <ControlPanelFilter />
       </div>
+
+      {/* Модальное окно */}
+      <ControlPanelModal
+        modal={showModal}
+        closeModal={closeModal}
+        username={logInUser.displayName}
+        userAvatar={logInUser.photoURL} />
     </div>
   )
 };

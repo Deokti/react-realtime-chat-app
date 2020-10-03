@@ -7,6 +7,13 @@ import SpinnerLoader from './spinner-loader';
 import FavoritesIcon from "./favorites-icon";
 import ChatsIcon from "./chats-icon";
 import ChannelsIcon from "./channels-icon";
+import LogoutIcon from "./logout-icon";
+
+export type TIconSize = {
+  width?: string | number
+  height?: string | number
+  color?: string
+}
 
 export {
   EmailIcon,
@@ -17,5 +24,6 @@ export {
   Logo,
   FavoritesIcon,
   ChatsIcon,
-  ChannelsIcon
+  ChannelsIcon,
+  LogoutIcon
 };

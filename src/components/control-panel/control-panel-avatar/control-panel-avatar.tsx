@@ -3,14 +3,14 @@ import React from "react";
 import './control-panel-avatar.scss';
 
 type TControlPanelAvatar = {
-  openPopup: () => void
+  openMenu: () => void
   avatarLink: string
   username: string
 }
 
-const ControlPanelAvatar: React.FC<TControlPanelAvatar> = ({ openPopup, avatarLink, username }: TControlPanelAvatar) => {
+const ControlPanelAvatar: React.FC<TControlPanelAvatar> = ({ openMenu, avatarLink, username }: TControlPanelAvatar) => {
   return (
-    <div className="control-panel-avatar" onClick={openPopup}>
+    <div className="control-panel-avatar" onClick={openMenu}>
       <div className="control-panel-avatar__image" title={`Пользователь ${username}`}>
         <img src={avatarLink} alt="avatar" />
       </div>
