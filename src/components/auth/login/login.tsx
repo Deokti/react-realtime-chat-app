@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthInput from "../../auth-input";
+import Input from "../../input";
 import Button from '../../button';
 
 import { withAuthForm, withHandlerInput } from "../../HOC";
@@ -54,9 +54,9 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
-      <AuthInput label="Email" name="email" onChange={whenChangingInput} value={input.email} />
-      <AuthInput label="Пароль" name="password" type="password" onChange={whenChangingInput}
-                 value={input.password} />
+      <Input label="Email" name="email" onChange={whenChangingInput} value={input.email} />
+      <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
+             value={input.password} />
       <Button className="button-auth-form" loading={loading}>Войти</Button>
       <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
 

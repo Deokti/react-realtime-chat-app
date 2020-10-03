@@ -1,0 +1,45 @@
+@import "../../../assets/styles/variables";
+
+.control-panel-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(#000, .25);
+  z-index: 999;
+  &__window {
+    padding: 25px 50px;
+    width: 500px;
+    min-height: 200px;
+    background-color: $form-background;
+  }
+  &__title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 20px;
+  }
+  &__form {
+    margin-top: 40px;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__button {
+    width: 140px!important;
+  }
+  &__cancel {
+    margin-right: 20px;
+  }
+  &__submit {
+    background-color: $control-panel-active-color-border!important;
+    &:hover {
+      background-color: rgba($control-panel-active-color-border, .70)!important;
+    }
+  }
+}

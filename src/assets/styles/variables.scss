@@ -1,13 +1,15 @@
-$main-background: #725783;
-$form-background: #3A284A;
+$main-background: #2C353F;
+$form-background: #333C45;
 $main-color: #fff;
-$description-color: #62556D;
+$description-color: #9F9DA3;
 $background-button: #FF4460;
 $background-button-hover: #a21f33;
-$form-focus: #ada4b3;
+$form-focus: #fff;
 
 // Чат control-panel
 $control-panel-background: #2C353F;
 $control-panel-description: #9F9DA3;
 $control-panel-active-color-border: #54D58C;
-$control-panel-status-active: #333C45;
+
+// Channel-panel
+$channel-panel-item-active: #404953;
