@@ -41,8 +41,8 @@ const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeMod
     const createNewChannel = {
       id,
       channelName: input.channelName,
-      type: 'channels',
-      createdByChannel: {
+      type: 'CHANNELS',
+      channelCreator: {
         username,
         avatar: userAvatar,
       }
@@ -55,7 +55,6 @@ const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeMod
         setInput({ channelName: '' });
         closeModal();
       })
-
   }
 
   return modal && (
