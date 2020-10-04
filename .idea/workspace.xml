@@ -24,7 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +92,7 @@
       <workItem from="1601676946202" duration="2919000" />
       <workItem from="1601700999589" duration="142000" />
       <workItem from="1601706171354" duration="14297000" />
-      <workItem from="1601767081671" duration="1659000" />
+      <workItem from="1601767081671" duration="4861000" />
     </task>
     <servers />
   </component>
@@ -145,13 +148,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="692" y="218" width="634" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601719467060" />
-    <state x="616" y="235" key="run.anything.popup" timestamp="1600878248583">
+    <state x="616" y="235" key="run.anything.popup" timestamp="1601771229344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600878248583" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601768002631">
+    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601771229344" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601771948513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601768002631" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601771948513" />
   </component>
 </project>

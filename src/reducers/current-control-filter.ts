@@ -12,7 +12,7 @@ const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any )
     return {
       currentFilter: {
         filterHeading: 'Чат-каналы',
-        filterName: 'channels'
+        filterName: 'CHANNELS'
       },
     }
   }
