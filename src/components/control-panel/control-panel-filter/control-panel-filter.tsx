@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
 import { changeControlFilter } from '../../../actions';
@@ -18,14 +18,16 @@ type TControlPanelFilter = {
 
 const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter, currentFilter }: TControlPanelFilter) => {
   const controlPanelStatus = [
-    { name: 'favorites', title: 'Избранные каналы', component: <FavoritesIcon /> },
-    { name: 'channels', title: 'Чат-каналы', component: <ChannelsIcon /> },
-    { name: 'chats', title: 'Личные сообщения', component: <ChatsIcon /> },
+    { name: 'FAVORITES', title: 'Избранные каналы', component: <FavoritesIcon /> },
+    { name: 'CHANNELS', title: 'Чат-каналы', component: <ChannelsIcon /> },
+    { name: 'CHATS', title: 'Личные сообщения', component: <ChatsIcon /> },
   ];
 
   const toggleCurrentStatus = useCallback((title: string, name: string) => {
-    changeControlFilter(title, name);
-  }, [changeControlFilter]);
+    if (currentFilter.filterName !== name) {
+      changeControlFilter(title, name)
+    }
+  }, [changeControlFilter, currentFilter.filterName]);
 
   return (
     <ul className="control-panel-status">

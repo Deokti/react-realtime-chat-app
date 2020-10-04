@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
-import './channels-panel.scss';
+import { database } from "../../config/firebase";
 import { connect } from "react-redux";
 import { TCurrentControlFilter } from "../../reducers/current-control-filter";
+
+import './channels-panel.scss';
 
 type TChannelsPanel = {
   currentFilter: {
@@ -12,24 +14,41 @@ type TChannelsPanel = {
   }
 }
 
-const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
-  const channels = [
-    { id: 0, name: 'React', filter: 'channels' },
-    { id: 1, name: 'JavaScript', filter: 'channels' },
-    { id: 2, name: 'Backend', filter: 'channels' },
-    { id: 4, name: 'Томас', filter: 'chats' },
-    { id: 5, name: 'Артур', filter: 'chats' },
-  ];
-
-  function filter (channels: any, filter: string) {
-    return channels.filter((item: any) => item.filter === filter);
+export type TChannels = {
+  channelCreator: {
+    avatar: string
+    username: string
   }
+  channelName: string
+  id: string
+  type: string
+}
 
+const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
+  const [ channels, setChannels ] = useState<Array<TChannels>>([])
+
+  const getChannels = useCallback(() => {
+    const channelRef =  database.ref("CHANNELS");
+
+    channelRef.on("child_added", (snapshot) => {
+        setChannels((prevState) => [...prevState, snapshot.val()]);
+      })
+  }, []);
+
+
+  useEffect(() => {
+    getChannels();
+    return () => getChannels();
+  }, [getChannels]);
+
+  function filter (channels: any, type: string) {
+    return channels.filter((item: any) => item.type === type);
+  }
 
   return (
     <div className="channels-panel">
       <header className="channels-panel__header">
-        <h2 className="channels-panel__heading">{ currentFilter.filterHeading }</h2>
+        <h2 className="channels-panel__heading">{ currentFilter.filterHeading}</h2>
       </header>
 
       <div className="channels-panel__list">
