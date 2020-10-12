@@ -23,11 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-control-filter/change-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-control-filter/change-control-filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +100,9 @@
       <workItem from="1601676946202" duration="2919000" />
       <workItem from="1601700999589" duration="142000" />
       <workItem from="1601706171354" duration="14297000" />
-      <workItem from="1601767081671" duration="4861000" />
+      <workItem from="1601767081671" duration="5179000" />
+      <workItem from="1602528515199" duration="44000" />
+      <workItem from="1602528614625" duration="1837000" />
     </task>
     <servers />
   </component>
@@ -152,9 +162,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601771229344" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601771948513">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602529818762">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601771948513" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602529818762" />
   </component>
 </project>

@@ -21,7 +21,7 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter
     { name: 'FAVORITES', title: 'Избранные каналы', component: <FavoritesIcon /> },
     { name: 'CHANNELS', title: 'Чат-каналы', component: <ChannelsIcon /> },
     { name: 'CHATS', title: 'Личные сообщения', component: <ChatsIcon /> },
-  ];
+  ]
 
   const toggleCurrentStatus = useCallback((title: string, name: string) => {
     if (currentFilter.filterName !== name) {

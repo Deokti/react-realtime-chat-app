@@ -1,4 +1,4 @@
-import { TYPEFORCONTROLPANEL } from "../actions/TYPES";
+import { CHANGE_CONTROL_FILTER } from "../actions/TYPES";
 
 export type TCurrentControlFilter = {
   currentFilter: {
@@ -8,6 +8,7 @@ export type TCurrentControlFilter = {
 }
 
 const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any ) => {
+  console.log('actions:', actions)
   if (state === undefined) {
     return {
       currentFilter: {
@@ -18,7 +19,7 @@ const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any )
   }
 
   switch (actions.type) {
-    case TYPEFORCONTROLPANEL.CHANGE_CONTROL_FILTER: {
+    case CHANGE_CONTROL_FILTER: {
       return {
         ...state,
         currentFilter: {

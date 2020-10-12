@@ -1,8 +1,8 @@
-import { TYPESFORUSER } from '../../TYPES';
+import { LOG_OUT_USER } from '../../TYPES';
 
 const logOutUser = () => {
   return {
-    type: TYPESFORUSER.LOG_OUT_USER
+    type: LOG_OUT_USER
   }
 };
 
