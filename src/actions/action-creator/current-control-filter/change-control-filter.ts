@@ -1,8 +1,8 @@
-import { TYPEFORCONTROLPANEL } from "../../TYPES";
+import { CHANGE_CONTROL_FILTER } from "../../TYPES";
 
 const changeControlFilter = (filterHeading: string, filterName: string) => {
   return {
-    type: TYPEFORCONTROLPANEL.CHANGE_CONTROL_FILTER,
+    type: CHANGE_CONTROL_FILTER,
     payload: {
       filterHeading,
       filterName
