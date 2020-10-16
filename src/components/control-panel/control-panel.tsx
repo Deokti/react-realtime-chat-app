@@ -50,8 +50,8 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
       <ControlPanelModal
         modal={showModal}
         closeModal={closeModal}
-        username={logInUser.displayName}
-        userAvatar={logInUser.photoURL} />
+        username={logInUser && logInUser.displayName}
+        userAvatar={logInUser && logInUser.photoURL} />
     </div>
   )
 };

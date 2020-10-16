@@ -8,7 +8,6 @@ export type TCurrentControlFilter = {
 }
 
 const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any ) => {
-  console.log('actions:', actions)
   if (state === undefined) {
     return {
       currentFilter: {

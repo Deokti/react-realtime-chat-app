@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
 import { database } from "../../config/firebase";
@@ -25,21 +25,24 @@ export type TChannels = {
 }
 
 const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
-  const [ channels, setChannels ] = useState<Array<TChannels>>([])
+  const [ channels, setChannels ] = useState<Array<TChannels>>([]);
+  const channelRef = useMemo(() => database.ref("CHANNELS"), []);
+
 
   const getChannels = useCallback(() => {
-    const channelRef =  database.ref("CHANNELS");
-
     channelRef.on("child_added", (snapshot) => {
         setChannels((prevState) => [...prevState, snapshot.val()]);
       })
-  }, []);
+  }, [channelRef]);
 
 
   useEffect(() => {
     getChannels();
-    return () => getChannels();
-  }, [getChannels]);
+    return () => {
+      getChannels();
+      channelRef.off();
+    };
+  }, [channelRef, getChannels]);
 
   function filter (channels: any, type: string) {
     return channels.filter((item: any) => item.type === type);
