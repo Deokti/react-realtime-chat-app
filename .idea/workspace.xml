@@ -23,19 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-control-filter/change-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-control-filter/change-control-filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-in-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-logged-user/log-out-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +60,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.16746412" />
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -102,7 +98,10 @@
       <workItem from="1601706171354" duration="14297000" />
       <workItem from="1601767081671" duration="5179000" />
       <workItem from="1602528515199" duration="44000" />
-      <workItem from="1602528614625" duration="1837000" />
+      <workItem from="1602528614625" duration="2048000" />
+      <workItem from="1602774123434" duration="188000" />
+      <workItem from="1602785187950" duration="685000" />
+      <workItem from="1602847815097" duration="1408000" />
     </task>
     <servers />
   </component>
@@ -122,10 +121,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="806" y="411" key="#ESLint" timestamp="1600983401415">
+    <state x="806" y="411" key="#ESLint" timestamp="1602774379881">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="806" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1600983401415" />
+    <state x="806" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1602774379881" />
     <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601403042599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -142,10 +141,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601403192722" />
-    <state x="491" y="151" key="SettingsEditor" timestamp="1601329943119">
+    <state x="147" y="143" width="1688" height="738" key="SettingsEditor" timestamp="1602785856370">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="491" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601329943119" />
+    <state x="147" y="143" width="1688" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602785856370" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1601718749084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -154,17 +153,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="560" y="129" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600872340016" />
-    <state x="692" y="218" width="634" height="780" key="find.popup" timestamp="1601719467060">
+    <state x="692" y="218" width="634" height="780" key="find.popup" timestamp="1602530575037">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="692" y="218" width="634" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601719467060" />
-    <state x="616" y="235" key="run.anything.popup" timestamp="1601771229344">
+    <state x="692" y="218" width="634" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602530575037" />
+    <state x="616" y="235" key="run.anything.popup" timestamp="1602849211858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601771229344" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602529818762">
+    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602849211858" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602848973406">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602529818762" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602848973406" />
   </component>
 </project>

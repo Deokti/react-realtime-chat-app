@@ -6,7 +6,9 @@
   height: 100%;
   background-color: $main-background;
   padding: 15px 0;
-  &__header { text-align: center; }
+  &__header {
+    text-align: center;
+  }
   &__avatar {
     padding: 60px 20px 0;
   }
