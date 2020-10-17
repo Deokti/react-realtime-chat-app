@@ -1,0 +1,29 @@
+@import "../../../assets/styles/variables";
+
+.message-panel-search {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  &__input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 6px;
+    padding: 0 60px;
+    background-color: $main-background;
+    color: $description-color;
+    &::placeholder {
+      color: $description-color;
+    }
+    &:focus {
+      border: 1px solid $description-color;
+      outline: none;
+    }
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+  }
+}

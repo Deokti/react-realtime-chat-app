@@ -14,6 +14,9 @@
   &-active {
     transform: translateX(100px);
   }
+  &__list {
+    min-width: 300px;
+  }
   &__item {
     display: flex;
     color: $control-panel-description;

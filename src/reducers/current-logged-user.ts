@@ -1,11 +1,19 @@
 import { LOG_IN_USER, LOG_OUT_USER } from "../actions/TYPES";
 
-export type TypeUpdateUser = {
+export type TUpdateUser = {
   logInUser: object | null
   isLoaded: boolean
 }
 
-const updateCurrentLoggedUser = (state: TypeUpdateUser, actions: any): TypeUpdateUser => {
+type TUpdateUserAction = {
+  type: string
+  payload: {
+    logInUser: null | any
+    isLoaded: boolean
+  }
+}
+
+const updateCurrentLoggedUser = (state: TUpdateUser, action: TUpdateUserAction): TUpdateUser => {
   if (state === undefined) {
     return {
       logInUser: null,
@@ -13,10 +21,10 @@ const updateCurrentLoggedUser = (state: TypeUpdateUser, actions: any): TypeUpdat
     }
   }
 
-  switch (actions.type) {
+  switch (action.type) {
     case LOG_IN_USER: {
       return {
-        logInUser: actions.payload,
+        logInUser: action.payload,
         isLoaded: false
       }
     }

@@ -5,7 +5,12 @@ type TCurrentActiveChannel = {
   currentActiveChannel: TChannels | null
 }
 
-const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: any): TCurrentActiveChannel => {
+type TCurrentActiveChannelAction = {
+  type: string
+  payload: TChannels | null
+}
+
+const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: TCurrentActiveChannelAction): TCurrentActiveChannel => {
   if (state === undefined) {
     return {
       currentActiveChannel: null

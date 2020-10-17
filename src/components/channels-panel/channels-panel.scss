@@ -3,7 +3,7 @@
 .channels-panel {
   background-color: $form-background;
   height: 100%;
-  width: 330px;
+  min-width: 330px;
   &__header {
     position: relative;
     padding: 20px 30px;

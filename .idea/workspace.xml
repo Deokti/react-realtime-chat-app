@@ -23,14 +23,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/icon/search-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-menu/control-panel-menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-menu/control-panel-menu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/input.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-logged-user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +116,10 @@
       <workItem from="1602528614625" duration="2048000" />
       <workItem from="1602774123434" duration="188000" />
       <workItem from="1602785187950" duration="685000" />
-      <workItem from="1602847815097" duration="1408000" />
+      <workItem from="1602847815097" duration="1703000" />
+      <workItem from="1602872734538" duration="39000" />
+      <workItem from="1602875358144" duration="1000" />
+      <workItem from="1602953822446" duration="6971000" />
     </task>
     <servers />
   </component>
@@ -153,17 +171,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="560" y="129" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600872340016" />
-    <state x="692" y="218" width="634" height="780" key="find.popup" timestamp="1602530575037">
+    <state x="692" y="218" width="634" height="780" key="find.popup" timestamp="1602960779171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="692" y="218" width="634" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602530575037" />
+    <state x="692" y="218" width="634" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602960779171" />
     <state x="616" y="235" key="run.anything.popup" timestamp="1602849211858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602849211858" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602848973406">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602956137755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602848973406" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602956137755" />
   </component>
 </project>

@@ -7,7 +7,15 @@ export type TCurrentControlFilter = {
   }
 }
 
-const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any ) => {
+type TCurrentControlFilterAction = {
+  type: string
+  payload: {
+    filterHeading: string,
+    filterName: string
+  }
+}
+
+const updateCurrentControlFilter = (state: TCurrentControlFilter, action: TCurrentControlFilterAction): TCurrentControlFilter => {
   if (state === undefined) {
     return {
       currentFilter: {
@@ -17,13 +25,13 @@ const updateCurrentControlFilter = (state: TCurrentControlFilter, actions: any )
     }
   }
 
-  switch (actions.type) {
+  switch (action.type) {
     case CHANGE_CONTROL_FILTER: {
       return {
         ...state,
         currentFilter: {
-          filterHeading: actions.payload.filterHeading,
-          filterName: actions.payload.filterName
+          filterHeading: action.payload.filterHeading,
+          filterName: action.payload.filterName
         }
       }
     }
