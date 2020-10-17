@@ -8,6 +8,7 @@ import FavoritesIcon from "./favorites-icon";
 import ChatsIcon from "./chats-icon";
 import ChannelsIcon from "./channels-icon";
 import LogoutIcon from "./logout-icon";
+import SearchIcon from "./search-icon";
 
 export type TIconSize = {
   width?: string | number
@@ -25,5 +26,6 @@ export {
   FavoritesIcon,
   ChatsIcon,
   ChannelsIcon,
-  LogoutIcon
+  LogoutIcon,
+  SearchIcon
 };

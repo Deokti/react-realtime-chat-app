@@ -3,18 +3,22 @@ import { TChannels } from "../channels-panel";
 
 import { connect } from "react-redux";
 import { setCurrentChannel } from '../../../actions'
+import { TCurrentChannel } from "../../message-panel/message-panel";
 
 import './channels-panel-list.scss';
 
 type TChannelsPanelList = {
   channels: Array<TChannels>
   setCurrentChannel: (channel: TChannels) => any
+  currentActiveChannel: TChannels
 }
 
-const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentChannel }: TChannelsPanelList) => {
+const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentChannel, currentActiveChannel }: TChannelsPanelList) => {
   const [idCurrentChannel, setIdCurrentChannel] = useState<string>('');
 
   const setChannelAndIdChannel = (channel: TChannels) => {
+    if (currentActiveChannel && currentActiveChannel.id === channel.id) return false;
+
     setCurrentChannel(channel);
     setIdCurrentChannel(channel.id);
   }
@@ -38,4 +42,8 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentC
   )
 };
 
-export default connect(null, { setCurrentChannel })(ChannelsPanelList);
+const mapStateToProps = ({ currentChannel: { currentActiveChannel } }: TCurrentChannel) => {
+  return { currentActiveChannel }
+}
+
+export default connect(mapStateToProps, { setCurrentChannel })(ChannelsPanelList);

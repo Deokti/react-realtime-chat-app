@@ -43,7 +43,7 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
       .then((createdUser: any) => {
         createdUser.user.updateProfile({
           displayName: input.username,
-          photoURL: `https://www.gravatar.com/avatar/${md5(createdUser.user.email)}?d=mp&f=y`
+          photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
         }).then(() => onCreatedUserInDatabase(createdUser))
       })
   }
