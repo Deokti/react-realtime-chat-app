@@ -1,13 +1,13 @@
-import { TChannels } from "../components/channels-panel/channels-panel";
+import { TChannel } from "../components/channels-panel/channels-panel";
 import { SET_CURRENT_CHANNEL } from '../actions/TYPES';
 
 type TCurrentActiveChannel = {
-  currentActiveChannel: TChannels | null
+  currentActiveChannel: TChannel | null
 }
 
 type TCurrentActiveChannelAction = {
   type: string
-  payload: TChannels | null
+  payload: TChannel | null
 }
 
 const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: TCurrentActiveChannelAction): TCurrentActiveChannel => {

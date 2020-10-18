@@ -14,7 +14,7 @@ type TChannelsPanel = {
   }
 }
 
-export type TChannels = {
+export type TChannel = {
   channelCreator: {
     avatar: string
     username: string
@@ -25,7 +25,7 @@ export type TChannels = {
 }
 
 const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
-  const [ channels, setChannels ] = useState<Array<TChannels>>([]);
+  const [ channels, setChannels ] = useState<Array<TChannel>>([]);
   const channelRef = useMemo(() => database.ref("CHANNELS"), []);
 
 

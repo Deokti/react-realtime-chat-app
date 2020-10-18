@@ -9,6 +9,8 @@ import ChatsIcon from "./chats-icon";
 import ChannelsIcon from "./channels-icon";
 import LogoutIcon from "./logout-icon";
 import SearchIcon from "./search-icon";
+import SendMessageIcon from "./send-message-icon";
+import PaperclipIcon from "./paperclip-icon";
 
 export type TIconSize = {
   width?: string | number
@@ -27,5 +29,7 @@ export {
   ChatsIcon,
   ChannelsIcon,
   LogoutIcon,
-  SearchIcon
+  SearchIcon,
+  SendMessageIcon,
+  PaperclipIcon
 };

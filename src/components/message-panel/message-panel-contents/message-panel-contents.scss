@@ -1,0 +1,14 @@
+.message-panel-contents {
+  position: absolute;
+  top: 82px;
+  bottom: 70px;
+  width: 100%;
+  padding: 0 40px;
+  overflow: hidden;
+  overflow-y: auto;
+  &__wrapper {
+    padding: 20px 0 20px 0;
+    left: 40px;
+    overflow-y: auto;
+  }
+}

@@ -56,12 +56,12 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
   )
 };
 
-type TMapStateToProps = {
+export type TMapStateCurrentUser = {
   currentLoggedUser: { logInUser: any };
 }
 
-const mapStateToProps = ({ currentLoggedUser: { logInUser } }: TMapStateToProps) => {
+const mapStateCurrentUser = ({ currentLoggedUser: { logInUser } }: TMapStateCurrentUser) => {
   return { logInUser }
 }
 
-export default connect(mapStateToProps)(ControlPanel);
+export default connect(mapStateCurrentUser)(ControlPanel);
