@@ -1,0 +1,50 @@
+@import "../../../assets/styles/variables";
+
+.message-panel-content {
+  margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__avatar {
+    margin-top: auto;
+    width: 32px;
+    height: 32px;
+  }
+  &__img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  &__item {
+    position: relative;
+    margin-left: 10px;
+    padding: 10px 15px ;
+    background-color: $form-background;
+    color: #fff;
+    width: 40%;
+    border-radius: 4px;
+  }
+  &__author {
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 0;
+  }
+  &__message {
+    padding-top: 5px;
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
+  &__time {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    font-weight: 300;
+    font-size: 14px;
+  }
+  &-active {
+    background-color: #3399DB;
+  }
+}

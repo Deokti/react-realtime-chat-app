@@ -57,7 +57,7 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
       <Input label="Email" name="email" onChange={whenChangingInput} value={input.email} />
       <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
              value={input.password} />
-      <Button className="button-auth-form" loading={loading}>Войти</Button>
+      <Button className="button-auth-form" loading={loading} disabled={loading}>Войти</Button>
       <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
 
       {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}

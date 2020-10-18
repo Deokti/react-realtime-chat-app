@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TChannels } from "../channels-panel";
+import { TChannel } from "../channels-panel";
 
 import { connect } from "react-redux";
 import { setCurrentChannel } from '../../../actions'
@@ -8,15 +8,15 @@ import { TCurrentChannel } from "../../message-panel/message-panel";
 import './channels-panel-list.scss';
 
 type TChannelsPanelList = {
-  channels: Array<TChannels>
-  setCurrentChannel: (channel: TChannels) => any
-  currentActiveChannel: TChannels
+  channels: Array<TChannel>
+  setCurrentChannel: (channel: TChannel) => any
+  currentActiveChannel: TChannel
 }
 
 const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentChannel, currentActiveChannel }: TChannelsPanelList) => {
   const [idCurrentChannel, setIdCurrentChannel] = useState<string>('');
 
-  const setChannelAndIdChannel = (channel: TChannels) => {
+  const setChannelAndIdChannel = (channel: TChannel) => {
     if (currentActiveChannel && currentActiveChannel.id === channel.id) return false;
 
     setCurrentChannel(channel);
@@ -26,7 +26,7 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentC
   return (
     <ul className="channels-panel-list">
       {
-        channels.map((item: TChannels) => {
+        channels.map((item: TChannel) => {
           const addActiveClass = idCurrentChannel === item.id ? 'active' : '';
 
           return (
