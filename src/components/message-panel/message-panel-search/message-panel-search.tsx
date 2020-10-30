@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './message-panel-search.scss';
 import { SearchIcon } from "../../icon";
@@ -14,4 +14,4 @@ const MessagePanelSearch: React.FC = () => {
   );
 };
 
-export default MessagePanelSearch;
+export default memo(MessagePanelSearch);

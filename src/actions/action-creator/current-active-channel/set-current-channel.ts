@@ -1,7 +1,12 @@
-import { TChannel } from "../../../components/channels-panel/channels-panel";
 import { SET_CURRENT_CHANNEL } from "../../TYPES";
+import { TChannel } from "../../../types/reused-types";
 
-const setCurrentChannel = (channel: TChannel) => {
+export type TSetCurrentChannel = {
+  type: string,
+  payload: TChannel
+}
+
+const setCurrentChannel = (channel: TChannel): TSetCurrentChannel => {
   return {
     type: SET_CURRENT_CHANNEL,
     payload: channel

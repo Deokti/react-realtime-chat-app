@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 
 const SendMessageIcon: React.FC = ({ color = '#3399DB' }: any) => {
@@ -12,5 +12,5 @@ const SendMessageIcon: React.FC = ({ color = '#3399DB' }: any) => {
   )
 };
 
-export default SendMessageIcon;
+export default memo(SendMessageIcon);
 

@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variables";
+
 .message-panel-contents {
   position: absolute;
   top: 82px;
@@ -6,6 +8,17 @@
   padding: 0 40px;
   overflow: hidden;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $form-background;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $main-background;
+    border: 3px solid $form-background;
+    border-radius: 25px;
+  }
   &__wrapper {
     padding: 20px 0 20px 0;
     left: 40px;

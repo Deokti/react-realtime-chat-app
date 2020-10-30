@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
 import { database } from "../../config/firebase";
+import { TChannel, TDatabaseRef, TDatabaseSnapshot, TCurrentControlFilter } from "../../types/reused-types";
 import { connect } from "react-redux";
-import { TCurrentControlFilter } from "../../reducers/current-control-filter";
 
 import './channels-panel.scss';
 
@@ -14,23 +14,12 @@ type TChannelsPanel = {
   }
 }
 
-export type TChannel = {
-  channelCreator: {
-    avatar: string
-    username: string
-  }
-  channelName: string
-  id: string
-  type: string
-}
-
 const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
   const [ channels, setChannels ] = useState<Array<TChannel>>([]);
-  const channelRef = useMemo(() => database.ref("CHANNELS"), []);
-
+  const channelRef: TDatabaseRef = useMemo(() => database.ref("CHANNELS"), []);
 
   const getChannels = useCallback(() => {
-    channelRef.on("child_added", (snapshot) => {
+    channelRef.on("child_added", (snapshot: TDatabaseSnapshot) => {
         setChannels((prevState) => [...prevState, snapshot.val()]);
       })
   }, [channelRef]);
@@ -44,7 +33,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
     };
   }, [channelRef, getChannels]);
 
-  function filter (channels: any, type: string) {
+  function filter (channels: Array<TChannel>, type: string) {
     return channels.filter((item: any) => item.type === type);
   }
 

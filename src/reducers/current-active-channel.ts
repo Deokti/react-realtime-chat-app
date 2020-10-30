@@ -1,5 +1,5 @@
-import { TChannel } from "../components/channels-panel/channels-panel";
 import { SET_CURRENT_CHANNEL } from '../actions/TYPES';
+import { TChannel } from "../types/reused-types";
 
 type TCurrentActiveChannel = {
   currentActiveChannel: TChannel | null
