@@ -21,7 +21,6 @@ type TMessagePanel = {
 const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser, selectedImage }: TMessagePanel) => {
   const messageRef: TDatabaseRef = useMemo(() => database.ref('MESSAGES'), []);
 
-  console.log(selectedImage)
   return (
     <div className="message-panel">
       <MessagePanelHeader channelName={currentActiveChannel && currentActiveChannel.channelName} />

@@ -1,17 +1,12 @@
 import { SET_SELECTED_IMAGE } from "../actions/TYPES";
+import { TSelectedImageAction } from "../types/reused-types";
 
 export type TCurrentSelectedImage = {
   selectedImage: string | null;
 }
 
 
-type TAction = {
-  type: string
-  payload: string | null
-}
-
-
-const updateCurrentSelectedImage = (state: TCurrentSelectedImage, action: TAction): TCurrentSelectedImage => {
+const updateCurrentSelectedImage = (state: TCurrentSelectedImage, action: TSelectedImageAction): TCurrentSelectedImage => {
   if (state === undefined) {
     return {
       selectedImage: null,

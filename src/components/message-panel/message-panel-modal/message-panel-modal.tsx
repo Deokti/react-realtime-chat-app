@@ -3,12 +3,13 @@ import React, { useCallback, useEffect, useRef } from "react";
 import Button from "../../button";
 import { connect } from "react-redux";
 import { currentSelectedImage } from '../../../actions'
+import { TSelectedImageAction } from "../../../types/reused-types";
 
 import './message-panel-modal.scss';
 
 type TMessagePanelModal = {
   previewImage: null | string
-  currentSelectedImage: (image: string | null) => any
+  currentSelectedImage: (image: string | null) => TSelectedImageAction
 }
 
 const MessagePanelModal: React.FC<TMessagePanelModal> = ({ previewImage, currentSelectedImage }: TMessagePanelModal) => {

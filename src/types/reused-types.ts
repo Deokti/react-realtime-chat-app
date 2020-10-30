@@ -39,3 +39,10 @@ export type TCurrentControlFilter = {
 export type TSelectedImage = {
   currentImage: { selectedImage: string | null }
 }
+
+// Тип для описания описания функции получения одной картинки при использовании mapDispatchToProps
+export type TSelectedImageAction = {
+  type: string
+  payload: string | null
+}
+

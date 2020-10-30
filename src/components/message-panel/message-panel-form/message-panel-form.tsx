@@ -7,7 +7,6 @@ import { SendMessageIcon } from "../../icon";
 import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
 
 import './message-panel-form.scss';
-import MessagePanelModal from "../message-panel-modal";
 
 type TMessagePanelForm = {
   logInUser: any

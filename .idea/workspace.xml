@@ -23,43 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-selected-image/current-selected-image.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/current-selected-image.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/reused-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/send-message-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/send-message-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/firebase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/current-selected-image.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-selected-image.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/reused-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/reused-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +118,8 @@
       <workItem from="1603283858771" duration="14000" />
       <workItem from="1603283917373" duration="5680000" />
       <workItem from="1603720657038" duration="623000" />
-      <workItem from="1604008649794" duration="8374000" />
+      <workItem from="1604008649794" duration="8718000" />
+      <workItem from="1604052850380" duration="3200000" />
     </task>
     <servers />
   </component>
@@ -217,10 +191,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="560" y="129" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600872340016" />
-    <state x="692" y="218" width="652" height="780" key="find.popup" timestamp="1604016479759">
+    <state x="692" y="218" width="652" height="780" key="find.popup" timestamp="1604053224381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="692" y="218" width="652" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604016479759" />
+    <state x="692" y="218" width="652" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604053224381" />
     <state x="616" y="235" key="run.anything.popup" timestamp="1602849211858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
