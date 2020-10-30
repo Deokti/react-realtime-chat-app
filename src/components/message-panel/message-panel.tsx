@@ -5,23 +5,20 @@ import MessagePanelForm from "./message-panel-form";
 
 import { database } from "../../config/firebase";
 import { TMapStateCurrentUser } from "../control-panel/control-panel";
-import { TDatabaseRef, TChannel, TSelectedImage } from "../../types/reused-types";
+import { TDatabaseRef, TChannel } from "../../types/reused-types";
 
 import { connect } from "react-redux";
-import MessagePanelModal from "./message-panel-modal";
 
 import './message-panel.scss';
 
 type TMessagePanel = {
   currentActiveChannel: TChannel
   logInUser: any
-  selectedImage: any
 }
 
-const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser, selectedImage }: TMessagePanel) => {
+const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser }: TMessagePanel) => {
   const messageRef: TDatabaseRef = useMemo(() => database.ref('MESSAGES'), []);
 
-  console.log(selectedImage)
   return (
     <div className="message-panel">
       <MessagePanelHeader channelName={currentActiveChannel && currentActiveChannel.channelName} />
@@ -39,7 +36,6 @@ const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser
           messageRef={messageRef}
         />
       )}
-      {selectedImage !== null ? <MessagePanelModal previewImage={selectedImage} /> : null}
     </div>
   );
 };
@@ -53,9 +49,8 @@ export type TCurrentChannel = {
 const mapStateCurrentUser = ({
                                currentLoggedUser: { logInUser },
                                currentChannel: { currentActiveChannel },
-                               currentImage: { selectedImage }
-                             }: TMapStateCurrentUser & TCurrentChannel & TSelectedImage) => {
-  return { logInUser, currentActiveChannel, selectedImage }
+                             }: TMapStateCurrentUser & TCurrentChannel) => {
+  return { logInUser, currentActiveChannel }
 }
 
 export default connect(mapStateCurrentUser)(MessagePanel);

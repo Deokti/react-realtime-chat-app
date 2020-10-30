@@ -22,44 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/action-creator/current-selected-image/current-selected-image.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/current-selected-image.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/reused-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="" />
+    <list id="e5ab4149-057d-428f-be7d-ff4d44ffbcb2" name="Изменил расположение компомента модального окна для отображения предварительного показа. Теперь он занимает весь экран и убрать его можно только в двух случаях, если нажать на Отмена или Отправить. В остальном убрать модальное окно невозможно." comment="">
+      <change afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.firebaserc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database.rules.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage.rules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TYPES.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/TYPES.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action-creator/current-active-channel/set-current-channel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel-list/channels-panel-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/send-message-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/send-message-icon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-search/message-panel-search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/firebase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-active-channel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/current-control-filter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +85,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="" />
+      <changelist id="e5ab4149-057d-428f-be7d-ff4d44ffbcb2" name="Изменил расположение компомента модального окна для отображения предварительного показа. Теперь он занимает весь экран и убрать его можно только в двух случаях, если нажать на Отмена или Отправить. В остальном убрать модальное окно невозможно." comment="" />
       <created>1600862444507</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -145,7 +120,9 @@
       <workItem from="1603283858771" duration="14000" />
       <workItem from="1603283917373" duration="5680000" />
       <workItem from="1603720657038" duration="623000" />
-      <workItem from="1604008649794" duration="8374000" />
+      <workItem from="1604008649794" duration="8718000" />
+      <workItem from="1604052850380" duration="3515000" />
+      <workItem from="1604056610994" duration="909000" />
     </task>
     <servers />
   </component>
@@ -209,6 +186,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="155" y="136" width="1688" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603283949847" />
+    <state x="808" y="432" key="VCS.ChangelistChooser" timestamp="1604057504477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="808" y="432" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1604057504477" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1601718749084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -217,10 +198,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="560" y="129" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1600872340016" />
-    <state x="692" y="218" width="652" height="780" key="find.popup" timestamp="1604016479759">
+    <state x="692" y="218" width="652" height="780" key="find.popup" timestamp="1604053224381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="692" y="218" width="652" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604016479759" />
+    <state x="692" y="218" width="652" height="780" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604053224381" />
     <state x="616" y="235" key="run.anything.popup" timestamp="1602849211858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
