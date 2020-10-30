@@ -1,0 +1,19 @@
+.message-panel-image {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 0;
+  &__file {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.test {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

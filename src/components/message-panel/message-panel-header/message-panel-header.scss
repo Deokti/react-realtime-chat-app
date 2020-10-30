@@ -1,6 +1,7 @@
 @import "../../../assets/styles/variables";
 
 .message-panel-header {
+  position: relative;
   display: flex;
   background-color: $form-background;
   width: 100%;

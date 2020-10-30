@@ -1,30 +1,30 @@
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import Button from "../../button";
-import { PaperclipIcon, SendMessageIcon } from "../../icon";
 import lessTenAddZero from "../../../utils/less-ten-add-zero";
+import MessagePanelImages from "../message-panel-images";
+import { SendMessageIcon } from "../../icon";
 
-import { TMessage } from "../message-panel-contents/message-panel-contents";
-
-import { TChannel } from "../../channels-panel/channels-panel";
+import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
 
 import './message-panel-form.scss';
+import MessagePanelModal from "../message-panel-modal";
 
 type TMessagePanelForm = {
   logInUser: any
   currentActiveChannel: TChannel
-  messageRef: any
+  messageRef: TDatabaseRef
 }
 
 const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiveChannel, messageRef }: TMessagePanelForm) => {
 
-  const [message, setMessage] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [ message, setMessage ] = useState<string>('');
+  const [ loading, setLoading ] = useState<boolean>(false);
 
-  const handlerTextareaChang = useCallback((event: React.FormEvent<HTMLInputElement>) => {
+  const handlerTextareaChang = useCallback((event: React.FormEvent<HTMLInputElement>): void => {
     setMessage(event.currentTarget.value);
   }, [])
 
-  const createTime = () => {
+  const createTime = (): string => {
     const date = new Date();
     return `${lessTenAddZero(date.getHours())}:${lessTenAddZero(date.getMinutes())}`;
   }
@@ -64,22 +64,22 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
 
   return (
     <div className="message-panel-form">
-        <div className="message-panel-form__add-file">
-          <PaperclipIcon />
-        </div>
-        <form className="message-panel-form__form" onSubmit={sendMessage}>
-          <input
-            placeholder="Написать сообщение..."
-            className="message-panel-form__input"
-            onChange={handlerTextareaChang}
-            value={message}
-          />
-          <Button className="message-panel-form__send" loading={loading} disabled={loading}>
-            <SendMessageIcon />
-          </Button>
-        </form>
+      <div className="message-panel-form__add-file">
+        <MessagePanelImages />
+      </div>
+      <form className="message-panel-form__form" onSubmit={sendMessage}>
+        <input
+          placeholder="Написать сообщение..."
+          className="message-panel-form__input"
+          onChange={handlerTextareaChang}
+          value={message}
+        />
+        <Button className="message-panel-form__send" loading={loading} disabled={loading}>
+          <SendMessageIcon />
+        </Button>
+      </form>
     </div>
   )
 };
 
-export default MessagePanelForm;
+export default memo(MessagePanelForm);

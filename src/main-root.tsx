@@ -9,7 +9,8 @@ import { auth } from "./config/firebase";
 import compose from "./utils/compose";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { getLogInUser, logOutUser } from './actions';
+import { getLogInUser, logOutUser, setCurrentChannel } from './actions';
+import { TChannel } from "./types/reused-types";
 
 import './assets/styles/bootstrap-reboot.min.scss';
 import './assets/styles/fonts.scss';
@@ -21,22 +22,24 @@ type TMainRoot = {
   history: any
   logOutUser: () => void
   isLoaded: boolean
+  setCurrentChannel: (channel: TChannel | null) => any;
+  logInUser: any
 }
 
-const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded }: TMainRoot) => {
+const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setCurrentChannel, logInUser }: TMainRoot) => {
 
   const onAuthStateChanged = useCallback(() => {
     auth.onAuthStateChanged((logInUser) => {
-      console.log("MAIN-ROOT:", logInUser);
       if (logInUser) {
         getLogInUser(logInUser);
         history.push('/');
       } else {
         logOutUser();
         history.push('/login-page');
+        setCurrentChannel(null);
       }
     });
-  }, [ getLogInUser, history, logOutUser ])
+  }, [ getLogInUser, history, logOutUser, setCurrentChannel ])
 
   useEffect(() => {
     onAuthStateChanged();
@@ -56,14 +59,17 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
 
 
 type TMapStateToProps = {
-  currentLoggedUser: { isLoaded: boolean };
+  currentLoggedUser: {
+    isLoaded: boolean
+    logInUser: any
+  };
 }
 
-const mapStateToProps = ({ currentLoggedUser: { isLoaded } }: TMapStateToProps) => {
-  return { isLoaded };
+const mapStateToProps = ({ currentLoggedUser: { isLoaded, logInUser } }: TMapStateToProps) => {
+  return { isLoaded, logInUser };
 }
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getLogInUser, logOutUser }),
+  connect(mapStateToProps, { getLogInUser, logOutUser, setCurrentChannel }),
 )(MainRoot)

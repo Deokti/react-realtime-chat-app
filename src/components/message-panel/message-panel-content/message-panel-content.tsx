@@ -1,10 +1,10 @@
 import React from "react";
-import { TMessage } from "../message-panel-contents/message-panel-contents";
 
 import { connect } from "react-redux";
 import { TMapStateCurrentUser } from "../../control-panel/control-panel";
 
 import './message-panel-content.scss';
+import { TMessage } from "../../../types/reused-types";
 
 type TMessagePanelContent = {
   message: TMessage

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const PaperclipIcon = ({ color = '#9F9DA3' }) => {
   return (
@@ -10,5 +10,5 @@ const PaperclipIcon = ({ color = '#9F9DA3' }) => {
   )
 };
 
-export default PaperclipIcon;
+export default memo(PaperclipIcon);
 

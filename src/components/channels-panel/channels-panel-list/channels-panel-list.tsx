@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { TChannel } from "../channels-panel";
 
-import { connect } from "react-redux";
 import { setCurrentChannel } from '../../../actions'
+import { connect } from "react-redux";
+
 import { TCurrentChannel } from "../../message-panel/message-panel";
+import { TChannel } from "../../../types/reused-types";
 
 import './channels-panel-list.scss';
+import { TSetCurrentChannel } from "../../../actions/action-creator/current-active-channel/set-current-channel";
 
 type TChannelsPanelList = {
   channels: Array<TChannel>
-  setCurrentChannel: (channel: TChannel) => any
+  setCurrentChannel: (channel: TChannel) => TSetCurrentChannel
   currentActiveChannel: TChannel
 }
 
 const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setCurrentChannel, currentActiveChannel }: TChannelsPanelList) => {
+
   const [idCurrentChannel, setIdCurrentChannel] = useState<string>('');
 
   const setChannelAndIdChannel = (channel: TChannel) => {

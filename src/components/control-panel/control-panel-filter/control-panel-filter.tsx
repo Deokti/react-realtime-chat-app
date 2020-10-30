@@ -5,7 +5,7 @@ import { changeControlFilter } from '../../../actions';
 import { connect } from "react-redux";
 
 import './control-panel-filter.scss';
-import { TCurrentControlFilter } from "../../../reducers/current-control-filter";
+import { TCurrentControlFilter } from "../../../types/reused-types";
 
 
 type TControlPanelFilter = {

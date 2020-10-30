@@ -1,40 +1,32 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import MessagePanelContent from "../message-panel-content";
 
-import { TChannel } from "../../channels-panel/channels-panel";
+import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types/reused-types";
 
 import './message-panel-contents.scss';
-import { SpinnerLoader } from "../../icon";
-import Spinner from "../../spinner";
 
-export type TMessage = {
-  id: string
-  time: string
-  messageContent: string
-  authorMessage: {
-    username: string
-    avatar: string
-    id: string
-  }
-}
+// Что нужно сделать!
+// 1. Создать функцию, где мы получим все данные с сервера и сохранив их в массив.
+// 2. Когда сохранение будет завершено, мы передадим все данные массива в состояние
+// 3. Когда состояние получит сразу все данные, мы создадим для него разметку
 
 type TMessagePanelContents = {
   currentActiveChannel: TChannel
   logInUser: any
-  messageRef: any
+  messageRef: TDatabaseRef
 }
 
 const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
   const [ messages, setMessages ] = useState<Array<TMessage>>([]);
-  const [ loadingMessages, setLoadingMessages ] = useState<boolean>(false);
+
 
   const getMessagesById = useCallback((channelId: string) => {
-    messageRef.child(channelId).on("child_added", (snapshot: any) => {
-      setMessages((prevState) => [ ...prevState, snapshot.val() ]);
-      setLoadingMessages(false);
+    setMessages([]);
+    messageRef.child(channelId).on("child_added", (snapshot: TDatabaseSnapshot) => {
+      setMessages((prevState) => [...prevState, snapshot.val()]);
     });
-  }, [ messageRef ])
+  }, [messageRef])
 
   const getDataDatabase = useCallback((channelId: string) => {
     getMessagesById(channelId);
@@ -42,21 +34,26 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
   useEffect(() => {
     if (currentActiveChannel && logInUser) {
-      setLoadingMessages(true);
-      getDataDatabase(currentActiveChannel.id)
+      getDataDatabase(currentActiveChannel.id);
     }
-  }, [ currentActiveChannel, getDataDatabase, logInUser ]);
+    return () => {
+      messageRef.off();
+    }
+  }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
 
   useEffect(() => {
     scrollItemWhenNewData();
-  }, [ messages, setMessages ])
+
+    return () => {
+      messageRef.off();
+    }
+  }, [ messageRef, messages, setMessages ])
 
   const scrollItemWhenNewData = () => {
     const messageContent = messagePanelContent.current;
 
     if (messageContent) {
-      messageContent.scrollTop = messageContent.scrollHeight
-
+      messageContent.scrollTop = messageContent.scrollHeight;
     }
   }
 
@@ -65,9 +62,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
       <div className="message-panel-contents__wrapper">
         {messages.map((message: TMessage) => {
           const { id } = message;
-          return (
-            <MessagePanelContent key={id} message={message} />
-          )
+          return <MessagePanelContent key={id} message={message} />
         })
         }
       </div>
@@ -76,11 +71,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
   return (
     <div className="message-panel-contents" ref={messagePanelContent}>
-      {
-        loadingMessages ?
-          <Spinner position="absolute" />
-          : createTemplateMessage()
-      }
+      {createTemplateMessage()}
     </div>
   );
 }

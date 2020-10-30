@@ -1,11 +1,5 @@
 import { CHANGE_CONTROL_FILTER } from "../actions/TYPES";
-
-export type TCurrentControlFilter = {
-  currentFilter: {
-    filterHeading: string,
-    filterName: string
-  }
-}
+import { TCurrentControlFilter } from "../types/reused-types";
 
 type TCurrentControlFilterAction = {
   type: string
