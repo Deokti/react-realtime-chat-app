@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import Button from "../../button";
 import { PaperclipIcon, SendMessageIcon } from "../../icon";
+import lessTenAddZero from "../../../utils/less-ten-add-zero";
 
 import { TMessage } from "../message-panel-contents/message-panel-contents";
 
@@ -25,7 +26,7 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
 
   const createTime = () => {
     const date = new Date();
-    return `${date.getHours()}:${date.getMinutes()}`;
+    return `${lessTenAddZero(date.getHours())}:${lessTenAddZero(date.getMinutes())}`;
   }
   const createMessage = (): TMessage => {
     return {

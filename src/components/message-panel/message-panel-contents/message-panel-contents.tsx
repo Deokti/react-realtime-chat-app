@@ -4,6 +4,8 @@ import MessagePanelContent from "../message-panel-content";
 import { TChannel } from "../../channels-panel/channels-panel";
 
 import './message-panel-contents.scss';
+import { SpinnerLoader } from "../../icon";
+import Spinner from "../../spinner";
 
 export type TMessage = {
   id: string
@@ -25,11 +27,13 @@ type TMessagePanelContents = {
 const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
   const [ messages, setMessages ] = useState<Array<TMessage>>([]);
+  const [ loadingMessages, setLoadingMessages ] = useState<boolean>(false);
 
   const getMessagesById = useCallback((channelId: string) => {
     messageRef.child(channelId).on("child_added", (snapshot: any) => {
       setMessages((prevState) => [ ...prevState, snapshot.val() ]);
-    })
+      setLoadingMessages(false);
+    });
   }, [ messageRef ])
 
   const getDataDatabase = useCallback((channelId: string) => {
@@ -38,6 +42,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
   useEffect(() => {
     if (currentActiveChannel && logInUser) {
+      setLoadingMessages(true);
       getDataDatabase(currentActiveChannel.id)
     }
   }, [ currentActiveChannel, getDataDatabase, logInUser ]);
@@ -51,21 +56,31 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
     if (messageContent) {
       messageContent.scrollTop = messageContent.scrollHeight
+
     }
+  }
+
+  const createTemplateMessage = () => {
+    return (
+      <div className="message-panel-contents__wrapper">
+        {messages.map((message: TMessage) => {
+          const { id } = message;
+          return (
+            <MessagePanelContent key={id} message={message} />
+          )
+        })
+        }
+      </div>
+    )
   }
 
   return (
     <div className="message-panel-contents" ref={messagePanelContent}>
-      <div className="message-panel-contents__wrapper">
-        {
-          messages.map((message: TMessage) => {
-            const { id } = message;
-            return (
-              <MessagePanelContent key={id} message={message} />
-            )
-          })
-        }
-      </div>
+      {
+        loadingMessages ?
+          <Spinner position="absolute" />
+          : createTemplateMessage()
+      }
     </div>
   );
 }
