@@ -79,5 +79,5 @@
 
 ---
 
-#### MessagePanelModal
+#### MessagePanelPreview
 *следует написать подробности*

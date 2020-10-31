@@ -19,7 +19,7 @@
   &__item {
     position: relative;
     margin-left: 10px;
-    padding: 10px 70px 10px 15px;
+    padding: 10px 70px 23px 15px;
     background-color: $form-background;
     color: #fff;
     max-width: 40%;
@@ -35,13 +35,18 @@
     font-weight: 300;
     font-size: 16px;
     margin-bottom: 0;
-    padding-bottom: 15px;
     word-wrap: break-word;
+    &-content {
+      margin-bottom: 0;
+    }
+    &-img {
+      width: 100%;
+    }
   }
   &__time {
     position: absolute;
     bottom: 5px;
-    right: 20px;
+    right: 15px;
     font-weight: 300;
     font-size: 14px;
   }
