@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { PaperclipIcon } from "../../icon";
+import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
-import { connect } from "react-redux";
-import { currentSelectedImage } from '../../../actions'
-import { TSelectedImageAction } from "../../../types/reused-types";
+import { v4 as uuidv4 } from 'uuid';
+import { storage } from "../../../config/firebase";
 
 import './message-panel-images.scss';
 
 type TMessagePanelImages = {
-  currentSelectedImage: (image: string | null) => TSelectedImageAction;
+  changeMediaURLFile: (url: string) => void
 }
 
-const MessagePanelImages: React.FC<TMessagePanelImages> = ({ currentSelectedImage }: TMessagePanelImages) => {
+const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile }: TMessagePanelImages) => {
   const [ addingSelectedMedia, setAddingSelectedMedia ] = useState<File | null>(null);
   const [ pathSelectedMedia, setPathSelectedMedia ] = useState<string>('');
+  const [ previewImage, setPreviewImage ] = useState<any>('');
+  const [ sendLoadFile, setSendLoadFile ] = useState<boolean>(false);
 
   const setCurrentMedia = (getFile: null | File, valueFile: string) => {
     setAddingSelectedMedia(getFile);
@@ -25,12 +27,16 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ currentSelectedImag
       const reader = new FileReader();
 
       reader.onload = function () {
-        currentSelectedImage(this.result as string);
+        setPreviewImage(this.result as string)
       }
       reader.readAsDataURL(file);
-      setPathSelectedMedia('');
     }
   }
+
+  const closeModal = () => {
+    setPreviewImage(null);
+    setPathSelectedMedia('');
+  };
 
   const addFileInState = (file: React.ChangeEvent<HTMLInputElement>) => {
     const getFile = file.target.files && file.target.files[0];
@@ -39,16 +45,55 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ currentSelectedImag
     getUrlImage(getFile);
   }
 
+  const onSendFile = async () => {
+    await sendFileToStorage();
+  }
+
+  const isValidTypesFile = (type: null | string | undefined) => {
+    if (type) return [ 'image/png', 'image/jpeg' ].includes(type)
+  };
+
+  const sendFileToStorage = async () => {
+    if (addingSelectedMedia && isValidTypesFile(addingSelectedMedia?.type)) {
+      setSendLoadFile(true);
+      const ref = storage.ref();
+      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}`;
+
+
+      const fileRef = ref.child(pathStorageInPublicChannel)
+
+      await fileRef.put(addingSelectedMedia)
+      const getFileUrl = await fileRef.getDownloadURL();
+
+      await changeMediaURLFile(getFileUrl);
+      await setSendLoadFile(false);
+      await closeModal();
+    }
+  }
+
+
   return (
-    <label className="message-panel-image" title="Добавить изображение">
-      <PaperclipIcon />
-      <input
-        type="file"
-        className="message-panel-image__file"
-        value={pathSelectedMedia}
-        onChange={addFileInState} />
-    </label>
+    <React.Fragment>
+      {previewImage
+        ? <MessagePanelPreview
+          previewImage={previewImage}
+          closeModal={closeModal}
+          sendLoadFile={sendLoadFile}
+          onSendFile={onSendFile} />
+        : null}
+
+      <form className='message-panel-image__form'>
+        <label className="message-panel-image" title="Добавить изображение">
+          <PaperclipIcon />
+          <input
+            type="file"
+            className="message-panel-image__file"
+            value={pathSelectedMedia}
+            onChange={addFileInState} />
+        </label>
+      </form>
+    </React.Fragment>
   )
 };
 
-export default connect(null, { currentSelectedImage })(MessagePanelImages);
+export default MessagePanelImages;

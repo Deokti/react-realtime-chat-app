@@ -12,7 +12,7 @@ type TMessagePanelContent = {
 }
 
 const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUser }: TMessagePanelContent) => {
-  const { authorMessage, messageContent, time } = message;
+  const { authorMessage, messageContent, time, fileMessageURL } = message;
 
   const activeUser = authorMessage.id === (logInUser && logInUser.uid)
     ? 'message-panel-content-active'
@@ -26,7 +26,15 @@ const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUse
 
       <div className={`message-panel-content__item ${activeUser}`}>
         <h4 className="message-panel-content__author">{authorMessage.username}</h4>
-        <p className="message-panel-content__message">{messageContent}</p>
+        <div className="message-panel-content__message">
+          {fileMessageURL ?
+            <a href={fileMessageURL} target="blank" title="Открыть файл в другом окне">
+              <img src={fileMessageURL} alt="файл" className="message-panel-content__message-img" />
+            </a>: null}
+          <p className="message-panel-content__message-content">
+            {messageContent}
+          </p>
+        </div>
         <span className="message-panel-content__time">{time}</span>
       </div>
     </div>

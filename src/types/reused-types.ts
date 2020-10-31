@@ -20,6 +20,7 @@ export type TMessage = {
   id: string
   time: string
   messageContent: string
+  fileMessageURL: string
   authorMessage: {
     username: string
     avatar: string
