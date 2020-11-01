@@ -19,7 +19,7 @@ const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUse
     : '';
 
   return (
-    <div className="message-panel-content">
+    <div className={`message-panel-content ${fileMessageURL ? 'message-panel-content-image' : ''}`}>
       <div className="message-panel-content__avatar">
         <img src={authorMessage.avatar} alt="Аватар" className="message-panel-content__img" />
       </div>
@@ -30,10 +30,10 @@ const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUse
           {fileMessageURL ?
             <a href={fileMessageURL} target="blank" title="Открыть файл в другом окне">
               <img src={fileMessageURL} alt="файл" className="message-panel-content__message-img" />
-            </a>: null}
-          <p className="message-panel-content__message-content">
-            {messageContent}
-          </p>
+            </a> : null}
+          {messageContent
+            ? <p className="message-panel-content__message-content">{messageContent}</p>
+            : null}
         </div>
         <span className="message-panel-content__time">{time}</span>
       </div>

@@ -29,6 +29,10 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
     sendMessage(message, url);
   }
 
+  const changeMessage = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.currentTarget.value);
+  }
+
   const createTime = (): string => {
     const date = new Date();
     return `${lessTenAddZero(date.getHours())}:${lessTenAddZero(date.getMinutes())}`;
@@ -77,7 +81,11 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
   return (
     <div className="message-panel-form">
       <div className="message-panel-form__add-file">
-        <MessagePanelImages changeMediaURLFile={changeMediaURLFile} />
+        <MessagePanelImages
+          changeMediaURLFile={changeMediaURLFile}
+          message={message}
+          changeMessage={changeMessage}
+        />
       </div>
       <form className="message-panel-form__form" onSubmit={onSubmitForm}>
         <input

@@ -23,28 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/styles/scrollbar.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/action-creator/current-selected-image/current-selected-image.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-modal/message-panel-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/spinner/spinner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/spinner/spinner.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/spinner/spinner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/firebase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/firebase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/current-selected-image.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/reused-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/reused-types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.tsx" afterDir="false" />
     </list>
     <list id="e5ab4149-057d-428f-be7d-ff4d44ffbcb2" name="Изменил расположение компомента модального окна для отображения предварительного показа. Теперь он занимает весь экран и убрать его можно только в двух случаях, если нажать на Отмена или Отправить. В остальном убрать модальное окно невозможно." comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,21 +64,22 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="settings.editor.splitter.proportion" value="0.16746412" />
     <property name="ts.external.directory.path" value="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\icon" />
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\control-panel" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\assets\styles" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\message-panel" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\actions\action-creator\current-logged-user" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\HOC\with-auth-form" />
       <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\icon" />
-      <recent name="C:\Users\KAIN\Desktop\MyProject\react-projects\react-realtime-chat-app\src\components\control-panel" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -137,7 +126,8 @@
       <workItem from="1604056610994" duration="909000" />
       <workItem from="1604057539605" duration="291000" />
       <workItem from="1604162511736" duration="5444000" />
-      <workItem from="1604169383177" duration="11776000" />
+      <workItem from="1604169383177" duration="12522000" />
+      <workItem from="1604185886928" duration="3603000" />
     </task>
     <servers />
   </component>
@@ -181,26 +171,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603017049632" />
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1604170449398">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom" timestamp="1604181921061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604170449398" />
-    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1604170449398">
+    <state width="1899" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604181921061" />
+    <state width="1899" height="277" key="GridCell.Tab.0.center" timestamp="1604181921061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604170449398" />
-    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1604170449398">
+    <state width="1899" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604181921061" />
+    <state width="1899" height="277" key="GridCell.Tab.0.left" timestamp="1604181921061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604170449398" />
-    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1604170449398">
+    <state width="1899" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604181921061" />
+    <state width="1899" height="277" key="GridCell.Tab.0.right" timestamp="1604181921061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604170449398" />
-    <state x="155" y="136" width="1688" height="738" key="SettingsEditor" timestamp="1603283949847">
+    <state width="1899" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604181921061" />
+    <state x="155" y="136" width="1688" height="738" key="SettingsEditor" timestamp="1604186465268">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="155" y="136" width="1688" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603283949847" />
+    <state x="155" y="136" width="1688" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604186465268" />
     <state x="808" y="432" key="VCS.ChangelistChooser" timestamp="1604057504477">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

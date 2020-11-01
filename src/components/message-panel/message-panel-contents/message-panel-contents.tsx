@@ -4,6 +4,7 @@ import MessagePanelContent from "../message-panel-content";
 import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types/reused-types";
 
 import './message-panel-contents.scss';
+import '../../../assets/styles/scrollbar.scss';
 
 // Что нужно сделать!
 // 1. Создать функцию, где мы получим все данные с сервера и сохранив их в массив.
@@ -70,7 +71,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   }
 
   return (
-    <div className="message-panel-contents" ref={messagePanelContent}>
+    <div className="message-panel-contents scrollbar-style" ref={messagePanelContent}>
       {createTemplateMessage()}
     </div>
   );

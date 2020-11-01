@@ -9,9 +9,11 @@ import './message-panel-images.scss';
 
 type TMessagePanelImages = {
   changeMediaURLFile: (url: string) => void
+  message: string
+  changeMessage: (value: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile }: TMessagePanelImages) => {
+const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile, message, changeMessage }: TMessagePanelImages) => {
   const [ addingSelectedMedia, setAddingSelectedMedia ] = useState<File | null>(null);
   const [ pathSelectedMedia, setPathSelectedMedia ] = useState<string>('');
   const [ previewImage, setPreviewImage ] = useState<any>('');
@@ -76,6 +78,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile 
     <React.Fragment>
       {previewImage
         ? <MessagePanelPreview
+          message={message}
+          changeMessage={changeMessage}
           previewImage={previewImage}
           closeModal={closeModal}
           sendLoadFile={sendLoadFile}
