@@ -59,8 +59,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
     if (addingSelectedMedia && isValidTypesFile(addingSelectedMedia?.type)) {
       setSendLoadFile(true);
       const ref = storage.ref();
-      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}`;
-
+      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
 
       const fileRef = ref.child(pathStorageInPublicChannel)
 
@@ -88,7 +87,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
 
       <form className='message-panel-image__form'>
         <label className="message-panel-image" title="Добавить изображение">
-          <PaperclipIcon />
+          <PaperclipIcon className="message-panel-image__paperclip" />
           <input
             type="file"
             className="message-panel-image__file"

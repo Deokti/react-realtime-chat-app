@@ -5,11 +5,7 @@ import MessagePanel from "../message-panel";
 
 import './app.scss';
 
-type TApp = {
-  selectedImage: string | null;
-}
-
-const App: React.FC<TApp> = ({ selectedImage }: TApp) => {
+const App: React.FC = () => {
   return (
     <section className="app">
       <ControlPanel />

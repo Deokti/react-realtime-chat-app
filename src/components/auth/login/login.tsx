@@ -6,6 +6,7 @@ import { withAuthForm, withHandlerInput } from "../../HOC";
 import { Link } from 'react-router-dom';
 import { auth } from '../../../config/firebase';
 import compose from "../../../utils/compose";
+import { routerPath } from "../../../config/router-path";
 
 import './login.scss';
 import '../form-redirect.scss';
@@ -40,7 +41,6 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
       setLoading(true);
       setHasError('');
       auth.signInWithEmailAndPassword(input.email, input.password)
-        .then((signInUser) => console.log('Пользователь вошёл в систему:', signInUser))
         .then(() => {
           setLoading(false);
           setInput({ email: '', password: '' });
@@ -58,7 +58,7 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
       <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
              value={input.password} />
       <Button className="button-auth-form" loading={loading} disabled={loading}>Войти</Button>
-      <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
+      <Link to={routerPath.registerPage} className="form-redirect">Ещё не зарегистрированы?</Link>
 
       {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}
     </form>

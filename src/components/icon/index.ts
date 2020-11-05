@@ -11,6 +11,7 @@ import LogoutIcon from "./logout-icon";
 import SearchIcon from "./search-icon";
 import SendMessageIcon from "./send-message-icon";
 import PaperclipIcon from "./paperclip-icon";
+import CloseIcon from "./close-icon";
 
 export type TIconSize = {
   width?: string | number
@@ -31,5 +32,6 @@ export {
   LogoutIcon,
   SearchIcon,
   SendMessageIcon,
-  PaperclipIcon
+  PaperclipIcon,
+  CloseIcon
 };

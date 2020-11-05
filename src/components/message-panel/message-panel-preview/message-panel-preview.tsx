@@ -57,8 +57,8 @@ const MessagePanelPreviewTemplate: React.FC<TMessagePanelPreview> = ({ previewIm
 
       <div className="message-panel-modal__buttons">
         <Button className="message-panel-modal__button message-panel-modal__button--close"
-                disabled={sendLoadFile}
-                onClick={closeModal}>Отмена</Button>
+          disabled={sendLoadFile}
+          onClick={closeModal}>Отмена</Button>
         <Button
           className="message-panel-modal__button message-panel-modal__button--send"
           disabled={sendLoadFile}

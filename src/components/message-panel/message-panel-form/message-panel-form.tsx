@@ -18,14 +18,12 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
 
   const [ message, setMessage ] = useState<string>('');
   const [ loading, setLoading ] = useState<boolean>(false);
-  const [ mediaURLFile, setMediaURLFile ] = useState<string>('');
 
   const handlerTextareaChang = useCallback((event: React.FormEvent<HTMLInputElement>): void => {
     setMessage(event.currentTarget.value);
   }, [])
 
   const changeMediaURLFile = (url: string): void => {
-    setMediaURLFile(url);
     sendMessage(message, url);
   }
 
@@ -73,7 +71,6 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
           console.log('Сообщение отправлено в базу данных');
           setLoading(false);
           setMessage('');
-          setMediaURLFile('');
         })
     }
   }

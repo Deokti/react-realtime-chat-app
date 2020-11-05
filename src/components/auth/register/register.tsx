@@ -11,6 +11,7 @@ import compose from "../../../utils/compose";
 
 import './register.scss';
 import '../form-redirect.scss';
+import { routerPath } from "../../../config/router-path";
 
 export type TUserRegister = {
   username: string
@@ -84,7 +85,7 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 
-      <Link to="/login-page" className="form-redirect">Уже зарегистрированы?</Link>
+      <Link to={routerPath.loginPage} className="form-redirect">Уже зарегистрированы?</Link>
 
       {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}
     </form>

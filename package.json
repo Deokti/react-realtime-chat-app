@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/fslightbox-react": "^1.4.0",
     "@types/jest": "^24.0.0",
     "@types/md5": "^2.2.0",
     "@types/node": "^12.0.0",
@@ -48,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fslightbox-react": "^1.5.0"
   }
 }
