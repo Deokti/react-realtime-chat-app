@@ -62,3 +62,6 @@
 тело сообщения, адрес для получения вложенного файла, время в которое отправилось сообщение.
 
 **Базовая структура одного сообщения выглядит подобным образом:**
+
+![Картинка с базовой структурой в коллекции MESSAGES](https://raw.githubusercontent.com/Deokti/react-realtime-chat-app/master/pictures-for-readme/template-one-message.png)
+

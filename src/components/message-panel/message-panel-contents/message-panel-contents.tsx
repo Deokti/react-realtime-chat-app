@@ -25,9 +25,9 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   const getMessagesById = useCallback((channelId: string) => {
     setMessages([]);
     messageRef.child(channelId).on("child_added", (snapshot: TDatabaseSnapshot) => {
-      setMessages((prevState) => [...prevState, snapshot.val()]);
+      setMessages((prevState) => [ ...prevState, snapshot.val() ]);
     });
-  }, [messageRef])
+  }, [ messageRef ])
 
   const getDataDatabase = useCallback((channelId: string) => {
     getMessagesById(channelId);
@@ -40,7 +40,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     return () => {
       messageRef.off();
     }
-  }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
+  }, [ currentActiveChannel, getDataDatabase, logInUser, messageRef ]);
 
   const scrollItemWhenNewData = useCallback(() => {
     const messageContent = messagePanelContent.current;
@@ -56,7 +56,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     return () => {
       messageRef.off();
     }
-  }, [messageRef, messages, scrollItemWhenNewData, setMessages])
+  }, [ messageRef, messages, scrollItemWhenNewData, setMessages ])
 
   const createTemplateMessage = () => {
     return (
