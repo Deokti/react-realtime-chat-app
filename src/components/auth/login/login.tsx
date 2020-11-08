@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Input from "../../input";
 import Button from '../../button';
 
@@ -27,14 +27,15 @@ type TLogin = {
 }
 
 const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, input, whenChangingInput, setInput }: TLogin) => {
-  const onFormValid = ({ email, password }: TUserLogin) => {
+
+  const onFormValid = useCallback(({ email, password }: TUserLogin) => {
     if (setHasError && (!email && !password)) {
       setHasError('Все поля должны быть заполнены!')
     }
     return email && password;
-  }
+  }, [setHasError])
 
-  const whenSubmittingForm = (event: React.FormEvent) => {
+  const whenSubmittingForm = useCallback((event: React.FormEvent) => {
     event.preventDefault();
 
     if (onFormValid(input)) {
@@ -50,7 +51,7 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
           setHasError(error.message);
         })
     }
-  }
+  }, [input, onFormValid, setHasError, setInput, setLoading])
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
@@ -67,6 +68,6 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
 
 export default compose(
   withAuthForm('Войти'),
-  withHandlerInput({ email: '', password: '' })
+  withHandlerInput({ email: '', password: '' }),
 )(Login);
 

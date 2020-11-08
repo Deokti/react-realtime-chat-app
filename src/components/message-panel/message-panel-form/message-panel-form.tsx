@@ -23,19 +23,19 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
     setMessage(event.currentTarget.value);
   }, [])
 
-  const changeMediaURLFile = (url: string): void => {
-    sendMessage(message, url);
-  }
-
+  // Записывает вводимое в input значение в состояние
   const changeMessage = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.currentTarget.value);
   }
 
+  // Создаём время и проверяет его на if < 10 + 0
   const createTime = (): string => {
     const date = new Date();
     return `${lessTenAddZero(date.getHours())}:${lessTenAddZero(date.getMinutes())}`;
   }
-  const createMessage = (messageContent: string, fileMessageURL: string = ''): TMessage => {
+
+  // Структура одного сообщения
+  const createMessage = useCallback((messageContent: string, fileMessageURL: string = ''): TMessage => {
     return {
       id: Date.now().toString(),
       time: createTime(),
@@ -47,19 +47,11 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
         id: (logInUser && logInUser.uid)
       }
     }
-  }
+  }, [logInUser])
 
-  const onSubmitForm = async (event: React.FormEvent) => {
-    event.preventDefault();
+  // Отправка сообщения, которое сохраняется под идентификатором чата
+  const sendMessage = useCallback((message: string, mediaURL: string = '') => {
 
-    await sendMessage(message);
-  };
-
-  const sendMessage = (message: string, mediaURL: string = '') => {
-
-    // Сохранение происходит под идентификаторов текущего выбранного чата
-    // Затем создаётся любой айдишник для сообщения
-    // После мы уже устанавливаем его и отправляем
     if (message.trim().length || mediaURL) {
       setLoading(true);
       const { id: channelId } = currentActiveChannel;
@@ -73,7 +65,18 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
           setMessage('');
         })
     }
-  }
+  }, [createMessage, currentActiveChannel, messageRef]);
+
+  const changeMediaURLFile = useCallback((url: string): void => {
+    sendMessage(message, url);
+  }, [message, sendMessage])
+
+
+  const onSubmitForm = useCallback(async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    await sendMessage(message);
+  }, [message, sendMessage])
 
   return (
     <div className="message-panel-form">
@@ -85,12 +88,14 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
         />
       </div>
       <form className="message-panel-form__form" onSubmit={onSubmitForm}>
-        <input
-          placeholder="Написать сообщение..."
-          className="message-panel-form__input"
-          onChange={handlerTextareaChang}
-          value={message}
-        />
+        <label className={`message-panel-form__label ${message.length > 0 ? 'message-panel-form__write' : ''}`}>
+          <input
+            className="message-panel-form__input"
+            onChange={handlerTextareaChang}
+            value={message}
+          />
+          <span className="message-panel-form__placeholder">Написать сообщение...</span>
+        </label>
         <Button className="message-panel-form__send" loading={loading} disabled={loading} onClick={onSubmitForm}>
           <SendMessageIcon />
         </Button>

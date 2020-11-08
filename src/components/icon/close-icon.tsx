@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const CloseIcon = ({ size = 20, className = '' }) => {
   return (
@@ -9,4 +9,4 @@ const CloseIcon = ({ size = 20, className = '' }) => {
   )
 };
 
-export default CloseIcon;
+export default memo(CloseIcon);

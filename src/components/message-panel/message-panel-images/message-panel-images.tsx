@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { PaperclipIcon } from "../../icon";
 import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
@@ -72,7 +72,6 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
     }
   }
 
-
   return (
     <React.Fragment>
       {previewImage
@@ -92,11 +91,12 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
             type="file"
             className="message-panel-image__file"
             value={pathSelectedMedia}
-            onChange={addFileInState} />
+            onChange={addFileInState}
+          />
         </label>
       </form>
     </React.Fragment>
   )
 };
 
-export default MessagePanelImages;
+export default memo(MessagePanelImages);

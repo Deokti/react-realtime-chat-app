@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import Button from "../../button";
 import Spinner from "../../spinner";
@@ -37,7 +37,10 @@ const MessagePanelPreview: React.FC<TMessagePanelPreview> = ({ previewImage, clo
   );
 };
 
-const MessagePanelPreviewTemplate: React.FC<TMessagePanelPreview> = ({ previewImage, sendLoadFile, closeModal, onSendFile, message, changeMessage }: TMessagePanelPreview) => {
+const MessagePanelPreviewTemplate: React.FC<TMessagePanelPreview> = (
+  { previewImage, sendLoadFile, closeModal,
+    onSendFile, message, changeMessage
+  }: TMessagePanelPreview) => {
 
   return (
     <React.Fragment>
@@ -57,8 +60,8 @@ const MessagePanelPreviewTemplate: React.FC<TMessagePanelPreview> = ({ previewIm
 
       <div className="message-panel-modal__buttons">
         <Button className="message-panel-modal__button message-panel-modal__button--close"
-          disabled={sendLoadFile}
-          onClick={closeModal}>Отмена</Button>
+                disabled={sendLoadFile}
+                onClick={closeModal}>Отмена</Button>
         <Button
           className="message-panel-modal__button message-panel-modal__button--send"
           disabled={sendLoadFile}
@@ -68,4 +71,4 @@ const MessagePanelPreviewTemplate: React.FC<TMessagePanelPreview> = ({ previewIm
   )
 }
 
-export default MessagePanelPreview;
+export default memo(MessagePanelPreview);

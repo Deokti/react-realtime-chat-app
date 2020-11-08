@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const SearchIcon = ({ color = "#9F9DA3" }) => {
 
@@ -12,4 +12,4 @@ const SearchIcon = ({ color = "#9F9DA3" }) => {
 }
 
 
-export default SearchIcon;
+export default memo(SearchIcon);

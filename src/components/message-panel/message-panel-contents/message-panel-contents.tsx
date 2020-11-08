@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import MessagePanelContent from "../message-panel-content";
 
 import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types/reused-types";
@@ -42,21 +42,21 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     }
   }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
 
+  const scrollItemWhenNewData = useCallback(() => {
+    const messageContent = messagePanelContent.current;
+
+    if (messageContent) {
+      messageContent.scrollTop = messageContent.scrollHeight;
+    }
+  }, [])
+
   useEffect(() => {
     scrollItemWhenNewData();
 
     return () => {
       messageRef.off();
     }
-  }, [ messageRef, messages, setMessages ])
-
-  const scrollItemWhenNewData = () => {
-    const messageContent = messagePanelContent.current;
-
-    if (messageContent) {
-      messageContent.scrollTop = messageContent.scrollHeight;
-    }
-  }
+  }, [messageRef, messages, scrollItemWhenNewData, setMessages])
 
   const createTemplateMessage = () => {
     return (
@@ -77,4 +77,4 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   );
 }
 
-export default MessagePanelContents;
+export default memo(MessagePanelContents);

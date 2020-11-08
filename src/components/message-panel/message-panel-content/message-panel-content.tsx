@@ -34,7 +34,10 @@ const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUse
         <div className="message-panel-content__message">
           {fileMessageURL
             ? (<React.Fragment>
-              <img src={fileMessageURL} alt="файл" className="message-panel-content__message-img" onClick={() => setFullpageImage(true)} />
+              <img src={fileMessageURL} alt="файл"
+                   title="Открыть"
+                   className="message-panel-content__message-img"
+                   onClick={() => setFullpageImage(true)} />
               {fullpageImage && <MessagePanelFullpage imageURL={fileMessageURL} closeFullpageImage={closeFullpageImage} />}
             </React.Fragment>)
             : null}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './message-panel-fullpage.scss';
 import { CloseIcon } from "../../icon";
@@ -24,4 +24,4 @@ const MessagePanelFullpage: React.FC<TMessagePanelFullpage> = ({ imageURL, close
   )
 };
 
-export default MessagePanelFullpage;
+export default memo(MessagePanelFullpage);

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { memo, useCallback } from "react";
 import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
 import { changeControlFilter } from '../../../actions';

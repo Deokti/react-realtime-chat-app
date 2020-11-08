@@ -1,9 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
+
+
 import ControlPanel from "../control-panel";
 import ChannelsPanel from "../channels-panel";
 import MessagePanel from "../message-panel";
 
 import './app.scss';
+
 
 const App: React.FC = () => {
   return (
@@ -15,4 +18,4 @@ const App: React.FC = () => {
   )
 };
 
-export default App;
+export default memo(App);

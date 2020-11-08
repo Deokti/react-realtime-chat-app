@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 
 const SpinnerLoader = ({ width = 35, height = 35 }: {  width?: string | number, height?: string | number }) => {
@@ -12,4 +12,4 @@ const SpinnerLoader = ({ width = 35, height = 35 }: {  width?: string | number, 
   );
 }
 
-export default SpinnerLoader;
+export default memo(SpinnerLoader);

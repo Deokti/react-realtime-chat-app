@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const EmailIcon = ({ color = '#445058' }) => {
   return (
@@ -16,5 +16,5 @@ const EmailIcon = ({ color = '#445058' }) => {
   )
 };
 
-export default EmailIcon;
+export default memo(EmailIcon);
 

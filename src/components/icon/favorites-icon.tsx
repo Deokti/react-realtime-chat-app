@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const FavoritesIcon = () => {
   return (
@@ -17,5 +17,5 @@ const FavoritesIcon = () => {
   )
 };
 
-export default FavoritesIcon;
+export default memo(FavoritesIcon);
 

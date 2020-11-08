@@ -23,26 +23,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/icon/close-icon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-fullpage/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-fullpage/message-panel-fullpage.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-fullpage/message-panel-fullpage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/router-path.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wdyr.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/with-auth-form/with-auth-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/login/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/paperclip-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/channels-panel/channels-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-avatar/control-panel-avatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-filter/control-panel-filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-menu/control-panel-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-menu/control-panel-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel-modal/control-panel-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel-modal/control-panel-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control-panel/control-panel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/channels-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/channels-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/chats-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/chats-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/close-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/close-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/email-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/email-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/favorites-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/favorites-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/logout-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/logout-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/password-repeat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/password-repeat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/password.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/search-icon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/search-icon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/spinner-loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/spinner-loader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon/user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon/user.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-form/message-panel-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-fullpage/message-panel-fullpage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-fullpage/message-panel-fullpage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-header/message-panel-header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-images/message-panel-images.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-preview/message-panel-preview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main-root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main-root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <list id="e5ab4149-057d-428f-be7d-ff4d44ffbcb2" name="Изменил расположение компомента модального окна для отображения предварительного показа. Теперь он занимает весь экран и убрать его можно только в двух случаях, если нажать на Отмена или Отправить. В остальном убрать модальное окно невозможно." comment="" />
@@ -141,7 +157,9 @@
       <workItem from="1604185886928" duration="4801000" />
       <workItem from="1604274987664" duration="842000" />
       <workItem from="1604564271922" duration="1879000" />
-      <workItem from="1604566287570" duration="4184000" />
+      <workItem from="1604566287570" duration="4466000" />
+      <workItem from="1604608456169" duration="156000" />
+      <workItem from="1604808704861" duration="9040000" />
     </task>
     <servers />
   </component>
@@ -161,10 +179,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="806" y="411" key="#ESLint" timestamp="1602774379881">
+    <state x="806" y="411" key="#ESLint" timestamp="1604812287902">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="806" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1602774379881" />
+    <state x="806" y="411" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1604812287902" />
     <state x="611" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603040253621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -225,13 +243,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="289" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604180652524" />
-    <state x="616" y="235" key="run.anything.popup" timestamp="1602849211858">
+    <state x="616" y="235" key="run.anything.popup" timestamp="1604812178274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602849211858" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604569662086">
+    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604812178274" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604608612772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604569662086" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604608612772" />
   </component>
 </project>
