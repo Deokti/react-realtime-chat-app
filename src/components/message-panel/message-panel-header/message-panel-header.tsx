@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import MessagePanelSearch from "../message-panel-search";
 
 import './message-panel-header.scss';
@@ -23,4 +23,4 @@ const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ channelName }: TMes
   );
 };
 
-export default MessagePanelHeader;
+export default memo(MessagePanelHeader);

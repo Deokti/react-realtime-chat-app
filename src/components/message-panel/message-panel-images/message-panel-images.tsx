@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { PaperclipIcon } from "../../icon";
 import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
@@ -9,9 +9,11 @@ import './message-panel-images.scss';
 
 type TMessagePanelImages = {
   changeMediaURLFile: (url: string) => void
+  message: string
+  changeMessage: (value: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile }: TMessagePanelImages) => {
+const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile, message, changeMessage }: TMessagePanelImages) => {
   const [ addingSelectedMedia, setAddingSelectedMedia ] = useState<File | null>(null);
   const [ pathSelectedMedia, setPathSelectedMedia ] = useState<string>('');
   const [ previewImage, setPreviewImage ] = useState<any>('');
@@ -57,8 +59,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile 
     if (addingSelectedMedia && isValidTypesFile(addingSelectedMedia?.type)) {
       setSendLoadFile(true);
       const ref = storage.ref();
-      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}`;
-
+      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
 
       const fileRef = ref.child(pathStorageInPublicChannel)
 
@@ -71,11 +72,12 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile 
     }
   }
 
-
   return (
     <React.Fragment>
       {previewImage
         ? <MessagePanelPreview
+          message={message}
+          changeMessage={changeMessage}
           previewImage={previewImage}
           closeModal={closeModal}
           sendLoadFile={sendLoadFile}
@@ -84,16 +86,17 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile 
 
       <form className='message-panel-image__form'>
         <label className="message-panel-image" title="Добавить изображение">
-          <PaperclipIcon />
+          <PaperclipIcon className="message-panel-image__paperclip" />
           <input
             type="file"
             className="message-panel-image__file"
             value={pathSelectedMedia}
-            onChange={addFileInState} />
+            onChange={addFileInState}
+          />
         </label>
       </form>
     </React.Fragment>
   )
 };
 
-export default MessagePanelImages;
+export default memo(MessagePanelImages);

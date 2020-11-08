@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const UserIcon = ({ color = '#9F9DA3' }) => {
   return (
@@ -20,4 +20,4 @@ const UserIcon = ({ color = '#9F9DA3' }) => {
   )
 };
 
-export default UserIcon;
+export default memo(UserIcon);

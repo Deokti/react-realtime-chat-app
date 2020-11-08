@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Logo = ({ pointerEvents }: { pointerEvents: any }) => {
   return (
@@ -19,5 +19,5 @@ const Logo = ({ pointerEvents }: { pointerEvents: any }) => {
   )
 };
 
-export default Logo;
+export default memo(Logo);
 

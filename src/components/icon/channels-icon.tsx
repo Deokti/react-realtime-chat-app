@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TIconSize } from "./index";
 
 
@@ -12,5 +12,5 @@ const ChannelsIcon: React.FC<TIconSize> = ({ width = 36, height = 36, color = '#
   )
 };
 
-export default ChannelsIcon;
+export default memo(ChannelsIcon);
 

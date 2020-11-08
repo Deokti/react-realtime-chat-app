@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Logo } from "../icon";
 import ControlPanelAvatar from "./control-panel-avatar";
 import ControlPanelMenu from "./control-panel-menu";
@@ -16,11 +16,11 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
   const [ showMenu, setShowMenu ] = useState<boolean>(false);
   const [ showModal, setShowModal ] = useState<boolean>(false);
 
-  const openMenu = () => setShowMenu(true);
-  const closeMenu = () => setShowMenu(false);
+  const openMenu = useCallback(() => setShowMenu(true), []);
+  const closeMenu = useCallback(() => setShowMenu(false), []);
 
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
+  const openModal = useCallback(() => setShowModal(true), []);
+  const closeModal = useCallback(() => setShowModal(false), []);
 
   return (
     <div className="control-panel">

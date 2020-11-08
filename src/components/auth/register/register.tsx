@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Input from "../../input";
 import Button from '../../button';
 import isFormValid from './is-valid-form';
@@ -11,6 +11,7 @@ import compose from "../../../utils/compose";
 
 import './register.scss';
 import '../form-redirect.scss';
+import { routerPath } from "../../../config/router-path";
 
 export type TUserRegister = {
   username: string
@@ -30,14 +31,14 @@ type TRegisterForm = {
 }
 
 const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
-  const onCreatedUserInDatabase = (createdUser: any) => {
+  const onCreatedUserInDatabase = useCallback((createdUser) => {
     return database.ref('USERS').child(createdUser.user.uid).set({
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL
     });
-  }
+  }, [])
 
-  const onCreateUserWithEmailAndPassword = () => {
+  const onCreateUserWithEmailAndPassword = useCallback(() => {
     return auth
       .createUserWithEmailAndPassword(input.email, input.password)
       .then((createdUser: any) => {
@@ -46,13 +47,13 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
           photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
         }).then(() => onCreatedUserInDatabase(createdUser))
       })
-  }
+  },[input, onCreatedUserInDatabase])
 
-  const whenSubmittingForm = (event: React.FormEvent) => {
+  const whenSubmittingForm = useCallback((event: React.FormEvent) => {
     event.preventDefault();
 
     if (isFormValid(input, setHasError)) {
-     setLoading(true);
+      setLoading(true);
       setHasError('');
 
       onCreateUserWithEmailAndPassword()
@@ -66,12 +67,12 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
             passwordRepeat: '',
           });
         })
-        .catch((error: any) => {
+        .catch((error) => {
           setHasError(error.message);
           setLoading(false);
         })
     }
-  }
+  }, [input, onCreateUserWithEmailAndPassword, setHasError, setInput, setLoading])
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
@@ -84,7 +85,7 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 
-      <Link to="/login-page" className="form-redirect">Уже зарегистрированы?</Link>
+      <Link to={routerPath.loginPage} className="form-redirect">Уже зарегистрированы?</Link>
 
       {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}
     </form>

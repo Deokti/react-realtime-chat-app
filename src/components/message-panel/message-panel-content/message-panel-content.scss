@@ -7,6 +7,23 @@
   &:last-child {
     margin-bottom: 0;
   }
+  &-image {
+    .message-panel-content__item {
+      padding: 10px 0 0 0;
+    }
+    .message-panel-content__author {
+      padding-left: 15px;
+      padding-right: 25px;
+    }
+    .message-panel-content__message-img {
+      cursor: pointer;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    .message-panel-content__message-content {
+      padding: 15px 50px 20px 15px;
+    }
+  }
   &__avatar {
     margin-top: auto;
     width: 32px;
@@ -19,7 +36,7 @@
   &__item {
     position: relative;
     margin-left: 10px;
-    padding: 10px 70px 23px 15px;
+    padding: 10px 50px 23px 15px;
     background-color: $form-background;
     color: #fff;
     max-width: 40%;
@@ -48,7 +65,8 @@
     bottom: 5px;
     right: 15px;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 12px;
+    z-index: 5;
   }
   &-active {
     background-color: #065d95;

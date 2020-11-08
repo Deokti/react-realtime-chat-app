@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const PasswordRepeatIcon = ({ color = '#445058' }) => {
   return (
@@ -22,4 +22,4 @@ const PasswordRepeatIcon = ({ color = '#445058' }) => {
   )
 };
 
-export default PasswordRepeatIcon;
+export default memo(PasswordRepeatIcon);

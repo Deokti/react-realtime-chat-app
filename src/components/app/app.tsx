@@ -1,15 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
+
+
 import ControlPanel from "../control-panel";
 import ChannelsPanel from "../channels-panel";
 import MessagePanel from "../message-panel";
 
 import './app.scss';
 
-type TApp = {
-  selectedImage: string | null;
-}
 
-const App: React.FC<TApp> = ({ selectedImage }: TApp) => {
+const App: React.FC = () => {
   return (
     <section className="app">
       <ControlPanel />
@@ -19,4 +18,4 @@ const App: React.FC<TApp> = ({ selectedImage }: TApp) => {
   )
 };
 
-export default App;
+export default memo(App);

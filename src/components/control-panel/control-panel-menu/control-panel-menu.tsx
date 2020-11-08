@@ -1,4 +1,4 @@
-import React, { createRef, useCallback, useEffect } from "react";
+import React, { createRef, memo, useCallback, useEffect } from "react";
 import { auth } from '../../../config/firebase';
 import { ChannelsIcon, LogoutIcon, UserIcon } from "../../icon";
 
@@ -15,7 +15,7 @@ const ControlPanelMenu: React.FC<TControlPanelMenu> = ({ menu, closeMenu, userna
   const controlPanelPopupRef = createRef<HTMLDivElement>();
 
   // Если произошёл клик не по элементу, то активируется функция и закроет окно
-  const onClickNotControlPanel = useCallback((event: any) => {
+  const onClickNotControlPanel = useCallback((event) => {
     if (event.path && !event.path.includes(controlPanelPopupRef.current)) {
       closeMenu();
     }
@@ -28,21 +28,23 @@ const ControlPanelMenu: React.FC<TControlPanelMenu> = ({ menu, closeMenu, userna
 
 
   const onLogOut = () => auth.signOut()
-      .then(() => console.log(`Пользователь вышел из учётной записи`));
+    .then(() => console.log(`Пользователь вышел из учётной записи`));
 
   return (
     <div ref={controlPanelPopupRef} className={`control-panel-menu ${menu ? 'control-panel-menu-active' : ''}`}>
       <div className="control-panel-menu__list">
         <ControlPanelPopupItem label={`Вы вошли как ${username}`} />
         <ControlPanelPopupItem label="Изменить аватар" icon={<UserIcon />} />
-
-        <ControlPanelPopupItem label="Создать новый канал"
-                               onClick={openModal}
-                               icon={ <ChannelsIcon width={12} height={12} /> } />
-
-        <ControlPanelPopupItem label="Выйти из учётной записи"
-                               icon={ <LogoutIcon /> }
-                               onClick={onLogOut} />
+        <ControlPanelPopupItem
+          label="Создать новый канал"
+          onClick={openModal}
+          icon={<ChannelsIcon width={12} height={12} />}
+        />
+        <ControlPanelPopupItem
+          label="Выйти из учётной записи"
+          icon={<LogoutIcon />}
+          onClick={onLogOut}
+        />
       </div>
     </div>
   )
@@ -63,4 +65,4 @@ const ControlPanelPopupItem: React.FC<TControlPanelPopupItem> = ({ label, icon, 
   )
 };
 
-export default ControlPanelMenu;
+export default memo(ControlPanelMenu);

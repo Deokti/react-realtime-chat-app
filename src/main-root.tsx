@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { getLogInUser, logOutUser, setCurrentChannel } from './actions';
 import { TChannel } from "./types/reused-types";
+import { routerPath } from "./config/router-path";
 
 import './assets/styles/bootstrap-reboot.min.scss';
 import './assets/styles/fonts.scss';
@@ -23,19 +24,18 @@ type TMainRoot = {
   logOutUser: () => void
   isLoaded: boolean
   setCurrentChannel: (channel: TChannel | null) => any;
-  logInUser: any
 }
 
-const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setCurrentChannel, logInUser }: TMainRoot) => {
+const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setCurrentChannel }: TMainRoot) => {
 
   const onAuthStateChanged = useCallback(() => {
     auth.onAuthStateChanged((logInUser) => {
       if (logInUser) {
         getLogInUser(logInUser);
-        history.push('/');
+        history.push(routerPath.main);
       } else {
         logOutUser();
-        history.push('/login-page');
+        history.push(routerPath.loginPage);
         setCurrentChannel(null);
       }
     });
@@ -61,12 +61,11 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
 type TMapStateToProps = {
   currentLoggedUser: {
     isLoaded: boolean
-    logInUser: any
   };
 }
 
-const mapStateToProps = ({ currentLoggedUser: { isLoaded, logInUser } }: TMapStateToProps) => {
-  return { isLoaded, logInUser };
+const mapStateToProps = ({ currentLoggedUser: { isLoaded } }: TMapStateToProps) => {
+  return { isLoaded };
 }
 
 export default compose(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Input from "../../input";
 import Button from '../../button';
 
@@ -6,6 +6,7 @@ import { withAuthForm, withHandlerInput } from "../../HOC";
 import { Link } from 'react-router-dom';
 import { auth } from '../../../config/firebase';
 import compose from "../../../utils/compose";
+import { routerPath } from "../../../config/router-path";
 
 import './login.scss';
 import '../form-redirect.scss';
@@ -26,21 +27,21 @@ type TLogin = {
 }
 
 const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, input, whenChangingInput, setInput }: TLogin) => {
-  const onFormValid = ({ email, password }: TUserLogin) => {
+
+  const onFormValid = useCallback(({ email, password }: TUserLogin) => {
     if (setHasError && (!email && !password)) {
       setHasError('Все поля должны быть заполнены!')
     }
     return email && password;
-  }
+  }, [setHasError])
 
-  const whenSubmittingForm = (event: React.FormEvent) => {
+  const whenSubmittingForm = useCallback((event: React.FormEvent) => {
     event.preventDefault();
 
     if (onFormValid(input)) {
       setLoading(true);
       setHasError('');
       auth.signInWithEmailAndPassword(input.email, input.password)
-        .then((signInUser) => console.log('Пользователь вошёл в систему:', signInUser))
         .then(() => {
           setLoading(false);
           setInput({ email: '', password: '' });
@@ -50,7 +51,7 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
           setHasError(error.message);
         })
     }
-  }
+  }, [input, onFormValid, setHasError, setInput, setLoading])
 
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
@@ -58,7 +59,7 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
       <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
              value={input.password} />
       <Button className="button-auth-form" loading={loading} disabled={loading}>Войти</Button>
-      <Link to="/register-page" className="form-redirect">Ещё не зарегистрированы?</Link>
+      <Link to={routerPath.registerPage} className="form-redirect">Ещё не зарегистрированы?</Link>
 
       {hasError && hasError.length > 0 ? <span className="form-error">{hasError}</span> : ''}
     </form>
@@ -67,6 +68,6 @@ const Login: React.FC<TLogin> = ({ loading, setLoading, hasError, setHasError, i
 
 export default compose(
   withAuthForm('Войти'),
-  withHandlerInput({ email: '', password: '' })
+  withHandlerInput({ email: '', password: '' }),
 )(Login);
 

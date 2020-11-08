@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { SpinnerLoader } from '../icon';
 
 import './button.scss';
@@ -12,12 +12,14 @@ type TButton = {
 }
 
 const Button: React.FC<TButton> = ({ children, className = '', loading = false, onClick, disabled = false }: TButton) => {
-  return <button
-    className={`button ${className} ${loading ? 'button-loading' : ''}`}
-    onClick={onClick}
-    disabled={disabled}>
-    {loading ? <SpinnerLoader /> : children}
-  </button>
+  return (
+    <button
+      className={`button ${className} ${loading ? 'button-loading' : ''}`}
+      onClick={onClick}
+      disabled={disabled}>
+      {loading ? <SpinnerLoader /> : children}
+    </button>
+  )
 };
 
-export default Button;
+export default memo(Button);

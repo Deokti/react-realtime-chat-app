@@ -33,7 +33,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
     };
   }, [channelRef, getChannels]);
 
-  function filter (channels: Array<TChannel>, type: string) {
+  const filter = (channels: Array<TChannel>, type: string) => {
     return channels.filter((item: any) => item.type === type);
   }
 

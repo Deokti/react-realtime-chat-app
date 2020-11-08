@@ -11,7 +11,7 @@ const withAuthForm = (title: string) => (Wrapper: React.FC) => {
       <section className="auth">
         <div className="auth-wrapper">
           <header className="auth-header">
-            <span className="auth-header__label auth-header__login">{title}</span>
+            <h3 className="auth-header__label auth-header__login">{title}</h3>
           </header>
 
           <div className="auth-form">

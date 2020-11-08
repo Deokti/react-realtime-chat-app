@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const PasswordIcon = ({ color = '#445058' }) => {
   return (
@@ -16,5 +16,5 @@ const PasswordIcon = ({ color = '#445058' }) => {
   )
 };
 
-export default PasswordIcon;
+export default memo(PasswordIcon);
 

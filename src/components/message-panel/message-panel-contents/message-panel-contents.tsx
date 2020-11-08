@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import MessagePanelContent from "../message-panel-content";
 
 import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types/reused-types";
 
 import './message-panel-contents.scss';
+import '../../../assets/styles/scrollbar.scss';
 
 // Что нужно сделать!
 // 1. Создать функцию, где мы получим все данные с сервера и сохранив их в массив.
@@ -41,21 +42,21 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     }
   }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
 
+  const scrollItemWhenNewData = useCallback(() => {
+    const messageContent = messagePanelContent.current;
+
+    if (messageContent) {
+      messageContent.scrollTop = messageContent.scrollHeight;
+    }
+  }, [])
+
   useEffect(() => {
     scrollItemWhenNewData();
 
     return () => {
       messageRef.off();
     }
-  }, [ messageRef, messages, setMessages ])
-
-  const scrollItemWhenNewData = () => {
-    const messageContent = messagePanelContent.current;
-
-    if (messageContent) {
-      messageContent.scrollTop = messageContent.scrollHeight;
-    }
-  }
+  }, [messageRef, messages, scrollItemWhenNewData, setMessages])
 
   const createTemplateMessage = () => {
     return (
@@ -70,10 +71,10 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   }
 
   return (
-    <div className="message-panel-contents" ref={messagePanelContent}>
+    <div className="message-panel-contents scrollbar-style" ref={messagePanelContent}>
       {createTemplateMessage()}
     </div>
   );
 }
 
-export default MessagePanelContents;
+export default memo(MessagePanelContents);

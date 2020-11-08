@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import Input from "../../input";
 import Button from "../../button";
@@ -27,15 +27,7 @@ const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeMod
 
   const isValidForm = (input: string) => input.trim().length > 0;
 
-  const onHandlerSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (isValidForm(input.channelName)) {
-      const channelsRef = database.ref('CHANNELS');
-      createChannel(channelsRef);
-    }
-  }
-
-  const createChannel = (channelsRef: any) => {
+  const createChannel = useCallback((channelsRef: any) => {
     const id = channelsRef.push().key;
 
     const createNewChannel = {
@@ -55,7 +47,17 @@ const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeMod
         setInput({ channelName: '' });
         closeModal();
       })
-  }
+  }, [closeModal, input.channelName, setInput, userAvatar, username])
+
+
+  const onHandlerSubmit = useCallback((event: React.FormEvent) => {
+    event.preventDefault();
+    if (isValidForm(input.channelName)) {
+      const channelsRef = database.ref('CHANNELS');
+      createChannel(channelsRef);
+    }
+  }, [createChannel, input])
+
 
   return modal && (
     <div className="control-panel-modal">

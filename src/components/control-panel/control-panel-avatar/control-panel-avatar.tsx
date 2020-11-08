@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import './control-panel-avatar.scss';
 
@@ -18,4 +18,4 @@ const ControlPanelAvatar: React.FC<TControlPanelAvatar> = ({ openMenu, avatarLin
   )
 };
 
-export default ControlPanelAvatar;
+export default memo(ControlPanelAvatar);

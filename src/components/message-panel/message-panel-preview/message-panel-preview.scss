@@ -28,8 +28,30 @@
       width: 100%;
     }
   }
+  &__description {
+    padding-top: 30px;
+  }
+  &__label {
+    display: block;
+  }
+  &__title {
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  &__textarea {
+    width: 100%;
+    resize: none;
+    background-color: $form-background;
+    border: none;
+    height: 30px;
+    color: $description-color;
+    border-bottom: 2px solid #fff;
+    &:focus {
+      outline: none;
+    }
+  }
   &__buttons {
-    padding-top: 50px;
     display: flex;
     justify-content: flex-end;
   }

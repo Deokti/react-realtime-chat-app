@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TIconSize } from "./index";
 
 const ChatsIcon: React.FC<TIconSize> = ({ width = 36, height = 36, color = '#9f9da3' }: TIconSize) => {
@@ -11,5 +11,5 @@ const ChatsIcon: React.FC<TIconSize> = ({ width = 36, height = 36, color = '#9f9
   )
 };
 
-export default ChatsIcon;
+export default memo(ChatsIcon);
 

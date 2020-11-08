@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const LogoutIcon = () => {
   return (
@@ -21,5 +21,5 @@ const LogoutIcon = () => {
   )
 };
 
-export default LogoutIcon;
+export default memo(LogoutIcon);
 
