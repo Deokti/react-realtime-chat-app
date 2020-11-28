@@ -6,10 +6,6 @@ import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../ty
 import './message-panel-contents.scss';
 import '../../../assets/styles/scrollbar.scss';
 
-// Что нужно сделать!
-// 1. Создать функцию, где мы получим все данные с сервера и сохранив их в массив.
-// 2. Когда сохранение будет завершено, мы передадим все данные массива в состояние
-// 3. Когда состояние получит сразу все данные, мы создадим для него разметку
 
 type TMessagePanelContents = {
   currentActiveChannel: TChannel
@@ -19,28 +15,37 @@ type TMessagePanelContents = {
 
 const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
-  const [ messages, setMessages ] = useState<Array<TMessage>>([]);
+  const [messages, setMessages] = useState<Array<TMessage>>([]);
 
+  const writeDataInSetMessage = (data: TMessage) => {
+    setMessages((prevState) => [...prevState, data]);
+  }
 
   const getMessagesById = useCallback((channelId: string) => {
     setMessages([]);
-    messageRef.child(channelId).on("child_added", (snapshot: TDatabaseSnapshot) => {
-      setMessages((prevState) => [ ...prevState, snapshot.val() ]);
-    });
-  }, [ messageRef ])
+
+    messageRef.child(channelId)
+      .limitToLast(50)
+      .on("child_added", (snap: TDatabaseSnapshot) => {
+        writeDataInSetMessage(snap.val());
+      })
+
+  }, [messageRef]);
 
   const getDataDatabase = useCallback((channelId: string) => {
-    getMessagesById(channelId);
-  }, [ getMessagesById ])
+
+    getMessagesById(channelId)
+  }, [getMessagesById])
 
   useEffect(() => {
     if (currentActiveChannel && logInUser) {
       getDataDatabase(currentActiveChannel.id);
     }
+
     return () => {
       messageRef.off();
-    }
-  }, [ currentActiveChannel, getDataDatabase, logInUser, messageRef ]);
+    };
+  }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
 
   const scrollItemWhenNewData = useCallback(() => {
     const messageContent = messagePanelContent.current;
@@ -54,17 +59,18 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     scrollItemWhenNewData();
 
     return () => {
-      messageRef.off();
-    }
-  }, [ messageRef, messages, scrollItemWhenNewData, setMessages ])
+      messageRef.off()
+    };
+  }, [messages, messageRef, scrollItemWhenNewData]);
 
   const createTemplateMessage = () => {
     return (
       <div className="message-panel-contents__wrapper">
-        {messages.map((message: TMessage) => {
-          const { id } = message;
-          return <MessagePanelContent key={id} message={message} />
-        })
+        {
+          messages.map((message: TMessage) => {
+            const { id } = message;
+            return <MessagePanelContent key={id} message={message} />
+          })
         }
       </div>
     )
