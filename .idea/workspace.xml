@@ -23,11 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5050746-4129-486c-95e6-c4be17fc44c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/message-panel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/register/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/register/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-content/message-panel-content.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/message-panel/message-panel-contents/message-panel-contents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wdyr.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wdyr.js" afterDir="false" />
     </list>
     <list id="e5ab4149-057d-428f-be7d-ff4d44ffbcb2" name="Изменил расположение компомента модального окна для отображения предварительного показа. Теперь он занимает весь экран и убрать его можно только в двух случаях, если нажать на Отмена или Отправить. В остальном убрать модальное окно невозможно." comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +127,9 @@
       <workItem from="1604564271922" duration="1879000" />
       <workItem from="1604566287570" duration="4466000" />
       <workItem from="1604608456169" duration="156000" />
-      <workItem from="1604808704861" duration="10796000" />
+      <workItem from="1604808704861" duration="10987000" />
+      <workItem from="1605164859624" duration="4876000" />
+      <workItem from="1605170958014" duration="7104000" />
     </task>
     <servers />
   </component>

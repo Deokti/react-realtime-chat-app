@@ -47,7 +47,7 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
           photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
         }).then(() => onCreatedUserInDatabase(createdUser))
       })
-  },[input, onCreatedUserInDatabase])
+  }, [input, onCreatedUserInDatabase])
 
   const whenSubmittingForm = useCallback((event: React.FormEvent) => {
     event.preventDefault();
@@ -77,11 +77,11 @@ const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setH
   return (
     <form className="login" onSubmit={whenSubmittingForm}>
       <Input label="Имя пользователя" name="username" onChange={whenChangingInput} value={input.username} />
-      <Input label="Email" name="email" onChange={whenChangingInput} value={input.email} />
+      <Input label="Email" name="email" onChange={whenChangingInput} type="email" value={input.email} />
       <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
-             value={input.password} />
+        value={input.password} />
       <Input label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingInput}
-             value={input.passwordRepeat} />
+        value={input.passwordRepeat} />
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 

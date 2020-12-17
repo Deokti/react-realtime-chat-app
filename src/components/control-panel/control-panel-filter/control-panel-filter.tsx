@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { useCallback } from "react";
 import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
 import { changeControlFilter } from '../../../actions';
@@ -36,10 +36,10 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter
           const activeClass = currentFilter.filterName === name ? 'active' : '';
           return (
             <li key={name}
-                onClick={() => toggleCurrentStatus(title, name)}
-                data-control-filter-title={title}
-                data-control-filter-name={name}
-                className={`control-panel-status__item ${activeClass}`}>
+              onClick={() => toggleCurrentStatus(title, name)}
+              data-control-filter-title={title}
+              data-control-filter-name={name}
+              className={`control-panel-status__item ${activeClass}`}>
               {component}
             </li>
           )

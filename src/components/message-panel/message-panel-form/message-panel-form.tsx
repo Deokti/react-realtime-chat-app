@@ -12,12 +12,13 @@ type TMessagePanelForm = {
   logInUser: any
   currentActiveChannel: TChannel
   messageRef: TDatabaseRef
+  setScrollEndPage: (state: boolean) => void
 }
 
-const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiveChannel, messageRef }: TMessagePanelForm) => {
+const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiveChannel, messageRef, setScrollEndPage }: TMessagePanelForm) => {
 
-  const [ message, setMessage ] = useState<string>('');
-  const [ loading, setLoading ] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handlerTextareaChang = useCallback((event: React.FormEvent<HTMLInputElement>): void => {
     setMessage(event.currentTarget.value);
@@ -62,10 +63,11 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
         .then(() => {
           console.log('Сообщение отправлено в базу данных');
           setLoading(false);
+          setScrollEndPage(true);
           setMessage('');
         })
     }
-  }, [createMessage, currentActiveChannel, messageRef]);
+  }, [createMessage, currentActiveChannel, messageRef, setScrollEndPage]);
 
   const changeMediaURLFile = useCallback((url: string): void => {
     sendMessage(message, url);
