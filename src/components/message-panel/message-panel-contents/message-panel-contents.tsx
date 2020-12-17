@@ -11,29 +11,32 @@ type TMessagePanelContents = {
   currentActiveChannel: TChannel
   logInUser: any
   messageRef: TDatabaseRef
+  scrollEndPage: boolean
+  setScrollEndPage: (state: boolean) => void
 }
 
-const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef }: TMessagePanelContents) => {
+const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef, scrollEndPage, setScrollEndPage }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Array<TMessage>>([]);
-
-  const writeDataInSetMessage = (data: TMessage) => {
-    setMessages((prevState) => [...prevState, data]);
-  }
+  const [idFirstMessage, setIdFirstMessage] = useState<string>('');
+  const [flag, setFlag] = useState(false);
 
   const getMessagesById = useCallback((channelId: string) => {
     setMessages([]);
+    setScrollEndPage(true);
+    setFlag(true);
 
-    messageRef.child(channelId)
-      .limitToLast(50)
+    messageRef
+      .child(channelId)
+      .orderByChild('id')
+      .limitToLast(20)
       .on("child_added", (snap: TDatabaseSnapshot) => {
-        writeDataInSetMessage(snap.val());
-      })
+        setMessages((prevState) => [...prevState, snap.val()]);
+      });
 
-  }, [messageRef]);
+  }, [messageRef, setScrollEndPage]);
 
   const getDataDatabase = useCallback((channelId: string) => {
-
     getMessagesById(channelId)
   }, [getMessagesById])
 
@@ -50,21 +53,63 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   const scrollItemWhenNewData = useCallback(() => {
     const messageContent = messagePanelContent.current;
 
-    if (messageContent) {
+    if (scrollEndPage && messageContent) {
       messageContent.scrollTop = messageContent.scrollHeight;
     }
-  }, [])
+  }, [scrollEndPage])
 
   useEffect(() => {
     scrollItemWhenNewData();
-
+    setFlag(true);
+    setIdFirstMessage(messages[0]?.id);
     return () => {
       messageRef.off()
     };
   }, [messages, messageRef, scrollItemWhenNewData]);
 
-  const createTemplateMessage = () => {
-    return (
+  const savePrevMessages = useCallback((dataSnaphop: TDatabaseSnapshot) => {
+    const array: Array<TMessage> = [];
+    setScrollEndPage(false);
+    dataSnaphop.forEach((item) => { array.push(item.val()) });
+    array.pop();
+    setMessages((prevState) => [...array, ...prevState]);
+  }, [setScrollEndPage])
+
+  const getPrevMessages = useCallback((channelId: string) => {
+    messageRef
+      .child(channelId)
+      .orderByChild('id')
+      .limitToLast(20)
+      .endAt(idFirstMessage)
+      .once('value')
+      .then(savePrevMessages)
+  }, [idFirstMessage, messageRef, savePrevMessages]);
+
+  const scrollTop = useCallback(() => {
+    const messageContent = messagePanelContent.current;
+    const scroll = messageContent?.scrollTop;
+
+    if (flag && (scroll! < 250)) {
+      getPrevMessages(currentActiveChannel.id)
+      setFlag(false);
+      return false;
+    }
+
+  }, [currentActiveChannel, flag, getPrevMessages])
+
+  // Вешает событие скролла на элемент и удаляет его
+  useEffect(() => {
+    const messageContent = messagePanelContent.current;
+    messageContent?.addEventListener('scroll', scrollTop)
+    return () => {
+      messageContent?.removeEventListener('scroll', scrollTop)
+    }
+  }, [scrollTop]);
+
+  const scroll = flag ? 'auto' : 'hidden';
+
+  return (
+    <div className="message-panel-contents scrollbar-style" style={{ overflowY: scroll }} ref={messagePanelContent}>
       <div className="message-panel-contents__wrapper">
         {
           messages.map((message: TMessage) => {
@@ -73,12 +118,6 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
           })
         }
       </div>
-    )
-  }
-
-  return (
-    <div className="message-panel-contents scrollbar-style" ref={messagePanelContent}>
-      {createTemplateMessage()}
     </div>
   );
 }
