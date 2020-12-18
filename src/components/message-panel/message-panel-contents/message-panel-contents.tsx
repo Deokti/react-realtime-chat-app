@@ -17,14 +17,13 @@ type TMessagePanelContents = {
 
 const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef, scrollEndPage, setScrollEndPage }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
+  const messageWrapperRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Array<TMessage>>([]);
   const [idFirstMessage, setIdFirstMessage] = useState<string>('');
-  const [flag, setFlag] = useState(false);
 
   const getMessagesById = useCallback((channelId: string) => {
     setMessages([]);
     setScrollEndPage(true);
-    setFlag(true);
 
     messageRef
       .child(channelId)
@@ -60,7 +59,6 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
   useEffect(() => {
     scrollItemWhenNewData();
-    setFlag(true);
     setIdFirstMessage(messages[0]?.id);
     return () => {
       messageRef.off()
@@ -76,6 +74,9 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   }, [setScrollEndPage])
 
   const getPrevMessages = useCallback((channelId: string) => {
+    const messageContent = messagePanelContent.current;
+    const firstMessage = messageWrapperRef.current?.firstElementChild as HTMLElement
+
     messageRef
       .child(channelId)
       .orderByChild('id')
@@ -83,19 +84,21 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
       .endAt(idFirstMessage)
       .once('value')
       .then(savePrevMessages)
+      .then(() => {
+        messageContent!.scrollTop = firstMessage!.offsetTop - 10;
+      })
   }, [idFirstMessage, messageRef, savePrevMessages]);
 
   const scrollTop = useCallback(() => {
     const messageContent = messagePanelContent.current;
     const scroll = messageContent?.scrollTop;
 
-    if (flag && (scroll! < 250)) {
+    if (scroll === 0) {
       getPrevMessages(currentActiveChannel.id)
-      setFlag(false);
       return false;
     }
 
-  }, [currentActiveChannel, flag, getPrevMessages])
+  }, [currentActiveChannel, getPrevMessages])
 
   // Вешает событие скролла на элемент и удаляет его
   useEffect(() => {
@@ -106,11 +109,10 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     }
   }, [scrollTop]);
 
-  const scroll = flag ? 'auto' : 'hidden';
 
   return (
-    <div className="message-panel-contents scrollbar-style" style={{ overflowY: scroll }} ref={messagePanelContent}>
-      <div className="message-panel-contents__wrapper">
+    <div className="message-panel-contents scrollbar-style" ref={messagePanelContent}>
+      <div className="message-panel-contents__wrapper" ref={messageWrapperRef}>
         {
           messages.map((message: TMessage) => {
             const { id } = message;
