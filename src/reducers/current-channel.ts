@@ -2,7 +2,7 @@ import { SET_CURRENT_CHANNEL } from '../actions/TYPES';
 import { TChannel } from "../types/reused-types";
 
 type TCurrentActiveChannel = {
-  currentActiveChannel: TChannel | null
+  activeChannel: TChannel | null
 }
 
 type TCurrentActiveChannelAction = {
@@ -10,10 +10,10 @@ type TCurrentActiveChannelAction = {
   payload: TChannel | null
 }
 
-const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: TCurrentActiveChannelAction): TCurrentActiveChannel => {
+const currentChannel = (state: TCurrentActiveChannel, action: TCurrentActiveChannelAction): TCurrentActiveChannel => {
   if (state === undefined) {
     return {
-      currentActiveChannel: null
+      activeChannel: null
     }
   }
 
@@ -21,7 +21,7 @@ const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: TCurre
     case SET_CURRENT_CHANNEL: {
       return {
         ...state,
-        currentActiveChannel: action.payload
+        activeChannel: action.payload
       }
     }
 
@@ -29,4 +29,4 @@ const updateCurrentActiveChannel = (state: TCurrentActiveChannel, action: TCurre
   }
 };
 
-export default updateCurrentActiveChannel;
+export default currentChannel;

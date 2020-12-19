@@ -4,37 +4,37 @@ import MessagePanelContents from "./message-panel-contents";
 import MessagePanelForm from "./message-panel-form";
 
 import { database } from "../../config/firebase";
-import { TMapStateCurrentUser } from "../control-panel/control-panel";
 import { TDatabaseRef, TChannel } from "../../types/reused-types";
 
 import { connect } from "react-redux";
 
 import './message-panel.scss';
+import { TAuth } from '../../types/redux';
 
 type TMessagePanel = {
-  currentActiveChannel: TChannel
+  activeChannel: TChannel
   logInUser: any
 }
 
-const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser }: TMessagePanel) => {
+const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser }: TMessagePanel) => {
   const messageRef: TDatabaseRef = useMemo(() => database.ref('MESSAGES'), []);
   const [scrollEndPage, setScrollEndPage] = useState<boolean>(false);
 
   return (
     <div className="message-panel">
-      <MessagePanelHeader channelName={currentActiveChannel && currentActiveChannel.channelName} />
+      <MessagePanelHeader channelName={activeChannel && activeChannel.channelName} />
       <MessagePanelContents
-        key={currentActiveChannel && currentActiveChannel.id}
-        currentActiveChannel={currentActiveChannel}
+        key={activeChannel && activeChannel.id}
+        activeChannel={activeChannel}
         logInUser={logInUser}
         messageRef={messageRef}
         scrollEndPage={scrollEndPage}
         setScrollEndPage={setScrollEndPage}
       />
-      {currentActiveChannel && (
+      {activeChannel && (
         <MessagePanelForm
           key={logInUser && logInUser.uid}
-          currentActiveChannel={currentActiveChannel}
+          activeChannel={activeChannel}
           logInUser={logInUser}
           messageRef={messageRef}
           setScrollEndPage={setScrollEndPage}
@@ -46,15 +46,15 @@ const MessagePanel: React.FC<TMessagePanel> = ({ currentActiveChannel, logInUser
 
 export type TCurrentChannel = {
   currentChannel: {
-    currentActiveChannel: TChannel
+    activeChannel: TChannel
   }
 }
 
 const mapStateCurrentUser = ({
-  currentLoggedUser: { logInUser },
-  currentChannel: { currentActiveChannel },
-}: TMapStateCurrentUser & TCurrentChannel) => {
-  return { logInUser, currentActiveChannel }
+  auth: { logInUser },
+  currentChannel: { activeChannel },
+}: TAuth & TCurrentChannel) => {
+  return { logInUser, activeChannel }
 }
 
 export default connect(mapStateCurrentUser)(MessagePanel);

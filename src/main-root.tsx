@@ -9,7 +9,7 @@ import { auth } from "./config/firebase";
 import compose from "./utils/compose";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { getLogInUser, logOutUser, setCurrentChannel } from './actions';
+import { getLogInUser, logOutUser, setActiveChannel } from './actions';
 import { TChannel } from "./types/reused-types";
 import { routerPath } from "./config/router-path";
 
@@ -23,10 +23,10 @@ type TMainRoot = {
   history: any
   logOutUser: () => void
   isLoaded: boolean
-  setCurrentChannel: (channel: TChannel | null) => any;
+  setActiveChannel: (channel: TChannel | null) => any;
 }
 
-const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setCurrentChannel }: TMainRoot) => {
+const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setActiveChannel }: TMainRoot) => {
 
   const onAuthStateChanged = useCallback(() => {
     auth.onAuthStateChanged((logInUser) => {
@@ -36,15 +36,15 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
       } else {
         logOutUser();
         history.push(routerPath.loginPage);
-        setCurrentChannel(null);
+        setActiveChannel(null);
       }
     });
-  }, [ getLogInUser, history, logOutUser, setCurrentChannel ])
+  }, [getLogInUser, history, logOutUser, setActiveChannel])
 
   useEffect(() => {
     onAuthStateChanged();
     return () => onAuthStateChanged();
-  }, [ onAuthStateChanged ]);
+  }, [onAuthStateChanged]);
 
   return isLoaded
     ? <Spinner />
@@ -59,16 +59,16 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
 
 
 type TMapStateToProps = {
-  currentLoggedUser: {
+  auth: {
     isLoaded: boolean
   };
 }
 
-const mapStateToProps = ({ currentLoggedUser: { isLoaded } }: TMapStateToProps) => {
+const mapStateToProps = ({ auth: { isLoaded } }: TMapStateToProps) => {
   return { isLoaded };
 }
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getLogInUser, logOutUser, setCurrentChannel }),
+  connect(mapStateToProps, { getLogInUser, logOutUser, setActiveChannel }),
 )(MainRoot)

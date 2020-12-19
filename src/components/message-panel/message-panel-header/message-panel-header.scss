@@ -7,21 +7,25 @@
   width: 100%;
   height: 82px;
   padding: 10px 30px;
+
   &__channel-info {
     padding-right: 30px;
     min-width: 350px;
   }
+
   &__title {
     font-weight: 500;
     font-size: 25px;
     color: #fff;
     margin-bottom: 0;
   }
+
   &__participant {
     font-weight: 300;
     font-size: 14px;
     color: $description-color;
   }
+
   &__search {
     width: 100%;
   }

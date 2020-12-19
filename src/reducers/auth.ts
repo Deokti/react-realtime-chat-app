@@ -13,7 +13,7 @@ type TUpdateUserAction = {
   }
 }
 
-const updateCurrentLoggedUser = (state: TUpdateUser, action: TUpdateUserAction): TUpdateUser => {
+const auth = (state: TUpdateUser, action: TUpdateUserAction): TUpdateUser => {
   if (state === undefined) {
     return {
       logInUser: null,
@@ -40,4 +40,4 @@ const updateCurrentLoggedUser = (state: TUpdateUser, action: TUpdateUserAction):
   }
 }
 
-export default updateCurrentLoggedUser;
+export default auth;

@@ -7,14 +7,15 @@ import ControlPanelFilter from "./control-panel-filter";
 import { connect } from "react-redux";
 
 import './control-panel.scss';
+import { TAuth } from '../../types/redux';
 
 type TControlPanel = {
   logInUser: any
 }
 
 const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => {
-  const [ showMenu, setShowMenu ] = useState<boolean>(false);
-  const [ showModal, setShowModal ] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const openMenu = useCallback(() => setShowMenu(true), []);
   const closeMenu = useCallback(() => setShowMenu(false), []);
@@ -56,11 +57,7 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
   )
 };
 
-export type TMapStateCurrentUser = {
-  currentLoggedUser: { logInUser: any };
-}
-
-const mapStateCurrentUser = ({ currentLoggedUser: { logInUser } }: TMapStateCurrentUser) => {
+const mapStateCurrentUser = ({ auth: { logInUser } }: TAuth) => {
   return { logInUser }
 }
 

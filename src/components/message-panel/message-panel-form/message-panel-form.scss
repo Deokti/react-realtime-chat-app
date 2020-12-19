@@ -12,6 +12,7 @@
   padding: 15px 30px;
   display: flex;
   align-items: center;
+
   &::before {
     content: '';
     position: absolute;
@@ -22,25 +23,31 @@
     bottom: 0;
     left: 0;
   }
+
   &__add-file {
     cursor: pointer;
   }
+
   &__send {
     width: auto;
     background-color: transparent;
+
     &:hover {
       background-color: transparent;
+
       svg path {
         fill: #54D58C
       }
     }
   }
+
   &__form {
     display: flex;
     align-items: center;
     padding-left: 10px;
     width: 100%;
   }
+
   &__label {
     position: relative;
     height: auto;
@@ -48,6 +55,7 @@
     max-width: 1360px;
     margin-bottom: 0;
   }
+
   &__input {
     height: auto;
     padding: 5px 10px;
@@ -56,10 +64,12 @@
     color: $description-color;
     background-color: $form-background;
     max-width: 1360px;
+
     &:focus {
       outline: none;
     }
   }
+
   &__placeholder {
     position: absolute;
     color: $description-color;
@@ -69,6 +79,7 @@
     transition: all .1s ease;
     pointer-events: none;
   }
+
   &__write {
     .message-panel-form__placeholder {
       opacity: 0;
