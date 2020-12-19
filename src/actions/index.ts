@@ -1,13 +1,24 @@
-import getLogInUser from "./action-creator/current-logged-user/log-in-user";
-import logOutUser from "./action-creator/current-logged-user/log-out-user";
-import changeControlFilter from "./action-creator/current-control-filter/change-control-filter";
-import setCurrentChannel from "./action-creator/current-active-channel/set-current-channel";
+import getLogInUser from "./action-creator/auth/log-in-user";
+import logOutUser from "./action-creator/auth/log-out-user";
+import changeFilter from "./action-creator/filter/change-filter";
+import setActiveChannel from "./action-creator/active-channel/set-active-channel";
+
+import changeMessage from './action-creator/communication/change-message';
+import sendingMessage from './action-creator/communication/sending-message';
+import setPathSelectedMedia from "./action-creator/communication/set-path-selected-media";
+import setPasteImage from "./action-creator/communication/set-paste-image";
+import setPreviewImage from "./action-creator/communication/set-prewiew-image";
 
 export {
   getLogInUser,
   logOutUser,
-  changeControlFilter,
-  setCurrentChannel,
+  changeFilter,
+  setActiveChannel,
+  changeMessage,
+  sendingMessage,
+  setPathSelectedMedia,
+  setPasteImage,
+  setPreviewImage
 };
 
 

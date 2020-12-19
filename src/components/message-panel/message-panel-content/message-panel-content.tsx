@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import MessagePanelFullpage from "../message-panel-fullpage";
 
 import { connect } from "react-redux";
-import { TMapStateCurrentUser } from "../../control-panel/control-panel";
-
 import { TMessage } from "../../../types/reused-types";
 
 import './message-panel-content.scss';
+import { TAuth } from "../../../types/redux";
 
 type TMessagePanelContent = {
   message: TMessage
@@ -51,7 +50,7 @@ const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUse
   );
 };
 
-const mapStateToProps = ({ currentLoggedUser: { logInUser } }: TMapStateCurrentUser) => {
+const mapStateToProps = ({ auth: { logInUser } }: TAuth) => {
   return { logInUser }
 }
 

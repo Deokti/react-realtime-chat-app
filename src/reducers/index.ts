@@ -1,13 +1,15 @@
-import updateCurrentLoggedUser from "./current-logged-user";
-import updateCurrentControlFilter from "./current-control-filter";
-import updateCurrentActiveChannel from "./current-active-channel";
+import auth from "./auth";
+import filter from "./filter";
+import currentChannel from "./current-channel";
+import communication from "./communication";
 
 import { combineReducers } from "redux";
 
 const rootReducers = combineReducers({
-  currentLoggedUser: updateCurrentLoggedUser,
-  currentControlFilter: updateCurrentControlFilter,
-  currentChannel: updateCurrentActiveChannel,
+  auth: auth,
+  filter: filter,
+  currentChannel: currentChannel,
+  communication: communication
 });
 
 export default rootReducers;

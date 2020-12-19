@@ -28,13 +28,6 @@ export type TMessage = {
   }
 }
 
-// Тип для connect для получения текущей фильтрации отображения сообщений, личного чата, избранного
-export type TCurrentControlFilter = {
-  currentFilter: {
-    filterHeading: string
-    filterName: string
-  }
-}
 
 // Тип для connect для получения выбранного изображения
 export type TSelectedImage = {
@@ -46,4 +39,3 @@ export type TSelectedImageAction = {
   type: string
   payload: string | null
 }
-

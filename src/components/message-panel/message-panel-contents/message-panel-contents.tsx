@@ -8,18 +8,19 @@ import '../../../assets/styles/scrollbar.scss';
 
 
 type TMessagePanelContents = {
-  currentActiveChannel: TChannel
+  activeChannel: TChannel
   logInUser: any
   messageRef: TDatabaseRef
   scrollEndPage: boolean
   setScrollEndPage: (state: boolean) => void
 }
 
-const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveChannel, logInUser, messageRef, scrollEndPage, setScrollEndPage }: TMessagePanelContents) => {
+const MessagePanelContents: React.FC<TMessagePanelContents> = ({ activeChannel, logInUser, messageRef, scrollEndPage, setScrollEndPage }: TMessagePanelContents) => {
   const messagePanelContent = useRef<HTMLDivElement>(null);
   const messageWrapperRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Array<TMessage>>([]);
   const [idFirstMessage, setIdFirstMessage] = useState<string>('');
+  const [loadedPrevMessages, setLoadedPrevMessages] = useState<boolean>(false);
 
   const getMessagesById = useCallback((channelId: string) => {
     setMessages([]);
@@ -40,14 +41,14 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
   }, [getMessagesById])
 
   useEffect(() => {
-    if (currentActiveChannel && logInUser) {
-      getDataDatabase(currentActiveChannel.id);
+    if (activeChannel && logInUser) {
+      getDataDatabase(activeChannel.id);
     }
 
     return () => {
       messageRef.off();
     };
-  }, [currentActiveChannel, getDataDatabase, logInUser, messageRef]);
+  }, [activeChannel, getDataDatabase, logInUser, messageRef]);
 
   const scrollItemWhenNewData = useCallback(() => {
     const messageContent = messagePanelContent.current;
@@ -73,7 +74,13 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     setMessages((prevState) => [...array, ...prevState]);
   }, [setScrollEndPage])
 
+  const restorePreviousScrollPosition = (messageContent: HTMLDivElement | null, firstMessage: HTMLElement | null) => {
+    messageContent!.scrollTop = firstMessage!.offsetTop - 10;
+    setLoadedPrevMessages(false);
+  }
+
   const getPrevMessages = useCallback((channelId: string) => {
+    setLoadedPrevMessages(true);
     const messageContent = messagePanelContent.current;
     const firstMessage = messageWrapperRef.current?.firstElementChild as HTMLElement
 
@@ -84,9 +91,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
       .endAt(idFirstMessage)
       .once('value')
       .then(savePrevMessages)
-      .then(() => {
-        messageContent!.scrollTop = firstMessage!.offsetTop - 10;
-      })
+      .then(() => restorePreviousScrollPosition(messageContent, firstMessage))
   }, [idFirstMessage, messageRef, savePrevMessages]);
 
   const scrollTop = useCallback(() => {
@@ -94,11 +99,11 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
     const scroll = messageContent?.scrollTop;
 
     if (scroll === 0) {
-      getPrevMessages(currentActiveChannel.id)
+      getPrevMessages(activeChannel.id)
       return false;
     }
 
-  }, [currentActiveChannel, getPrevMessages])
+  }, [activeChannel, getPrevMessages])
 
   // Вешает событие скролла на элемент и удаляет его
   useEffect(() => {
@@ -112,6 +117,7 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ currentActiveCh
 
   return (
     <div className="message-panel-contents scrollbar-style" ref={messagePanelContent}>
+      {loadedPrevMessages && <span className="loaded-prev-messages" />}
       <div className="message-panel-contents__wrapper" ref={messageWrapperRef}>
         {
           messages.map((message: TMessage) => {

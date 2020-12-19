@@ -1,23 +1,42 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { PaperclipIcon } from "../../icon";
 import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
 import { v4 as uuidv4 } from 'uuid';
 import { storage } from "../../../config/firebase";
+import { setPreviewImage, setPathSelectedMedia, setPasteImage } from '../../../actions';
+
 
 import './message-panel-images.scss';
+import { TCommunication } from '../../../types/redux';
+import { connect } from 'react-redux';
+
+
+// message: '',
+//       loading: false,
+//       pathSelectedMedia: '',
+//       previewImage: null,
+//       pasteImage: '',
+//       uploadingSelectedFile: false,
 
 type TMessagePanelImages = {
+  communication: TCommunication
   changeMediaURLFile: (url: string) => void
-  message: string
-  changeMessage: (value: React.ChangeEvent<HTMLTextAreaElement>) => void
+  addingSelectedMedia: any
+  sendMessage: (message: string, mediaURL: string) => void
+  setAddingSelectedMedia: any
+  setPathSelectedMedia: (path: string) => void
+  setPreviewImage: (url: string | null) => void
+  sendLoadFile: boolean
+  setSendLoadFile: (state: boolean) => void
+  setPasteImage: (paste: string) => void
 }
 
-const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile, message, changeMessage }: TMessagePanelImages) => {
-  const [ addingSelectedMedia, setAddingSelectedMedia ] = useState<File | null>(null);
-  const [ pathSelectedMedia, setPathSelectedMedia ] = useState<string>('');
-  const [ previewImage, setPreviewImage ] = useState<any>('');
-  const [ sendLoadFile, setSendLoadFile ] = useState<boolean>(false);
+const MessagePanelImages: React.FC<TMessagePanelImages> = (
+  { changeMediaURLFile, addingSelectedMedia, setAddingSelectedMedia,
+    setPathSelectedMedia, sendMessage, setPasteImage,
+    setPreviewImage, sendLoadFile, setSendLoadFile, communication
+  }: TMessagePanelImages) => {
 
   const setCurrentMedia = (getFile: null | File, valueFile: string) => {
     setAddingSelectedMedia(getFile);
@@ -38,6 +57,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
   const closeModal = () => {
     setPreviewImage(null);
     setPathSelectedMedia('');
+    setPreviewImage(null);
+    setPasteImage('');
   };
 
   const addFileInState = (file: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +68,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
     getUrlImage(getFile);
   }
 
-  const onSendFile = async () => {
-    await sendFileToStorage();
-  }
-
   const isValidTypesFile = (type: null | string | undefined) => {
-    if (type) return [ 'image/png', 'image/jpeg' ].includes(type)
+    if (type) return ['image/png', 'image/jpeg', 'image/svg+xml'].includes(type)
   };
 
   const sendFileToStorage = async () => {
@@ -72,13 +89,20 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
     }
   }
 
+  const onSendFile = async () => {
+    if ((communication.pasteImage).trim().length > 0) {
+      sendMessage(communication.message, communication.pasteImage);
+      return false;
+    }
+
+    await sendFileToStorage();
+  }
+
   return (
     <React.Fragment>
-      {previewImage
+      {communication.previewImage
         ? <MessagePanelPreview
-          message={message}
-          changeMessage={changeMessage}
-          previewImage={previewImage}
+          previewImage={communication.previewImage}
           closeModal={closeModal}
           sendLoadFile={sendLoadFile}
           onSendFile={onSendFile} />
@@ -90,7 +114,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
           <input
             type="file"
             className="message-panel-image__file"
-            value={pathSelectedMedia}
+            value=""
             onChange={addFileInState}
           />
         </label>
@@ -99,4 +123,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = ({ changeMediaURLFile,
   )
 };
 
-export default memo(MessagePanelImages);
+const mapStateToProps = ({ communication }: { communication: TCommunication }) => {
+  return { communication }
+}
+
+export default memo(connect(mapStateToProps, { setPreviewImage, setPathSelectedMedia, setPasteImage })(MessagePanelImages));

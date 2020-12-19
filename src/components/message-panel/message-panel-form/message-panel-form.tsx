@@ -1,45 +1,48 @@
 import React, { memo, useCallback, useState } from "react";
 import Button from "../../button";
-import lessTenAddZero from "../../../utils/less-ten-add-zero";
 import MessagePanelImages from "../message-panel-images";
 import { SendMessageIcon } from "../../icon";
-
+import { changeMessage, sendingMessage, setPasteImage, setPreviewImage, setPathSelectedMedia } from '../../../actions';
 import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
+
+import { TCommunication } from "../../../types/redux";
+import { connect } from "react-redux";
+
+import { timeWhenMessageSent } from "../../../utils/create-message-time";
 
 import './message-panel-form.scss';
 
 type TMessagePanelForm = {
   logInUser: any
-  currentActiveChannel: TChannel
+  activeChannel: TChannel
   messageRef: TDatabaseRef
   setScrollEndPage: (state: boolean) => void
+  communication: TCommunication
+  changeMessage: (message: string) => void
+  sendingMessage: (load: boolean) => void
+  setPasteImage: (url: string) => void
+  setPreviewImage: (url: string | null) => void
+  setPathSelectedMedia: (path: string) => void
 }
 
-const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiveChannel, messageRef, setScrollEndPage }: TMessagePanelForm) => {
+const MessagePanelForm: React.FC<TMessagePanelForm> = (
+  { logInUser, activeChannel, messageRef, setScrollEndPage,
+    communication, changeMessage, sendingMessage, setPasteImage,
+    setPreviewImage, setPathSelectedMedia
+  }: TMessagePanelForm) => {
 
-  const [message, setMessage] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [addingSelectedMedia, setAddingSelectedMedia] = useState<File | null>(null);
+  const [sendLoadFile, setSendLoadFile] = useState<boolean>(false);
 
   const handlerTextareaChang = useCallback((event: React.FormEvent<HTMLInputElement>): void => {
-    setMessage(event.currentTarget.value);
-  }, [])
-
-  // Записывает вводимое в input значение в состояние
-  const changeMessage = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(event.currentTarget.value);
-  }
-
-  // Создаём время и проверяет его на if < 10 + 0
-  const createTime = (): string => {
-    const date = new Date();
-    return `${lessTenAddZero(date.getHours())}:${lessTenAddZero(date.getMinutes())}`;
-  }
+    changeMessage(event.currentTarget.value)
+  }, [changeMessage])
 
   // Структура одного сообщения
   const createMessage = useCallback((messageContent: string, fileMessageURL: string = ''): TMessage => {
     return {
       id: Date.now().toString(),
-      time: createTime(),
+      time: timeWhenMessageSent(),
       messageContent: messageContent,
       fileMessageURL: fileMessageURL,
       authorMessage: {
@@ -48,57 +51,84 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
         id: (logInUser && logInUser.uid)
       }
     }
-  }, [logInUser])
+  }, [logInUser]);
+
+  const resetState = useCallback(() => {
+    console.log('Сообщение отправлено в базу данных');
+    sendingMessage(false);
+    setScrollEndPage(true);
+    changeMessage('')
+    setPreviewImage(null);
+    setPasteImage('');
+    setPathSelectedMedia('');
+  }, [changeMessage, sendingMessage, setPasteImage, setPathSelectedMedia, setPreviewImage, setScrollEndPage]);
 
   // Отправка сообщения, которое сохраняется под идентификатором чата
   const sendMessage = useCallback((message: string, mediaURL: string = '') => {
 
     if (message.trim().length || mediaURL) {
-      setLoading(true);
-      const { id: channelId } = currentActiveChannel;
+      sendingMessage(true);
+      const { id: channelId } = activeChannel;
       messageRef
         .child(channelId)
         .push()
         .set(createMessage(message.trim(), mediaURL))
-        .then(() => {
-          console.log('Сообщение отправлено в базу данных');
-          setLoading(false);
-          setScrollEndPage(true);
-          setMessage('');
-        })
+        .then(resetState)
     }
-  }, [createMessage, currentActiveChannel, messageRef, setScrollEndPage]);
+  }, [sendingMessage, activeChannel, messageRef, createMessage, resetState]);
 
   const changeMediaURLFile = useCallback((url: string): void => {
-    sendMessage(message, url);
-  }, [message, sendMessage])
-
+    sendMessage(communication.message, url);
+  }, [communication.message, sendMessage])
 
   const onSubmitForm = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
 
-    await sendMessage(message);
-  }, [message, sendMessage])
+    await sendMessage(communication.message);
+  }, [communication.message, sendMessage])
+
+
+  const onPasteImage = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    const div = document.createElement('div');
+    div.innerHTML = event.clipboardData.getData('text/html');
+    const getUrl = div.querySelector('img')?.src;
+
+    if (/^(ftp|http|https):\/\/[^ "]+$/.test(getUrl as string)) {
+      setPasteImage(getUrl as string);
+      setPathSelectedMedia(getUrl as string)
+      setPreviewImage(getUrl as string)
+    }
+  }
 
   return (
     <div className="message-panel-form">
       <div className="message-panel-form__add-file">
         <MessagePanelImages
           changeMediaURLFile={changeMediaURLFile}
-          message={message}
-          changeMessage={changeMessage}
+          sendMessage={sendMessage}
+          addingSelectedMedia={addingSelectedMedia}
+          setAddingSelectedMedia={setAddingSelectedMedia}
+          sendLoadFile={sendLoadFile}
+          setSendLoadFile={setSendLoadFile}
         />
       </div>
       <form className="message-panel-form__form" onSubmit={onSubmitForm}>
-        <label className={`message-panel-form__label ${message.length > 0 ? 'message-panel-form__write' : ''}`}>
+        <label className={`message-panel-form__label ${communication.message.length > 0 ? 'message-panel-form__write' : ''}`}>
           <input
             className="message-panel-form__input"
+            onPaste={onPasteImage}
             onChange={handlerTextareaChang}
-            value={message}
+            value={communication.message}
           />
           <span className="message-panel-form__placeholder">Написать сообщение...</span>
         </label>
-        <Button className="message-panel-form__send" loading={loading} disabled={loading} onClick={onSubmitForm}>
+
+        <Button
+          className="message-panel-form__send"
+          loading={communication.loading}
+          disabled={communication.loading}
+          onClick={onSubmitForm}
+        >
           <SendMessageIcon />
         </Button>
       </form>
@@ -106,4 +136,11 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = ({ logInUser, currentActiv
   )
 };
 
-export default memo(MessagePanelForm);
+const mapStateToProps = ({ communication }: { communication: TCommunication }) => {
+  return { communication }
+}
+
+export default memo(
+  connect(mapStateToProps,
+    { changeMessage, sendingMessage, setPasteImage, setPreviewImage, setPathSelectedMedia }
+  )(MessagePanelForm));

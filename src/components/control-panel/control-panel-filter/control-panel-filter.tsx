@@ -1,22 +1,21 @@
 import React, { useCallback } from "react";
 import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
-import { changeControlFilter } from '../../../actions';
+import { changeFilter } from '../../../actions';
 import { connect } from "react-redux";
+import { TFilter } from "../../../types/redux";
 
 import './control-panel-filter.scss';
-import { TCurrentControlFilter } from "../../../types/reused-types";
-
 
 type TControlPanelFilter = {
-  changeControlFilter: (filterHeading: string, filterName: string) => void
+  changeFilter: (filterHeading: string, filterName: string) => void
   currentFilter: {
     filterHeading: string,
     filterName: string
   }
 }
 
-const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter, currentFilter }: TControlPanelFilter) => {
+const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, currentFilter }: TControlPanelFilter) => {
   const controlPanelStatus = [
     { name: 'FAVORITES', title: 'Избранные каналы', component: <FavoritesIcon /> },
     { name: 'CHANNELS', title: 'Чат-каналы', component: <ChannelsIcon /> },
@@ -25,9 +24,9 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter
 
   const toggleCurrentStatus = useCallback((title: string, name: string) => {
     if (currentFilter.filterName !== name) {
-      changeControlFilter(title, name)
+      changeFilter(title, name)
     }
-  }, [changeControlFilter, currentFilter.filterName]);
+  }, [changeFilter, currentFilter.filterName]);
 
   return (
     <ul className="control-panel-status">
@@ -50,11 +49,11 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeControlFilter
 };
 
 type TMapStateToProps = {
-  currentControlFilter: TCurrentControlFilter
+  filter: TFilter
 }
 
-const mapStateToProps = ({ currentControlFilter: { currentFilter } }: TMapStateToProps) => {
+const mapStateToProps = ({ filter: { currentFilter } }: TMapStateToProps) => {
   return { currentFilter }
 }
 
-export default connect(mapStateToProps, { changeControlFilter })(ControlPanelFilter);
+export default connect(mapStateToProps, { changeFilter })(ControlPanelFilter);

@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
 import { database } from "../../config/firebase";
-import { TChannel, TDatabaseRef, TDatabaseSnapshot, TCurrentControlFilter } from "../../types/reused-types";
+import { TChannel, TDatabaseRef, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
 import './channels-panel.scss';
+import { TFilter } from "../../types/redux";
 
 type TChannelsPanel = {
   currentFilter: {
@@ -15,13 +16,13 @@ type TChannelsPanel = {
 }
 
 const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
-  const [ channels, setChannels ] = useState<Array<TChannel>>([]);
+  const [channels, setChannels] = useState<Array<TChannel>>([]);
   const channelRef: TDatabaseRef = useMemo(() => database.ref("CHANNELS"), []);
 
   const getChannels = useCallback(() => {
     channelRef.on("child_added", (snapshot: TDatabaseSnapshot) => {
-        setChannels((prevState) => [...prevState, snapshot.val()]);
-      })
+      setChannels((prevState) => [...prevState, snapshot.val()]);
+    })
   }, [channelRef]);
 
 
@@ -40,7 +41,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
   return (
     <div className="channels-panel">
       <header className="channels-panel__header">
-        <h2 className="channels-panel__heading">{ currentFilter.filterHeading}</h2>
+        <h2 className="channels-panel__heading">{currentFilter.filterHeading}</h2>
       </header>
 
       <div className="channels-panel__list">
@@ -51,10 +52,10 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
 };
 
 type TMapStateToProps = {
-  currentControlFilter: TCurrentControlFilter
+  filter: TFilter
 }
 
-const mapStateToProps = ({ currentControlFilter: { currentFilter } }: TMapStateToProps) => {
+const mapStateToProps = ({ filter: { currentFilter } }: TMapStateToProps) => {
   return { currentFilter }
 }
 
