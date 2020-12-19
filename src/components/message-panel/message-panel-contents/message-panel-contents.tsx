@@ -41,12 +41,14 @@ const MessagePanelContents: React.FC<TMessagePanelContents> = ({ activeChannel, 
   }, [getMessagesById])
 
   useEffect(() => {
+    let isMounted = true;
     if (activeChannel && logInUser) {
-      getDataDatabase(activeChannel.id);
+      if (isMounted) getDataDatabase(activeChannel.id);
     }
 
     return () => {
       messageRef.off();
+      isMounted = false;
     };
   }, [activeChannel, getDataDatabase, logInUser, messageRef]);
 

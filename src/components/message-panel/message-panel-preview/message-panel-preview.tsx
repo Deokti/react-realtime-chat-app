@@ -17,10 +17,11 @@ type MessagePanelPreview = {
   sendLoadFile: boolean
   message: string
   changeMessage: (message: string) => void
+  imageCompress: boolean
 }
 
 const MessagePanelPreview: React.FC<MessagePanelPreview> = (
-  { previewImage, closeModal, onSendFile, sendLoadFile, message, changeMessage }: MessagePanelPreview) => {
+  { previewImage, closeModal, onSendFile, sendLoadFile, message, changeMessage, imageCompress }: MessagePanelPreview) => {
 
   const handlerTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     changeMessage(event.currentTarget.value);
@@ -31,7 +32,7 @@ const MessagePanelPreview: React.FC<MessagePanelPreview> = (
       <div className="message-panel-modal__wrapper">
 
         {sendLoadFile
-          ? <Spinner position="static" text="Файл отправляется..." backgroundColor="transparent" />
+          ? <Spinner position="static" text={imageCompress ? 'Сжатие изображения...' : 'Файл отправляется...'} backgroundColor="transparent" />
           : (
             <React.Fragment>
               <div className="message-panel-modal__header">

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { PaperclipIcon } from "../../icon";
 import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
@@ -6,18 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { storage } from "../../../config/firebase";
 import { setPreviewImage, setPathSelectedMedia, setPasteImage } from '../../../actions';
 
-
-import './message-panel-images.scss';
 import { TCommunication } from '../../../types/redux';
 import { connect } from 'react-redux';
 
+import imageCompression from 'browser-image-compression';
 
-// message: '',
-//       loading: false,
-//       pathSelectedMedia: '',
-//       previewImage: null,
-//       pasteImage: '',
-//       uploadingSelectedFile: false,
+import './message-panel-images.scss';
 
 type TMessagePanelImages = {
   communication: TCommunication
@@ -37,6 +31,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     setPathSelectedMedia, sendMessage, setPasteImage,
     setPreviewImage, sendLoadFile, setSendLoadFile, communication
   }: TMessagePanelImages) => {
+
+  const [imageCompress, setImageCompress] = useState<boolean>(false);
 
   const setCurrentMedia = (getFile: null | File, valueFile: string) => {
     setAddingSelectedMedia(getFile);
@@ -61,7 +57,12 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     setPasteImage('');
   };
 
-  const addFileInState = (file: React.ChangeEvent<HTMLInputElement>) => {
+  const onProgress = () => {
+    console.log('Изображение сжимается');
+
+  }
+
+  const addFileInState = async (file: React.ChangeEvent<HTMLInputElement>) => {
     const getFile = file.target.files && file.target.files[0];
 
     setCurrentMedia(getFile, file.target.value);
@@ -72,20 +73,44 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     if (type) return ['image/png', 'image/jpeg', 'image/svg+xml'].includes(type)
   };
 
+
+  const compressImage = async (getFile: File) => {
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      onProgress: onProgress,
+      useWebWorker: true
+    }
+
+    try {
+      setImageCompress(true);
+      return await imageCompression(getFile!, options);
+    } catch (error) {
+      console.error(`Ошибки ${error} в функции addFileInState`);
+    }
+  }
+
   const sendFileToStorage = async () => {
     if (addingSelectedMedia && isValidTypesFile(addingSelectedMedia?.type)) {
-      setSendLoadFile(true);
-      const ref = storage.ref();
-      const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
+      try {
+        setSendLoadFile(true);
+        const ref = storage.ref();
+        const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
+        const fileRef = ref.child(pathStorageInPublicChannel)
+        const compressed = await compressImage(addingSelectedMedia)
 
-      const fileRef = ref.child(pathStorageInPublicChannel)
+        if (compressed) {
+          await setImageCompress(false);
+          await fileRef.put(compressed)
+          const getFileUrl = await fileRef.getDownloadURL();
 
-      await fileRef.put(addingSelectedMedia)
-      const getFileUrl = await fileRef.getDownloadURL();
-
-      await changeMediaURLFile(getFileUrl);
-      await setSendLoadFile(false);
-      await closeModal();
+          await changeMediaURLFile(getFileUrl);
+          await setSendLoadFile(false);
+          await closeModal();
+        }
+      } catch (error) {
+        console.error(`Ошибки ${error} в функции sendFileToStorage`);
+      }
     }
   }
 
@@ -105,6 +130,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
           previewImage={communication.previewImage}
           closeModal={closeModal}
           sendLoadFile={sendLoadFile}
+          imageCompress={imageCompress}
           onSendFile={onSendFile} />
         : null}
 
