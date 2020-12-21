@@ -32,6 +32,11 @@
     width: auto;
     background-color: transparent;
 
+    &:focus {
+      outline: none;
+      border: none;
+    }
+
     &:hover {
       background-color: transparent;
 

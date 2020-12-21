@@ -22,4 +22,6 @@ export type TCommunication = {
   pathSelectedMedia: string
   previewImage: string | null
   uploadingSelectedFile: boolean
+  imageCompress: boolean
+  uploadImageProgress: number | null
 }

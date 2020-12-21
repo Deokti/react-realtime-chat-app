@@ -1,10 +1,10 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { PaperclipIcon } from "../../icon";
 import MessagePanelPreview from "../message-panel-preview/message-panel-preview";
 
 import { v4 as uuidv4 } from 'uuid';
 import { storage } from "../../../config/firebase";
-import { setPreviewImage, setPathSelectedMedia, setPasteImage } from '../../../actions';
+import { setPreviewImage, setPathSelectedMedia, setPasteImage, setUploadImageProgress, changeImageCompress } from '../../../actions';
 
 import { TCommunication } from '../../../types/redux';
 import { connect } from 'react-redux';
@@ -24,15 +24,16 @@ type TMessagePanelImages = {
   sendLoadFile: boolean
   setSendLoadFile: (state: boolean) => void
   setPasteImage: (paste: string) => void
+  setUploadImageProgress: (progress: number) => void
+  changeImageCompress: (state: boolean) => void
 }
 
 const MessagePanelImages: React.FC<TMessagePanelImages> = (
   { changeMediaURLFile, addingSelectedMedia, setAddingSelectedMedia,
-    setPathSelectedMedia, sendMessage, setPasteImage,
+    setPathSelectedMedia, sendMessage,
+    setPasteImage, changeImageCompress, setUploadImageProgress,
     setPreviewImage, sendLoadFile, setSendLoadFile, communication
   }: TMessagePanelImages) => {
-
-  const [imageCompress, setImageCompress] = useState<boolean>(false);
 
   const setCurrentMedia = (getFile: null | File, valueFile: string) => {
     setAddingSelectedMedia(getFile);
@@ -57,11 +58,6 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     setPasteImage('');
   };
 
-  const onProgress = () => {
-    console.log('Изображение сжимается');
-
-  }
-
   const addFileInState = async (file: React.ChangeEvent<HTMLInputElement>) => {
     const getFile = file.target.files && file.target.files[0];
 
@@ -73,6 +69,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     if (type) return ['image/png', 'image/jpeg', 'image/svg+xml'].includes(type)
   };
 
+  const onProgress = (progress: number) => setUploadImageProgress(progress);
 
   const compressImage = async (getFile: File) => {
     const options = {
@@ -83,10 +80,29 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     }
 
     try {
-      setImageCompress(true);
+      changeImageCompress(true);
       return await imageCompression(getFile!, options);
     } catch (error) {
       console.error(`Ошибки ${error} в функции addFileInState`);
+    }
+  }
+
+  const uploadFile = async (compressed: Blob) => {
+    const ref = storage.ref();
+    const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
+
+    if (compressed) {
+      const uploadFile = ref.child(pathStorageInPublicChannel).put(compressed);
+      uploadFile
+        .on('state_changed', upload => {
+          const progress = Math.floor((upload.bytesTransferred / upload.totalBytes) * 100);
+          onProgress(progress);
+        }, null, async () => {
+          const getURL = await uploadFile.snapshot.ref.getDownloadURL();
+          changeMediaURLFile(getURL);
+          setSendLoadFile(false);
+          closeModal();
+        });
     }
   }
 
@@ -94,20 +110,8 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
     if (addingSelectedMedia && isValidTypesFile(addingSelectedMedia?.type)) {
       try {
         setSendLoadFile(true);
-        const ref = storage.ref();
-        const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
-        const fileRef = ref.child(pathStorageInPublicChannel)
-        const compressed = await compressImage(addingSelectedMedia)
-
-        if (compressed) {
-          await setImageCompress(false);
-          await fileRef.put(compressed)
-          const getFileUrl = await fileRef.getDownloadURL();
-
-          await changeMediaURLFile(getFileUrl);
-          await setSendLoadFile(false);
-          await closeModal();
-        }
+        const compressed = await compressImage(addingSelectedMedia);
+        if (compressed) await uploadFile(compressed);
       } catch (error) {
         console.error(`Ошибки ${error} в функции sendFileToStorage`);
       }
@@ -130,7 +134,6 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
           previewImage={communication.previewImage}
           closeModal={closeModal}
           sendLoadFile={sendLoadFile}
-          imageCompress={imageCompress}
           onSendFile={onSendFile} />
         : null}
 
@@ -153,4 +156,15 @@ const mapStateToProps = ({ communication }: { communication: TCommunication }) =
   return { communication }
 }
 
-export default memo(connect(mapStateToProps, { setPreviewImage, setPathSelectedMedia, setPasteImage })(MessagePanelImages));
+export default memo(
+  connect(
+    mapStateToProps,
+    {
+      setPreviewImage,
+      setPathSelectedMedia,
+      setPasteImage,
+      setUploadImageProgress,
+      changeImageCompress
+    })
+    (MessagePanelImages)
+);
