@@ -1,4 +1,4 @@
-import { CHANGE_MESSAGE, PASTE_IMAGE, PREVIEW_IMAGE, SENDING_MESSAGE, SET_PATH_SELECTED_MEDIA } from "../actions/TYPES";
+import { CHANGE_IMAGE_COMPRESS, CHANGE_MESSAGE, PASTE_IMAGE, PREVIEW_IMAGE, SENDING_MESSAGE, SET_PATH_SELECTED_MEDIA, UPLOAD_IMAGE_PROGRESS } from "../actions/TYPES";
 import { TCommunication } from "../types/redux";
 
 
@@ -11,6 +11,8 @@ const communication = (state: TCommunication, action: any): TCommunication => {
       previewImage: null,
       pasteImage: '',
       uploadingSelectedFile: false,
+      imageCompress: false,
+      uploadImageProgress: null
     }
   }
 
@@ -47,6 +49,20 @@ const communication = (state: TCommunication, action: any): TCommunication => {
       return {
         ...state,
         previewImage: action.payload
+      }
+    }
+
+    case CHANGE_IMAGE_COMPRESS: {
+      return {
+        ...state,
+        imageCompress: action.payload
+      }
+    }
+
+    case UPLOAD_IMAGE_PROGRESS: {
+      return {
+        ...state,
+        uploadImageProgress: action.payload
       }
     }
 

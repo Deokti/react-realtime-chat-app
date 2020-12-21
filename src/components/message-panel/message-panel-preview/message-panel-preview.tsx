@@ -18,10 +18,13 @@ type MessagePanelPreview = {
   message: string
   changeMessage: (message: string) => void
   imageCompress: boolean
+  uploadImageProgress: number | null
 }
 
 const MessagePanelPreview: React.FC<MessagePanelPreview> = (
-  { previewImage, closeModal, onSendFile, sendLoadFile, message, changeMessage, imageCompress }: MessagePanelPreview) => {
+  { previewImage, closeModal, onSendFile, sendLoadFile,
+    message, changeMessage, imageCompress, uploadImageProgress
+  }: MessagePanelPreview) => {
 
   const handlerTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     changeMessage(event.currentTarget.value);
@@ -32,7 +35,15 @@ const MessagePanelPreview: React.FC<MessagePanelPreview> = (
       <div className="message-panel-modal__wrapper">
 
         {sendLoadFile
-          ? <Spinner position="static" text={imageCompress ? 'Сжатие изображения...' : 'Файл отправляется...'} backgroundColor="transparent" />
+          ? (
+            <React.Fragment>
+              <Spinner position="static" backgroundColor="transparent" />
+              <div className="message-panel-modal__progress">
+                <span className="message-panel-modal__progress-text">{imageCompress ? `Сжатие изображения...` : 'Файл отправляется...'}</span>
+                <span className="message-panel-modal__progress-per-percentage">{uploadImageProgress}%</span>
+              </div>
+            </React.Fragment>
+          )
           : (
             <React.Fragment>
               <div className="message-panel-modal__header">
@@ -65,8 +76,8 @@ const MessagePanelPreview: React.FC<MessagePanelPreview> = (
   );
 };
 
-const mapStateToProps = ({ communication: { message } }: { communication: TCommunication }) => {
-  return { message }
+const mapStateToProps = ({ communication: { message, uploadImageProgress, imageCompress } }: { communication: TCommunication }) => {
+  return { message, uploadImageProgress, imageCompress }
 }
 
 export default memo(connect(mapStateToProps, { changeMessage })(MessagePanelPreview))

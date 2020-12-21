@@ -47,7 +47,7 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
   }, [onAuthStateChanged]);
 
   return isLoaded
-    ? <Spinner />
+    ? <Spinner text="Подождите, идёт загрузка..." />
     : (
       <Switch>
         <Route path='/' exact component={App} />
