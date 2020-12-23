@@ -90,6 +90,7 @@ const MessagePanelImages: React.FC<TMessagePanelImages> = (
   const uploadFile = async (compressed: Blob) => {
     const ref = storage.ref();
     const pathStorageInPublicChannel = `/channels/public/${uuidv4()}.jpg`;
+    changeImageCompress(false);
 
     if (compressed) {
       const uploadFile = ref.child(pathStorageInPublicChannel).put(compressed);

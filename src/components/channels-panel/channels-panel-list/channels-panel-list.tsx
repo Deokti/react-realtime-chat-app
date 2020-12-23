@@ -8,37 +8,45 @@ import { TChannel } from "../../../types/reused-types";
 
 import './channels-panel-list.scss';
 import { TSetActivetChannel } from "../../../actions/action-creator/active-channel/set-active-channel";
+import { TUser } from "../../../types/redux";
+
 
 type TChannelsPanelList = {
   channels: Array<TChannel>
   setActiveChannel: (channel: TChannel) => TSetActivetChannel
   activeChannel: TChannel
+  user: boolean
 }
 
-const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setActiveChannel, activeChannel }: TChannelsPanelList) => {
-
-  const [idCurrentChannel, setIdCurrentChannel] = useState<string>('');
-
+const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setActiveChannel, activeChannel, user }: TChannelsPanelList) => {
   const setChannelAndIdChannel = (channel: TChannel) => {
     if (activeChannel && activeChannel.id === channel.id) return false;
-
     setActiveChannel(channel);
-    setIdCurrentChannel(channel.id);
+  }
+
+  const createItem = (item: TChannel & TUser, isActive: boolean) => {
+    const isUser = user ? 'channels-panel-list__user' : '';
+
+    return (
+      <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser}`}
+        key={item.id.toString()}
+        onClick={() => setChannelAndIdChannel(item)}
+      >
+        {user && <div className="channels-panel-list__avatar"><img src={item.avatar} alt={item.username} /></div>}
+        <div className="channels-panel-list__info">
+          <span className="channels-panel-list__name">{user ? item.username : `# ${item.channelName}`}</span>
+          {user && <span className="channels-panel-list__description">{isActive ? 'Вы общаетесь' : 'Написать человеку'}</span>}
+        </div>
+      </li>
+    )
   }
 
   return (
     <ul className="channels-panel-list">
       {
-        channels.map((item: TChannel) => {
-          const addActiveClass = idCurrentChannel === item.id ? 'active' : '';
-
-          return (
-            <li className={`channels-panel-list__item ${addActiveClass}`}
-              key={item.id.toString()}
-              onClick={() => setChannelAndIdChannel(item)}>
-              <span className="channels-panel-list__item-label"># {item.channelName}</span>
-            </li>
-          );
+        channels.map((item: any) => {
+          const isActive = activeChannel?.id === item.id;
+          return createItem(item, isActive)
         })
       }
     </ul>
