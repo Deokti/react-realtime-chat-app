@@ -1,42 +1,52 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
 import { database } from "../../config/firebase";
-import { TChannel, TDatabaseRef, TDatabaseSnapshot } from "../../types/reused-types";
+import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
 import './channels-panel.scss';
-import { TFilter } from "../../types/redux";
+import { TAuthUser, TFilter } from "../../types/redux";
+import { firebaseRef } from "../../config/ref";
+import { changeIsUser } from '../../actions';
 
 type TChannelsPanel = {
   currentFilter: {
     filterHeading: string,
     filterName: string
   }
+  logInUser: any
+  changeIsUser: (isUser: boolean) => any;
 }
 
-const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPanel) => {
+const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, changeIsUser }: TChannelsPanel): JSX.Element => {
   const [channels, setChannels] = useState<Array<TChannel>>([]);
-  const channelRef: TDatabaseRef = useMemo(() => database.ref("CHANNELS"), []);
+  const [user, setUser] = useState(false);
 
-  const getChannels = useCallback(() => {
-    channelRef.on("child_added", (snapshot: TDatabaseSnapshot) => {
-      setChannels((prevState) => [...prevState, snapshot.val()]);
-    })
-  }, [channelRef]);
+  const getFilter = useCallback((filter: string, logInUser: any) => {
+    getChannels(filter, logInUser);
+  }, [])
+
+  const getChannels = (filter: string, logInUser: any) => {
+    setChannels([]);
+    database.ref(filter)
+      .on("child_added", (snapshot: TDatabaseSnapshot) => {
+        if (snapshot.key !== logInUser.uid) {
+          setChannels((prevState) => [...prevState, snapshot.val()]);
+        }
+      })
+  };
 
 
   useEffect(() => {
-    getChannels();
-    return () => {
-      getChannels();
-      channelRef.off();
-    };
-  }, [channelRef, getChannels]);
+    getFilter(currentFilter.filterName, logInUser)
+  }, [currentFilter.filterName, getFilter, logInUser]);
 
-  const filter = (channels: Array<TChannel>, type: string) => {
-    return channels.filter((item: any) => item.type === type);
-  }
+  useEffect(() => {
+    const isUser = currentFilter.filterName === firebaseRef.USERS ? true : false;
+    changeIsUser(isUser);
+    setUser(isUser);
+  }, [changeIsUser, currentFilter.filterName])
 
   return (
     <div className="channels-panel">
@@ -45,7 +55,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
       </header>
 
       <div className="channels-panel__list">
-        <ChannelsPanelList channels={filter(channels, currentFilter.filterName)} />
+        <ChannelsPanelList channels={channels} user={user} />
       </div>
     </div>
   )
@@ -53,10 +63,11 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter }: TChannelsPan
 
 type TMapStateToProps = {
   filter: TFilter
+  auth: TAuthUser
 }
 
-const mapStateToProps = ({ filter: { currentFilter } }: TMapStateToProps) => {
-  return { currentFilter }
+const mapStateToProps = ({ filter: { currentFilter }, auth: { logInUser } }: TMapStateToProps) => {
+  return { currentFilter, logInUser }
 }
 
-export default connect(mapStateToProps)(ChannelsPanel);
+export default connect(mapStateToProps, { changeIsUser })(ChannelsPanel);

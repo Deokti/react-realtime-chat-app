@@ -9,20 +9,23 @@ import { TDatabaseRef, TChannel } from "../../types/reused-types";
 import { connect } from "react-redux";
 
 import './message-panel.scss';
-import { TAuth } from '../../types/redux';
+import { TAuth, TCommunication } from '../../types/redux';
+
 
 type TMessagePanel = {
-  activeChannel: TChannel
+  activeChannel: any
   logInUser: any
+  isUser: boolean
 }
 
-const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser }: TMessagePanel) => {
+const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser, isUser }: TMessagePanel) => {
   const messageRef: TDatabaseRef = useMemo(() => database.ref('MESSAGES'), []);
   const [scrollEndPage, setScrollEndPage] = useState<boolean>(false);
 
   return (
     <div className="message-panel">
-      <MessagePanelHeader channelName={activeChannel && activeChannel.channelName} />
+      <MessagePanelHeader channelName={activeChannel && (isUser ? activeChannel.username : activeChannel.channelName)} />
+
       <MessagePanelContents
         key={activeChannel && activeChannel.id}
         activeChannel={activeChannel}
@@ -48,13 +51,15 @@ export type TCurrentChannel = {
   currentChannel: {
     activeChannel: TChannel
   }
+  communication: TCommunication
 }
 
 const mapStateCurrentUser = ({
   auth: { logInUser },
   currentChannel: { activeChannel },
+  communication: { isUser }
 }: TAuth & TCurrentChannel) => {
-  return { logInUser, activeChannel }
+  return { logInUser, activeChannel, isUser }
 }
 
 export default connect(mapStateCurrentUser)(MessagePanel);

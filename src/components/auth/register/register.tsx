@@ -12,6 +12,7 @@ import compose from "../../../utils/compose";
 import './register.scss';
 import '../form-redirect.scss';
 import { routerPath } from "../../../config/router-path";
+import { firebaseRef } from '../../../config/ref';
 
 export type TUserRegister = {
   username: string
@@ -32,7 +33,8 @@ type TRegisterForm = {
 
 const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
   const onCreatedUserInDatabase = useCallback((createdUser) => {
-    return database.ref('USERS').child(createdUser.user.uid).set({
+    return database.ref(firebaseRef.USERS).child(createdUser.user.uid).set({
+      id: createdUser.user.uid,
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL
     });

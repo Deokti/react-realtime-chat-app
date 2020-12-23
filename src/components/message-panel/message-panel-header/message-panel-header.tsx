@@ -12,7 +12,7 @@ const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ channelName }: TMes
   return (
     <header className="message-panel-header">
       <div className="message-panel-header__channel-info">
-        <h3 className="message-panel-header__title">{channelName === null ? 'Куда хотели бы написать?' : channelName}</h3>
+        <h3 className="message-panel-header__title">{!channelName ? 'Куда хотели бы написать?' : channelName}</h3>
         <span className="message-panel-header__participant">2 участника</span>
       </div>
 

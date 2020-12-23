@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { TFilter } from "../../../types/redux";
 
 import './control-panel-filter.scss';
+import { firebaseRef } from "../../../config/ref";
 
 type TControlPanelFilter = {
   changeFilter: (filterHeading: string, filterName: string) => void
@@ -18,8 +19,8 @@ type TControlPanelFilter = {
 const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, currentFilter }: TControlPanelFilter) => {
   const controlPanelStatus = [
     { name: 'FAVORITES', title: 'Избранные каналы', component: <FavoritesIcon /> },
-    { name: 'CHANNELS', title: 'Чат-каналы', component: <ChannelsIcon /> },
-    { name: 'CHATS', title: 'Личные сообщения', component: <ChatsIcon /> },
+    { name: firebaseRef.CHANNELS, title: 'Чат-каналы', component: <ChannelsIcon /> },
+    { name: firebaseRef.USERS, title: 'Личные сообщения', component: <ChatsIcon /> },
   ]
 
   const toggleCurrentStatus = useCallback((title: string, name: string) => {
@@ -33,6 +34,7 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, curre
       {
         controlPanelStatus.map(({ name, title, component }) => {
           const activeClass = currentFilter.filterName === name ? 'active' : '';
+
           return (
             <li key={name}
               onClick={() => toggleCurrentStatus(title, name)}

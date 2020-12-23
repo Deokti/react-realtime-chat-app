@@ -1,9 +1,5 @@
 import { LOG_IN_USER, LOG_OUT_USER } from "../actions/TYPES";
-
-export type TUpdateUser = {
-  logInUser: object | null
-  isLoaded: boolean
-}
+import { TAuthUser } from "../types/redux";
 
 type TUpdateUserAction = {
   type: string
@@ -13,7 +9,7 @@ type TUpdateUserAction = {
   }
 }
 
-const auth = (state: TUpdateUser, action: TUpdateUserAction): TUpdateUser => {
+const auth = (state: TAuthUser, action: TUpdateUserAction): TAuthUser => {
   if (state === undefined) {
     return {
       logInUser: null,
