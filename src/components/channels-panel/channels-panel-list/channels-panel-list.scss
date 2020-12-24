@@ -36,10 +36,29 @@
   }
 
   &__avatar {
+    position: relative;
     max-width: 40px;
     border-radius: 50%;
     margin-left: 30px;
     width: 100%;
+
+    &.online::before {
+      background-color: #54D58C;
+    }
+
+    &.offline::before {
+      background-color: #FF4460;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      bottom: 0;
+      right: -2px;
+      border-radius: 50%;
+    }
 
     img {
       border-radius: 50%;

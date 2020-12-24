@@ -9,6 +9,9 @@ import './app.scss';
 
 
 const App: React.FC = () => {
+
+
+
   return (
     <section className="app">
       <ControlPanel />

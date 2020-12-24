@@ -32,7 +32,11 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setActiveCh
         key={item.id.toString()}
         onClick={() => setChannelAndIdChannel(item)}
       >
-        {user && <div className="channels-panel-list__avatar"><img src={item.avatar} alt={item.username} /></div>}
+        {user && (
+          <div className={`channels-panel-list__avatar ${(isUser && item.status === 'online') ? 'online' : 'offline'}`}>
+            <img src={item.avatar} alt={item.username} />
+          </div>
+        )}
         <div className="channels-panel-list__info">
           <span className="channels-panel-list__name">{user ? item.username : `# ${item.channelName}`}</span>
           {user && <span className="channels-panel-list__description">{isActive ? 'Вы общаетесь' : 'Написать человеку'}</span>}
@@ -42,14 +46,16 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setActiveCh
   }
 
   return (
-    <ul className="channels-panel-list">
-      {
-        channels.map((item: any) => {
-          const isActive = activeChannel?.id === item.id;
-          return createItem(item, isActive)
-        })
-      }
-    </ul>
+    <div>
+      <ul className="channels-panel-list">
+        {
+          channels.map((item: any) => {
+            const isActive = activeChannel?.id === item.id;
+            return createItem(item, isActive)
+          })
+        }
+      </ul>
+    </div>
   )
 };
 

@@ -25,6 +25,7 @@ export type TUser = {
   id: string,
   username: string
   avatar: string
+  status?: 'online' | 'offline'
 }
 
 export type TCommunication = {

@@ -16,15 +16,17 @@ const ControlPanelMenu: React.FC<TControlPanelMenu> = ({ menu, closeMenu, userna
 
   // Если произошёл клик не по элементу, то активируется функция и закроет окно
   const onClickNotControlPanel = useCallback((event) => {
-    if (event.path && !event.path.includes(controlPanelPopupRef.current)) {
+    const path = event.path || (event.composedPath && event.composedPath());
+
+    if (path && !path.includes(controlPanelPopupRef.current)) {
       closeMenu();
     }
-  }, [ closeMenu, controlPanelPopupRef ]);
+  }, [closeMenu, controlPanelPopupRef]);
 
   useEffect(() => {
     document.body.addEventListener('click', onClickNotControlPanel);
     return () => document.body.removeEventListener('click', onClickNotControlPanel);
-  }, [ onClickNotControlPanel ]);
+  }, [onClickNotControlPanel]);
 
 
   const onLogOut = () => auth.signOut()
