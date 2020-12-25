@@ -6,7 +6,7 @@ import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
 import './channels-panel.scss';
-import { TAuthUser, TCommunication, TFilter } from "../../types/redux";
+import { TAuthUser, TCommunication, TFilter, TUser } from "../../types/redux";
 import { firebaseRef } from "../../config/ref";
 import { changeIsUser } from '../../actions';
 
@@ -21,20 +21,17 @@ type TChannelsPanel = {
 }
 
 // 1. Сколько раз я переключаюсь, столько раз создаются копии
-
 const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isUser, changeIsUser }: TChannelsPanel): JSX.Element => {
   // Определение состояния подключения (https://firebase.google.com/docs/database/web/offline-capabilities#section-connection-state) 
   const connectedRef = useMemo(() => database.ref('.info/connected'), []);
   const usersOnline = useMemo(() => database.ref('online'), [])
 
-  const [channels, setChannels] = useState<Array<any>>([]);
-  const [users, setUsers] = useState<Array<any>>([]);
-  const [onlineUsers, setOnlineUsers] = useState<Array<any>>([]);
-  const [user, setUser] = useState(false);
-
+  const [channels, setChannels] = useState<Array<TChannel>>([]);
+  const [users, setUsers] = useState<Array<TUser>>([]);
+  const [onlineUsers, setOnlineUsers] = useState<Array<TUser>>([]);
 
   // Динамически изменяем запрос, исходя из выбранной фильтрации
-  const getFilter = useCallback((logInUser: any) => {
+  const getDataWithDatabase = useCallback((logInUser: any) => {
     getChannels();
     getUsers(logInUser);
   }, [])
@@ -42,7 +39,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
   // Сама функция обращения и получения данных
   const getChannels = () => {
     setChannels([]);
-    const loaded: any[] = []
+    const loaded: Array<TChannel> = []
     database.ref(firebaseRef.CHANNELS)
       .on("child_added", (snapshot: TDatabaseSnapshot) => {
         loaded.push(snapshot.val());
@@ -51,7 +48,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
   };
 
   const getUsers = (logInUser: any) => {
-    const loaded: any[] = []
+    const loaded: Array<TUser> = []
 
     database.ref(firebaseRef.USERS)
       .on("child_added", (snapshot: TDatabaseSnapshot) => {
@@ -60,37 +57,23 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
           getUser['status'] = 'offline';
           getUser["type"] = 'USERS';
           loaded.push(getUser);
-          setUsers(loaded);
+          setOnlineUsers([...loaded]);
         }
       })
   }
 
   useEffect(() => {
-    getFilter(logInUser)
-  }, [currentFilter.filterName, getFilter, logInUser]);
+    getDataWithDatabase(logInUser)
+  }, [currentFilter.filterName, getDataWithDatabase, logInUser]);
 
   useEffect(() => {
     const isUser = currentFilter.filterName === firebaseRef.USERS ? true : false;
     changeIsUser(isUser);
-    setUser(isUser);
   }, [changeIsUser, currentFilter.filterName])
 
 
-  const changeisUserChannelsStatus = useCallback((users, id: string | null, status: boolean) => {
-    const changedUserState = users.reduce((acc: any, user: any) => {
-      if (user.id === id) {
-        user['status'] = `${status ? 'online' : 'offline'}`
-      }
-      return acc.concat(user);
-    }, []);
-
-    // Проблема возникает тогда, когда 
-    // в качестве массива добавить setUsers.
-    setOnlineUsers([...changedUserState]);
-  }, []);
-
-  // Проверяем находящихся в сети людей
-  const onConnected = useCallback((users: any, uid: string) => {
+  // Устанавливает в базе данных какие пользователя онлайн
+  const setUsersOnlineToDatabase = useCallback((uid: string) => {
     connectedRef.on('value', (snap) => {
       if (snap.val() === true) {
         const online = usersOnline.child(uid);
@@ -100,28 +83,52 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
           .remove((error) => error !== null && console.error(`Ошибка ${error} в ChannelPanel`));
       }
     });
+  }, [connectedRef, usersOnline]);
 
+
+  const getStatusUserToDatabase = useCallback((userId: string | null, connected: boolean) => {
+    const updateUser = onlineUsers.reduce((acc: any, user: any) => {
+      if (user.id === userId) {
+        user['status'] = `${connected ? 'online' : 'offline'}`
+      }
+      return acc.concat(user);
+    }, []);
+
+    console.log(updateUser);
+
+    // setOnlineUsers([]);
+
+  }, [onlineUsers])
+
+  // Слежение за базой данных при добавлении или удалении пользователей онлайн
+  const monitorChangesInDatabase = useCallback((uid: string) => {
     usersOnline.on('child_added', (snap) => {
       const id = snap.key;
       if (snap.key !== uid) {
-        changeisUserChannelsStatus(users, id, true);
+        getStatusUserToDatabase(id, true);
       }
     });
     usersOnline.on("child_removed", (snap) => {
       const id = snap.key;
 
       if (snap.key !== uid) {
-        changeisUserChannelsStatus(users, id, false);
+        getStatusUserToDatabase(id, false);
       }
     });
-  }, [changeisUserChannelsStatus, connectedRef, usersOnline]);
+  }, [getStatusUserToDatabase, usersOnline])
+
+  // Проверяем находящихся в сети людей
+  const onConnected = useCallback((onlineUsers: Array<TUser>, uid: string) => {
+    setUsersOnlineToDatabase(uid);
+    monitorChangesInDatabase(uid);
+  }, [monitorChangesInDatabase, setUsersOnlineToDatabase]);
 
   // --------------------------------
   useEffect(() => {
-    onConnected(users, logInUser.uid);
-  }, [logInUser.uid, onConnected, users])
+    onConnected(onlineUsers, logInUser.uid);
+  }, [logInUser.uid, onConnected, onlineUsers])
 
-  const filterChannels = () => isUser ? onlineUsers : channels;
+  const showItems = () => isUser ? onlineUsers : channels;
 
   return (
     <div className="channels-panel">
@@ -130,7 +137,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
       </header>
 
       <div className="channels-panel__list">
-        <ChannelsPanelList channels={filterChannels()} user={user} />
+        <ChannelsPanelList items={showItems()} isUser={isUser} />
       </div>
     </div>
   )

@@ -36,11 +36,12 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
           username={logInUser && logInUser.displayName}
         />
 
-        <ControlPanelMenu
-          menu={showMenu}
-          closeMenu={closeMenu}
-          username={logInUser && logInUser.displayName} openModal={openModal}
-        />
+        {showMenu && (
+          <ControlPanelMenu
+            menu={showMenu}
+            closeMenu={closeMenu}
+            username={logInUser && logInUser.displayName} openModal={openModal} />
+        )}
       </div>
 
       <div className="control-panel__status">
