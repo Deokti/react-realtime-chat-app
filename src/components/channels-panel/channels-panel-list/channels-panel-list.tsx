@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { setActiveChannel } from '../../../actions'
 import { connect } from "react-redux";
@@ -12,44 +12,48 @@ import { TUser } from "../../../types/redux";
 
 
 type TChannelsPanelList = {
-  channels: Array<TChannel>
+  items: Array<TChannel | TUser>
   setActiveChannel: (channel: TChannel) => TSetActivetChannel
   activeChannel: TChannel
-  user: boolean
+  isUser: boolean
 }
 
-const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ channels, setActiveChannel, activeChannel, user }: TChannelsPanelList) => {
+const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChannel, activeChannel, isUser }: TChannelsPanelList) => {
   const setChannelAndIdChannel = (channel: TChannel) => {
     if (activeChannel && activeChannel.id === channel.id) return false;
     setActiveChannel(channel);
   }
 
   const createItem = (item: TChannel & TUser, isActive: boolean) => {
-    const isUser = user ? 'channels-panel-list__user' : '';
-
     return (
-      <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser}`}
+      <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser ? 'channels-panel-list__user' : ''}`}
         key={item.id.toString()}
         onClick={() => setChannelAndIdChannel(item)}
       >
-        {user && <div className="channels-panel-list__avatar"><img src={item.avatar} alt={item.username} /></div>}
+        {isUser && (
+          <div className={`channels-panel-list__avatar ${(isUser && item.status === 'online') ? 'online' : 'offline'}`}>
+            <img src={item.avatar} alt={item.username} />
+          </div>
+        )}
         <div className="channels-panel-list__info">
-          <span className="channels-panel-list__name">{user ? item.username : `# ${item.channelName}`}</span>
-          {user && <span className="channels-panel-list__description">{isActive ? 'Вы общаетесь' : 'Написать человеку'}</span>}
+          <span className="channels-panel-list__name">{isUser ? item.username : `# ${item.channelName}`}</span>
+          {isUser && <span className="channels-panel-list__description">{isActive ? 'Вы общаетесь' : 'Написать человеку'}</span>}
         </div>
       </li>
     )
   }
 
   return (
-    <ul className="channels-panel-list">
-      {
-        channels.map((item: any) => {
-          const isActive = activeChannel?.id === item.id;
-          return createItem(item, isActive)
-        })
-      }
-    </ul>
+    <div>
+      <ul className="channels-panel-list">
+        {
+          items.map((item: any) => {
+            const isActive = activeChannel?.id === item.id;
+            return createItem(item, isActive)
+          })
+        }
+      </ul>
+    </div>
   )
 };
 

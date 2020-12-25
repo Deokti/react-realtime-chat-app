@@ -10,7 +10,6 @@ storage.rules
 /node_modules
 /.pnp
 .pnp.js
-.idea
 
 # testing
 /coverage
