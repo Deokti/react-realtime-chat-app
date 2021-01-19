@@ -1,3 +1,5 @@
+import { TChannel } from "./reused-types"
+
 // Тип для connect для получения текущей фильтрации отображения сообщений, личного чата, избранного
 export type TFilter = {
   currentFilter: {
@@ -14,6 +16,10 @@ export type TAuth = {
   };
 }
 
+export type TCurrentActiveChannel = {
+  activeChannel: TChannel | null
+}
+
 // Тип для получения данных из Redux
 export type TAuthUser = {
   logInUser: object | null
@@ -25,7 +31,7 @@ export type TUser = {
   id: string,
   username: string
   avatar: string
-  status?: 'online' | 'offline'
+  online?: true | false
 }
 
 export type TCommunication = {
@@ -38,4 +44,5 @@ export type TCommunication = {
   imageCompress: boolean
   uploadImageProgress: number | null
   isUser: boolean,
+  usersOnline: null | Array<TUser>
 }

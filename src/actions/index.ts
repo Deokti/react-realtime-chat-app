@@ -11,6 +11,7 @@ import setPreviewImage from "./action-creator/communication/set-prewiew-image";
 import changeImageCompress from "./action-creator/communication/change-image-compress";
 import setUploadImageProgress from "./action-creator/communication/set-upload-image-progress";
 import changeIsUser from "./action-creator/communication/change-is-user";
+import setUsersOnline from "./action-creator/communication/set-users-online";
 
 
 export {
@@ -25,7 +26,8 @@ export {
   setPreviewImage,
   changeImageCompress,
   setUploadImageProgress,
-  changeIsUser
+  changeIsUser,
+  setUsersOnline
 };
 
 

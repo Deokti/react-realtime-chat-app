@@ -24,7 +24,7 @@ const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser, isUse
 
   return (
     <div className="message-panel">
-      <MessagePanelHeader channelName={activeChannel && (isUser ? activeChannel.username : activeChannel.channelName)} />
+      <MessagePanelHeader />
 
       <MessagePanelContents
         key={activeChannel && activeChannel.id}
@@ -47,7 +47,7 @@ const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser, isUse
   );
 };
 
-export type TCurrentChannel = {
+type TMapState = {
   currentChannel: {
     activeChannel: TChannel
   }
@@ -58,7 +58,7 @@ const mapStateCurrentUser = ({
   auth: { logInUser },
   currentChannel: { activeChannel },
   communication: { isUser }
-}: TAuth & TCurrentChannel) => {
+}: TAuth & TMapState) => {
   return { logInUser, activeChannel, isUser }
 }
 

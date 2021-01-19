@@ -3,7 +3,6 @@ import React from "react";
 import { setActiveChannel } from '../../../actions'
 import { connect } from "react-redux";
 
-import { TCurrentChannel } from "../../message-panel/message-panel";
 import { TChannel } from "../../../types/reused-types";
 
 import './channels-panel-list.scss';
@@ -12,9 +11,9 @@ import { TUser } from "../../../types/redux";
 
 
 type TChannelsPanelList = {
-  items: Array<TChannel | TUser>
+  items: Array<TChannel | TUser> | null
   setActiveChannel: (channel: TChannel) => TSetActivetChannel
-  activeChannel: TChannel
+  activeChannel: TChannel | null
   isUser: boolean
 }
 
@@ -25,13 +24,16 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
   }
 
   const createItem = (item: TChannel & TUser, isActive: boolean) => {
+
     return (
       <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser ? 'channels-panel-list__user' : ''}`}
         key={item.id.toString()}
         onClick={() => setChannelAndIdChannel(item)}
       >
         {isUser && (
-          <div className={`channels-panel-list__avatar ${(isUser && item.status === 'online') ? 'online' : 'offline'}`}>
+          <div className={`channels-panel-list__avatar ${(isUser && item.online) ? 'online' : 'offline'}`}>
+
+
             <img src={item.avatar} alt={item.username} />
           </div>
         )}
@@ -47,7 +49,7 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
     <div>
       <ul className="channels-panel-list">
         {
-          items.map((item: any) => {
+          items && items.map((item: any) => {
             const isActive = activeChannel?.id === item.id;
             return createItem(item, isActive)
           })
@@ -57,7 +59,13 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
   )
 };
 
-const mapStateToProps = ({ currentChannel: { activeChannel } }: TCurrentChannel) => {
+type TMapState = {
+  currentChannel: {
+    activeChannel: TChannel | null
+  }
+}
+
+const mapStateToProps = ({ currentChannel: { activeChannel } }: TMapState) => {
   return { activeChannel }
 }
 

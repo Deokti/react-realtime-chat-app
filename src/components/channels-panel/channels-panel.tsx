@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
-import { database } from "../../config/firebase";
+import { auth, database } from "../../config/firebase";
 import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
-import './channels-panel.scss';
 import { TAuthUser, TCommunication, TFilter, TUser } from "../../types/redux";
 import { firebaseRef } from "../../config/ref";
-import { changeIsUser } from '../../actions';
+import { changeIsUser, setUsersOnline } from '../../actions';
+
+
+import './channels-panel.scss';
 
 type TChannelsPanel = {
   currentFilter: {
@@ -18,17 +20,19 @@ type TChannelsPanel = {
   logInUser: any
   changeIsUser: (isUser: boolean) => any;
   isUser: boolean
+  setUsersOnline: (onlineUsers: Array<TUser> | null) => any
+  usersOnline: Array<TUser> | null
 }
 
-// 1. Сколько раз я переключаюсь, столько раз создаются копии
-const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isUser, changeIsUser }: TChannelsPanel): JSX.Element => {
+const ChannelsPanel: React.FC<TChannelsPanel> = (
+  { currentFilter, logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
+
   // Определение состояния подключения (https://firebase.google.com/docs/database/web/offline-capabilities#section-connection-state) 
   const connectedRef = useMemo(() => database.ref('.info/connected'), []);
-  const usersOnline = useMemo(() => database.ref('online'), [])
+  const onlineUserRef = useMemo(() => database.ref('online'), [])
 
   const [channels, setChannels] = useState<Array<TChannel>>([]);
   const [users, setUsers] = useState<Array<TUser>>([]);
-  const [onlineUsers, setOnlineUsers] = useState<Array<TUser>>([]);
 
   // Динамически изменяем запрос, исходя из выбранной фильтрации
   const getDataWithDatabase = useCallback((logInUser: any) => {
@@ -47,23 +51,22 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
       })
   };
 
-  const getUsers = (logInUser: any) => {
+  const getUsers = (uid: string) => {
     const loaded: Array<TUser> = []
 
     database.ref(firebaseRef.USERS)
       .on("child_added", (snapshot: TDatabaseSnapshot) => {
-        if (snapshot.key !== logInUser.uid) {
+        if (snapshot.key !== uid) {
           const getUser = snapshot.val();
-          getUser['status'] = 'offline';
-          getUser["type"] = 'USERS';
+          getUser['online'] = false;
           loaded.push(getUser);
-          setOnlineUsers([...loaded]);
+          setUsers([...loaded]);
         }
       })
   }
 
   useEffect(() => {
-    getDataWithDatabase(logInUser)
+    getDataWithDatabase(logInUser && logInUser.uid)
   }, [currentFilter.filterName, getDataWithDatabase, logInUser]);
 
   useEffect(() => {
@@ -72,63 +75,80 @@ const ChannelsPanel: React.FC<TChannelsPanel> = ({ currentFilter, logInUser, isU
   }, [changeIsUser, currentFilter.filterName])
 
 
+  const setOnlineUserIdToDatabase = useCallback(async (uid: string) => {
+    const online = onlineUserRef.child(uid)
+
+    await online.set(true);
+    online
+      .onDisconnect()
+      .remove((error) => {
+        if (error !== null) {
+          console.error(`Ошибка ${error} в ChannelPanel`);
+        }
+      });
+  }, [onlineUserRef]);
+
+
+  const userLoggedIn = useCallback((uid: string | null) => {
+    if (uid !== null) {
+      connectedRef.on('value', async (snap) => {
+        if (snap.val() === true) {
+          setOnlineUserIdToDatabase(uid);
+        }
+      });
+    }
+  }, [connectedRef, setOnlineUserIdToDatabase])
+
   // Устанавливает в базе данных какие пользователя онлайн
-  const setUsersOnlineToDatabase = useCallback((uid: string) => {
-    connectedRef.on('value', (snap) => {
-      if (snap.val() === true) {
-        const online = usersOnline.child(uid);
-        online.set(true);
-        online
-          .onDisconnect()
-          .remove((error) => error !== null && console.error(`Ошибка ${error} в ChannelPanel`));
-      }
+  const setUsersOnlineToDatabase = useCallback((uid: string | null = '') => {
+
+    auth.onAuthStateChanged((user) => {
+      if (user) userLoggedIn(uid)
     });
-  }, [connectedRef, usersOnline]);
+  }, [userLoggedIn]);
 
+  const getUsersOnline = useCallback((userId: string | null, online: boolean) => {
+    return users.reduce((acc: Array<TUser>, user: TUser) => {
 
-  const getStatusUserToDatabase = useCallback((userId: string | null, connected: boolean) => {
-    const updateUser = onlineUsers.reduce((acc: any, user: any) => {
       if (user.id === userId) {
-        user['status'] = `${connected ? 'online' : 'offline'}`
+        user['online'] = online ? true : false
       }
+
       return acc.concat(user);
     }, []);
+  }, [users])
 
-    console.log(updateUser);
-
-    // setOnlineUsers([]);
-
-  }, [onlineUsers])
+  const getStatusUserToDatabase = useCallback((userId: string | null, online: boolean) => {
+    const updateUser = getUsersOnline(userId, online);
+    setUsersOnline([...updateUser])
+  }, [getUsersOnline, setUsersOnline])
 
   // Слежение за базой данных при добавлении или удалении пользователей онлайн
-  const monitorChangesInDatabase = useCallback((uid: string) => {
-    usersOnline.on('child_added', (snap) => {
-      const id = snap.key;
-      if (snap.key !== uid) {
-        getStatusUserToDatabase(id, true);
-      }
+  const monitorChangesInDatabase = useCallback(() => {
+    onlineUserRef.on('child_added', ({ key }) => {
+      getStatusUserToDatabase(key, true);
     });
-    usersOnline.on("child_removed", (snap) => {
-      const id = snap.key;
-
-      if (snap.key !== uid) {
-        getStatusUserToDatabase(id, false);
-      }
+    onlineUserRef.on("child_removed", ({ key }) => {
+      getStatusUserToDatabase(key, false);
     });
-  }, [getStatusUserToDatabase, usersOnline])
+  }, [getStatusUserToDatabase, onlineUserRef])
 
   // Проверяем находящихся в сети людей
-  const onConnected = useCallback((onlineUsers: Array<TUser>, uid: string) => {
+  const onConnected = useCallback((uid: string) => {
     setUsersOnlineToDatabase(uid);
-    monitorChangesInDatabase(uid);
+    monitorChangesInDatabase();
   }, [monitorChangesInDatabase, setUsersOnlineToDatabase]);
 
   // --------------------------------
   useEffect(() => {
-    onConnected(onlineUsers, logInUser.uid);
-  }, [logInUser.uid, onConnected, onlineUsers])
+    onConnected(logInUser && logInUser.uid);
+    return () => {
+      onlineUserRef.off();
+      connectedRef.off();
+    }
+  }, [connectedRef, logInUser, onConnected, onlineUserRef])
 
-  const showItems = () => isUser ? onlineUsers : channels;
+  const showItems = () => isUser ? usersOnline : channels;
 
   return (
     <div className="channels-panel">
@@ -149,8 +169,8 @@ type TMapStateToProps = {
   communication: TCommunication
 }
 
-const mapStateToProps = ({ filter: { currentFilter }, auth: { logInUser }, communication: { isUser } }: TMapStateToProps) => {
-  return { currentFilter, logInUser, isUser }
+const mapStateToProps = ({ filter: { currentFilter }, auth: { logInUser }, communication: { isUser, usersOnline } }: TMapStateToProps) => {
+  return { currentFilter, logInUser, isUser, usersOnline }
 }
 
-export default connect(mapStateToProps, { changeIsUser })(ChannelsPanel);
+export default connect(mapStateToProps, { changeIsUser, setUsersOnline })(ChannelsPanel);
