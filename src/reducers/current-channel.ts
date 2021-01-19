@@ -1,9 +1,6 @@
 import { SET_CURRENT_CHANNEL } from '../actions/TYPES';
+import { TCurrentActiveChannel } from '../types/redux';
 import { TChannel } from "../types/reused-types";
-
-type TCurrentActiveChannel = {
-  activeChannel: TChannel | null
-}
 
 type TCurrentActiveChannelAction = {
   type: string

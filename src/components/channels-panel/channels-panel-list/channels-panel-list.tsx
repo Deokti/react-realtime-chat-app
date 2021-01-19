@@ -3,7 +3,6 @@ import React from "react";
 import { setActiveChannel } from '../../../actions'
 import { connect } from "react-redux";
 
-import { TCurrentChannel } from "../../message-panel/message-panel";
 import { TChannel } from "../../../types/reused-types";
 
 import './channels-panel-list.scss';
@@ -12,9 +11,9 @@ import { TUser } from "../../../types/redux";
 
 
 type TChannelsPanelList = {
-  items: Array<TChannel | TUser>
+  items: Array<TChannel | TUser> | null
   setActiveChannel: (channel: TChannel) => TSetActivetChannel
-  activeChannel: TChannel
+  activeChannel: TChannel | null
   isUser: boolean
 }
 
@@ -50,7 +49,7 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
     <div>
       <ul className="channels-panel-list">
         {
-          items.map((item: any) => {
+          items && items.map((item: any) => {
             const isActive = activeChannel?.id === item.id;
             return createItem(item, isActive)
           })
@@ -60,7 +59,13 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
   )
 };
 
-const mapStateToProps = ({ currentChannel: { activeChannel } }: TCurrentChannel) => {
+type TMapState = {
+  currentChannel: {
+    activeChannel: TChannel | null
+  }
+}
+
+const mapStateToProps = ({ currentChannel: { activeChannel } }: TMapState) => {
   return { activeChannel }
 }
 
