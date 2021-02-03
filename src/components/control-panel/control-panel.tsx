@@ -5,15 +5,13 @@ import ControlPanelMenu from "./control-panel-menu";
 import ControlPanelModal from "./control-panel-modal";
 import ControlPanelFilter from "./control-panel-filter";
 import { connect } from "react-redux";
+import { TAuthLogInUser, TLogInUser } from '../../types/redux-state';
 
 import './control-panel.scss';
-import { TAuth } from '../../types/redux';
+import { TUser } from '../../types/redux';
 
-type TControlPanel = {
-  logInUser: any
-}
 
-const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => {
+const ControlPanel: React.FC<TLogInUser> = ({ logInUser }: TLogInUser) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -32,15 +30,15 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
       <div className="control-panel__avatar">
         <ControlPanelAvatar
           openMenu={openMenu}
-          avatarLink={logInUser && logInUser.photoURL}
-          username={logInUser && logInUser.displayName}
+          avatarLink={(logInUser && logInUser.avatar) as string}
+          username={(logInUser && logInUser.username) as string}
         />
 
         {showMenu && (
           <ControlPanelMenu
             menu={showMenu}
             closeMenu={closeMenu}
-            username={logInUser && logInUser.displayName} openModal={openModal} />
+            username={(logInUser && logInUser.username) as string} openModal={openModal} />
         )}
       </div>
 
@@ -52,13 +50,13 @@ const ControlPanel: React.FC<TControlPanel> = ({ logInUser }: TControlPanel) => 
       <ControlPanelModal
         modal={showModal}
         closeModal={closeModal}
-        username={logInUser && logInUser.displayName}
-        userAvatar={logInUser && logInUser.photoURL} />
+        username={logInUser && logInUser.username}
+        userAvatar={logInUser && logInUser.avatar} />
     </div>
   )
 };
 
-const mapStateCurrentUser = ({ auth: { logInUser } }: TAuth) => {
+const mapStateCurrentUser = ({ auth: { logInUser } }: TAuthLogInUser) => {
   return { logInUser }
 }
 

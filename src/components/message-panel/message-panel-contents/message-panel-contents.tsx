@@ -5,11 +5,12 @@ import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../ty
 
 import './message-panel-contents.scss';
 import '../../../assets/styles/scrollbar.scss';
+import { TUser } from "../../../types/redux";
 
 
 type TMessagePanelContents = {
   activeChannel: TChannel
-  logInUser: any
+  logInUser: TUser | null
   messageRef: TDatabaseRef
   scrollEndPage: boolean
   setScrollEndPage: (state: boolean) => void

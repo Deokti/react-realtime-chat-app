@@ -1,19 +1,14 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
-import { TCommunication, TCurrentActiveChannel, TFilter } from '../../../types/redux';
+import { TCommunication, TCurrentActiveChannel } from '../../../types/redux';
+import { TCurrentFilter, TFilter } from '../../../types/redux-state';
 import MessagePanelSearch from "../message-panel-search";
 
 import './message-panel-header.scss';
 
-
-
 type TMessagePanelHeader = {
-  currentFilter: {
-    filterHeading: string,
-    filterName: string
-  }
   isUser: boolean
-}
+} & TCurrentFilter
 
 const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ currentFilter, isUser }: TMessagePanelHeader) => {
   // const headerTitleName = isUser ? 
@@ -33,12 +28,15 @@ const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ currentFilter, isUs
 };
 
 type TMapStateToProps = {
-  filter: TFilter
   communication: TCommunication
   currentChannel: TCurrentActiveChannel
-}
+} & TFilter
 
-const mapStateToProps = ({ filter: { currentFilter }, communication: { isUser }, currentChannel: { activeChannel } }: TMapStateToProps) => {
+const mapStateToProps = ({
+  filter: { currentFilter },
+  communication: { isUser },
+  currentChannel: { activeChannel }
+}: TMapStateToProps) => {
   return { currentFilter, isUser, activeChannel }
 }
 

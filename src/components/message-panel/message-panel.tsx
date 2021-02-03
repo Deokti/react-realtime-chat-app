@@ -9,12 +9,13 @@ import { TDatabaseRef, TChannel } from "../../types/reused-types";
 import { connect } from "react-redux";
 
 import './message-panel.scss';
-import { TAuth, TCommunication } from '../../types/redux';
+import { TCommunication, TUser } from '../../types/redux';
+import { TAuth } from '../../types/redux-state';
 
 
 type TMessagePanel = {
   activeChannel: any
-  logInUser: any
+  logInUser: TUser | null
   isUser: boolean
 }
 
@@ -36,7 +37,7 @@ const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser, isUse
       />
       {activeChannel && (
         <MessagePanelForm
-          key={logInUser && logInUser.uid}
+          key={logInUser && logInUser.id}
           activeChannel={activeChannel}
           logInUser={logInUser}
           messageRef={messageRef}

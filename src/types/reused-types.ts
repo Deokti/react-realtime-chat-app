@@ -25,6 +25,7 @@ export type TMessage = {
     username: string
     avatar: string
     id: string
+    isOnline?: boolean
   }
 }
 

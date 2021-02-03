@@ -9,10 +9,11 @@ import { Link } from "react-router-dom";
 import { auth, database } from "../../../config/firebase";
 import compose from "../../../utils/compose";
 
-import './register.scss';
-import '../form-redirect.scss';
 import { routerPath } from "../../../config/router-path";
 import { firebaseRef } from '../../../config/ref';
+
+import './register.scss';
+import '../form-redirect.scss';
 
 export type TUserRegister = {
   username: string
@@ -34,12 +35,13 @@ type TRegisterForm = {
 const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
   const onCreatedUserInDatabase = useCallback((createdUser) => {
     return database.ref(firebaseRef.USERS).child(createdUser.user.uid).set({
-      id: createdUser.user.uid,
+      uid: createdUser.user.uid,
       username: createdUser.user.displayName,
-      avatar: createdUser.user.photoURL
+      avatar: createdUser.user.photoURL,
+      isOnline: false
     });
   }, [])
-
+  // firebase.auth.UserCredential
   const onCreateUserWithEmailAndPassword = useCallback(() => {
     return auth
       .createUserWithEmailAndPassword(input.email, input.password)
