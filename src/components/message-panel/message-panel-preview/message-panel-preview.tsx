@@ -8,7 +8,7 @@ import { changeMessage } from '../../../actions';
 
 import './message-panel-preview.scss';
 import '../../../assets/styles/scrollbar.scss';
-import { TCommunication } from "../../../types/redux";
+import { TCommunication } from "../../../types/redux-state";
 
 type MessagePanelPreview = {
   previewImage: null | string

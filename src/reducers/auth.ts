@@ -1,6 +1,6 @@
 import { LOG_IN_USER, LOG_OUT_USER } from "../actions/TYPES";
 import { TAuthAction } from "../types/redux-action";
-import { TAuth, TAuthProperty } from "../types/redux-state";
+import { TAuthProperty } from "../types/redux-state";
 
 const auth = (state: TAuthProperty, action: TAuthAction): TAuthProperty => {
   if (state === undefined) {

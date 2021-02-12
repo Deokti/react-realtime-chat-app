@@ -8,10 +8,10 @@ import { TDatabaseRef, TChannel } from "../../types/reused-types";
 
 import { connect } from "react-redux";
 
-import './message-panel.scss';
-import { TCommunication, TUser } from '../../types/redux';
-import { TAuth } from '../../types/redux-state';
+import { TUser } from '../../types/redux';
+import { TAuth, TCommunication } from '../../types/redux-state';
 
+import './message-panel.scss';
 
 type TMessagePanel = {
   activeChannel: any

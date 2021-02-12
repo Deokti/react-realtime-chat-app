@@ -5,12 +5,12 @@ import { auth, database } from "../../config/firebase";
 import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
-import { TCommunication, TUser } from "../../types/redux";
+import { TUser } from "../../types/redux";
 
 import { firebaseRef } from "../../config/ref";
 import { changeIsUser, setUsersOnline } from '../../actions';
 
-import { TAuth, TCurrentFilter, TFilter } from "../../types/redux-state";
+import { TAuth, TCommunication, TCurrentFilter, TFilter } from "../../types/redux-state";
 
 import './channels-panel.scss';
 

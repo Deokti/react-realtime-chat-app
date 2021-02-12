@@ -35,12 +35,13 @@ type TRegisterForm = {
 const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
   const onCreatedUserInDatabase = useCallback((createdUser) => {
     return database.ref(firebaseRef.USERS).child(createdUser.user.uid).set({
-      uid: createdUser.user.uid,
+      id: createdUser.user.uid,
       username: createdUser.user.displayName,
       avatar: createdUser.user.photoURL,
       isOnline: false
     });
   }, [])
+
   // firebase.auth.UserCredential
   const onCreateUserWithEmailAndPassword = useCallback(() => {
     return auth

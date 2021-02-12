@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
-import { TCommunication, TCurrentActiveChannel } from '../../../types/redux';
-import { TCurrentFilter, TFilter } from '../../../types/redux-state';
+import { TCurrentActiveChannel } from '../../../types/redux';
+import { TCommunication, TCurrentFilter, TFilter } from '../../../types/redux-state';
 import MessagePanelSearch from "../message-panel-search";
 
 import './message-panel-header.scss';

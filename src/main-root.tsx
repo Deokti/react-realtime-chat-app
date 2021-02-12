@@ -1,12 +1,12 @@
 /**
- * В компоненте содержится логики проверки 
+ * В компоненте содержится логика проверки 
  * на какую сттаницу пересылать пользователя. 
  * Если он не авторизован, перевести на страницу логина 
- * Если авторизован, то получить данные пользоваетля из базы данных
- * перебросить пользователя на главную страницу 
+ * Если авторизован, то получить данные пользоваетля из базы данных,
+ * сохранить данные и перебросить пользователя на главную страницу 
  */
 
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom';
 
 import App from "./components/app";
@@ -16,9 +16,10 @@ import { auth, database } from "./config/firebase";
 
 import compose from "./utils/compose";
 import { withRouter } from 'react-router-dom';
+
 import { connect } from "react-redux";
 import { getLogInUser, logOutUser, setActiveChannel } from './actions';
-import { TChannel } from "./types/reused-types";
+import { TChannel, THistory } from "./types/reused-types";
 import { routerPath } from "./config/router-path";
 
 import { TAuthIsLoaded } from './types/redux-state';
@@ -30,59 +31,58 @@ import './assets/styles/bootstrap-reboot.min.scss';
 import './assets/styles/fonts.scss';
 import './assets/styles/transition.scss';
 
+
 type TMainRoot = {
-  getLogInUser: (user: any) => void
-  history: any
+  getLogInUser: (user: TUser) => void
+  history: THistory
   logOutUser: () => void
   isLoaded: boolean
   setActiveChannel: (channel: TChannel | null) => any;
 }
 
-const MainRoot: React.FC<TMainRoot> = (
-  {
-    getLogInUser,
-    history,
-    logOutUser,
-    isLoaded,
-    setActiveChannel
-  }: TMainRoot): JSX.Element => {
+const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setActiveChannel }: TMainRoot) => {
 
-  const isLoggedIn = useCallback((logInUser: any) => {
-    getLogInUser(logInUser);
-    history.push(routerPath.main);
-  }, [getLogInUser, history])
+  useEffect(onAuthStateChanged, [onAuthStateChanged]);
 
-  const isLoggedOut = useCallback(() => {
-    logOutUser();
-    history.push(routerPath.loginPage);
-    setActiveChannel(null);
-  }, [history, logOutUser, setActiveChannel])
+  function onAuthStateChanged() {
+    auth.onAuthStateChanged((logInUser) => {
+      if (logInUser) {
+        getUserFromDatabaseByUid(logInUser && logInUser.uid);
+        return false;
+      }
 
-  const getUserFromDatabase = useCallback((uid: string) => {
+      else {
+        isLoggedOut();
+      }
+    });
+  }
+
+  function getUserFromDatabaseByUid(uid: string) {
     database.ref(firebaseRef.USERS)
       .child(uid)
       .on('value', (snap) => {
         const user: TUser = snap.val();
         isLoggedIn(user);
       })
-  }, [isLoggedIn])
+  }
 
-  const onAuthStateChanged = useCallback(() => {
-    auth.onAuthStateChanged((logInUser) => {
-      if (logInUser)
-        getUserFromDatabase(logInUser && logInUser.uid);
+  function isLoggedIn(user: TUser) {
+    getLogInUser(user);
+    pushPathToHistory(routerPath.main);
+  }
 
-      else
-        isLoggedOut();
-    });
-  }, [getUserFromDatabase, isLoggedOut])
+  function isLoggedOut() {
+    logOutUser();
+    pushPathToHistory(routerPath.loginPage);
+    setActiveChannel(null);
+  }
 
-  useEffect(onAuthStateChanged, [onAuthStateChanged]);
+  function pushPathToHistory(path: string) {
+    if (history.location.pathname !== path) {
+      history.push(path);
+    }
+  }
 
-  return MainRootTemplate(isLoaded);
-};
-
-const MainRootTemplate = (isLoaded: boolean) => {
   return isLoaded
     ? <Spinner text="Подождите, идёт загрузка..." />
     : (
@@ -92,7 +92,7 @@ const MainRootTemplate = (isLoaded: boolean) => {
         <Route path="/register-page" exact component={Register} />
       </Switch>
     )
-}
+};
 
 
 const mapStateToProps = ({ auth: { isLoaded } }: TAuthIsLoaded) => {

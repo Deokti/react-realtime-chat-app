@@ -5,12 +5,13 @@ import { SendMessageIcon } from "../../icon";
 import { changeMessage, sendingMessage, setPasteImage, setPreviewImage, setPathSelectedMedia } from '../../../actions';
 import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
 
-import { TCommunication, TUser } from "../../../types/redux";
+import { TUser } from "../../../types/redux";
 import { connect } from "react-redux";
 
 import { timeWhenMessageSent } from "../../../utils/create-message-time";
 
 import './message-panel-form.scss';
+import { TCommunication } from "../../../types/redux-state";
 
 type TMessagePanelForm = {
   logInUser: TUser | null

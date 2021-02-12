@@ -38,3 +38,16 @@ export type TCurrentFilter = {
 export type TFilter = {
   filter: TCurrentFilter
 }
+
+export type TCommunication = {
+  message: string
+  loading: boolean
+  pasteImage: string
+  pathSelectedMedia: string
+  previewImage: string | null
+  uploadingSelectedFile: boolean
+  imageCompress: boolean
+  uploadImageProgress: number | null
+  isUser: boolean,
+  usersOnline: null | Array<TUser>
+}

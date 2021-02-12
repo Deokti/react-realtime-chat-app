@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { History, LocationState } from 'history';
 
 // Типы для описания firebase данных
 export type TDatabaseRef = firebase.database.Reference
@@ -29,7 +30,6 @@ export type TMessage = {
   }
 }
 
-
 // Тип для connect для получения выбранного изображения
 export type TSelectedImage = {
   currentImage: { selectedImage: string | null }
@@ -40,3 +40,6 @@ export type TSelectedImageAction = {
   type: string
   payload: string | null
 }
+
+// history для react router
+export type THistory = History<LocationState>
