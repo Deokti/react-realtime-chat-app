@@ -3,20 +3,21 @@ import MessagePanelFullpage from "../message-panel-fullpage";
 
 import { connect } from "react-redux";
 import { TMessage } from "../../../types/reused-types";
+import { TAuth } from "../../../types/redux-state";
 
 import './message-panel-content.scss';
-import { TAuth } from "../../../types/redux";
+import { TUser } from "../../../types/redux";
 
 type TMessagePanelContent = {
   message: TMessage
-  logInUser: any
+  logInUser: TUser | null
 }
 
 const MessagePanelContent: React.FC<TMessagePanelContent> = ({ message, logInUser }: TMessagePanelContent) => {
   const { authorMessage, messageContent, time, fileMessageURL } = message;
   const [fullpageImage, setFullpageImage] = useState<boolean>(false);
 
-  const activeUser = authorMessage.id === (logInUser && logInUser.uid)
+  const activeUser = authorMessage.id === (logInUser && logInUser.id)
     ? 'message-panel-content-active'
     : '';
 

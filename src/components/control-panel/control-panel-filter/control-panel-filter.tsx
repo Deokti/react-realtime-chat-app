@@ -3,25 +3,22 @@ import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
 import { changeFilter } from '../../../actions';
 import { connect } from "react-redux";
-import { TFilter } from "../../../types/redux";
+
+import { firebaseRef } from "../../../config/ref";
+import { TCurrentFilter, TFilter } from "../../../types/redux-state";
 
 import './control-panel-filter.scss';
-import { firebaseRef } from "../../../config/ref";
 
 type TControlPanelFilter = {
   changeFilter: (filterHeading: string, filterName: string) => void
-  currentFilter: {
-    filterHeading: string,
-    filterName: string
-  }
-}
+} & TCurrentFilter
 
 const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, currentFilter }: TControlPanelFilter) => {
   const controlPanelStatus = [
-    { name: 'FAVORITES', title: 'Избранные каналы', component: <FavoritesIcon /> },
+    { name: firebaseRef.FAVORITES, title: 'Избранные каналы', component: <FavoritesIcon /> },
     { name: firebaseRef.CHANNELS, title: 'Чат-каналы', component: <ChannelsIcon /> },
     { name: firebaseRef.USERS, title: 'Личные сообщения', component: <ChatsIcon /> },
-  ]
+  ];
 
   const toggleCurrentStatus = useCallback((title: string, name: string) => {
     if (currentFilter.filterName !== name) {
@@ -50,11 +47,7 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, curre
   )
 };
 
-type TMapStateToProps = {
-  filter: TFilter
-}
-
-const mapStateToProps = ({ filter: { currentFilter } }: TMapStateToProps) => {
+const mapStateToProps = ({ filter: { currentFilter } }: TFilter) => {
   return { currentFilter }
 }
 

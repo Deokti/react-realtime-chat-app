@@ -6,12 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { storage } from "../../../config/firebase";
 import { setPreviewImage, setPathSelectedMedia, setPasteImage, setUploadImageProgress, changeImageCompress } from '../../../actions';
 
-import { TCommunication } from '../../../types/redux';
 import { connect } from 'react-redux';
 
 import imageCompression from 'browser-image-compression';
 
 import './message-panel-images.scss';
+import { TCommunication } from '../../../types/redux-state';
 
 type TMessagePanelImages = {
   communication: TCommunication

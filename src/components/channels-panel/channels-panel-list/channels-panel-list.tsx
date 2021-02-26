@@ -27,12 +27,11 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
 
     return (
       <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser ? 'channels-panel-list__user' : ''}`}
-        key={item.id.toString()}
+        key={item.id}
         onClick={() => setChannelAndIdChannel(item)}
       >
         {isUser && (
-          <div className={`channels-panel-list__avatar ${(isUser && item.online) ? 'online' : 'offline'}`}>
-
+          <div className={`channels-panel-list__avatar ${(isUser && item.isOnline) ? 'online' : 'offline'}`}>
 
             <img src={item.avatar} alt={item.username} />
           </div>

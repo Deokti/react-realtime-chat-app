@@ -1,5 +1,5 @@
 import { CHANGE_FILTER } from "../actions/TYPES";
-import { TFilter } from "../types/redux";
+import { TCurrentFilter } from "../types/redux-state";
 
 type TCurrentControlFilterAction = {
   type: string
@@ -9,7 +9,7 @@ type TCurrentControlFilterAction = {
   }
 }
 
-const updateCurrentControlFilter = (state: TFilter, action: TCurrentControlFilterAction): TFilter => {
+const updateCurrentControlFilter = (state: TCurrentFilter, action: TCurrentControlFilterAction): TCurrentFilter => {
   if (state === undefined) {
     return {
       currentFilter: {

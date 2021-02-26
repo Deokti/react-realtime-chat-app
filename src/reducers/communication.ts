@@ -9,10 +9,10 @@ import {
   UPLOAD_IMAGE_PROGRESS,
   USERS_ONLINE
 } from "../actions/TYPES";
-import { TCommunication } from "../types/redux";
+import { TCommunicationAction } from "../types/redux-action";
+import { TCommunication } from "../types/redux-state";
 
-
-const communication = (state: TCommunication, action: any): TCommunication => {
+const communication = (state: TCommunication, action: TCommunicationAction): TCommunication => {
   if (state === undefined) {
     return {
       message: '',

@@ -1,15 +1,8 @@
 import { LOG_IN_USER, LOG_OUT_USER } from "../actions/TYPES";
-import { TAuthUser } from "../types/redux";
+import { TAuthAction } from "../types/redux-action";
+import { TAuthProperty } from "../types/redux-state";
 
-type TUpdateUserAction = {
-  type: string
-  payload: {
-    logInUser: null | any
-    isLoaded: boolean
-  }
-}
-
-const auth = (state: TAuthUser, action: TUpdateUserAction): TAuthUser => {
+const auth = (state: TAuthProperty, action: TAuthAction): TAuthProperty => {
   if (state === undefined) {
     return {
       logInUser: null,

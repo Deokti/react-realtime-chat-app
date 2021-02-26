@@ -5,24 +5,22 @@ import { auth, database } from "../../config/firebase";
 import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
 import { connect } from "react-redux";
 
-import { TAuthUser, TCommunication, TFilter, TUser } from "../../types/redux";
+import { TUser } from "../../types/redux";
+
 import { firebaseRef } from "../../config/ref";
 import { changeIsUser, setUsersOnline } from '../../actions';
 
+import { TAuth, TCommunication, TCurrentFilter, TFilter } from "../../types/redux-state";
 
 import './channels-panel.scss';
 
 type TChannelsPanel = {
-  currentFilter: {
-    filterHeading: string,
-    filterName: string
-  }
-  logInUser: any
+  logInUser: TUser | null
   changeIsUser: (isUser: boolean) => any;
   isUser: boolean
   setUsersOnline: (onlineUsers: Array<TUser> | null) => any
   usersOnline: Array<TUser> | null
-}
+} & TCurrentFilter
 
 const ChannelsPanel: React.FC<TChannelsPanel> = (
   { currentFilter, logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
@@ -66,7 +64,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
   }
 
   useEffect(() => {
-    getDataWithDatabase(logInUser && logInUser.uid)
+    getDataWithDatabase(logInUser && logInUser.id)
   }, [currentFilter.filterName, getDataWithDatabase, logInUser]);
 
   useEffect(() => {
@@ -111,7 +109,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
     return users.reduce((acc: Array<TUser>, user: TUser) => {
 
       if (user.id === userId) {
-        user['online'] = online ? true : false
+        user['isOnline'] = online ? true : false
       }
 
       return acc.concat(user);
@@ -141,7 +139,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
 
   // --------------------------------
   useEffect(() => {
-    onConnected(logInUser && logInUser.uid);
+    onConnected((logInUser && logInUser.id) as string);
     return () => {
       onlineUserRef.off();
       connectedRef.off();
@@ -164,12 +162,14 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
 };
 
 type TMapStateToProps = {
-  filter: TFilter
-  auth: TAuthUser
   communication: TCommunication
-}
+} & TAuth
 
-const mapStateToProps = ({ filter: { currentFilter }, auth: { logInUser }, communication: { isUser, usersOnline } }: TMapStateToProps) => {
+const mapStateToProps = ({
+  filter: { currentFilter },
+  auth: { logInUser },
+  communication: { isUser, usersOnline }
+}: TMapStateToProps & TFilter) => {
   return { currentFilter, logInUser, isUser, usersOnline }
 }
 

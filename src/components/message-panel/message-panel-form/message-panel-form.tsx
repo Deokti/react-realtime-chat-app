@@ -5,15 +5,16 @@ import { SendMessageIcon } from "../../icon";
 import { changeMessage, sendingMessage, setPasteImage, setPreviewImage, setPathSelectedMedia } from '../../../actions';
 import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
 
-import { TCommunication } from "../../../types/redux";
+import { TUser } from "../../../types/redux";
 import { connect } from "react-redux";
 
 import { timeWhenMessageSent } from "../../../utils/create-message-time";
 
 import './message-panel-form.scss';
+import { TCommunication } from "../../../types/redux-state";
 
 type TMessagePanelForm = {
-  logInUser: any
+  logInUser: TUser | null
   activeChannel: TChannel
   messageRef: TDatabaseRef
   setScrollEndPage: (state: boolean) => void
@@ -46,9 +47,9 @@ const MessagePanelForm: React.FC<TMessagePanelForm> = (
       messageContent: messageContent,
       fileMessageURL: fileMessageURL,
       authorMessage: {
-        username: (logInUser && logInUser.displayName),
-        avatar: (logInUser && logInUser.photoURL),
-        id: (logInUser && logInUser.uid)
+        username: (logInUser && logInUser.username) as string,
+        avatar: (logInUser && logInUser.avatar) as string,
+        id: (logInUser && logInUser.id) as string
       }
     }
   }, [logInUser]);
