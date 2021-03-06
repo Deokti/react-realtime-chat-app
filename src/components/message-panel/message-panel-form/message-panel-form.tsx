@@ -3,7 +3,7 @@ import Button from "../../button";
 import MessagePanelImages from "../message-panel-images";
 import { SendMessageIcon } from "../../icon";
 import { changeMessage, sendingMessage, setPasteImage, setPreviewImage, setPathSelectedMedia } from '../../../actions';
-import { TChannel, TDatabaseRef, TMessage } from "../../../types/reused-types";
+import { TChannel, TDatabaseRef, TMessage } from "../../../types";
 
 import { TUser } from "../../../types/redux";
 import { connect } from "react-redux";

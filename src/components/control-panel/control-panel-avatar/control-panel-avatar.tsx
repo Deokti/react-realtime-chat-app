@@ -1,21 +1,21 @@
-import React, { memo } from "react";
+import React from "react";
 
 import './control-panel-avatar.scss';
+import { TUser } from "../../../types/redux";
 
 type TControlPanelAvatar = {
   openMenu: () => void
-  avatarLink: string
-  username: string
+  user: TUser | null
 }
 
-const ControlPanelAvatar: React.FC<TControlPanelAvatar> = ({ openMenu, avatarLink, username }: TControlPanelAvatar) => {
+const ControlPanelAvatar: React.FC<TControlPanelAvatar> = ({ openMenu, user }: TControlPanelAvatar) => {
   return (
     <div className="control-panel-avatar" onClick={openMenu}>
-      <div className="control-panel-avatar__image" title={`Пользователь ${username}`}>
-        <img src={avatarLink} alt="avatar" />
+      <div className="control-panel-avatar__image" title={`Пользователь ${user?.username}`}>
+        <img src={user?.avatar} alt="avatar" />
       </div>
     </div>
   )
 };
 
-export default memo(ControlPanelAvatar);
+export default ControlPanelAvatar;

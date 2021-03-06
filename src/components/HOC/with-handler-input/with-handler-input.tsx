@@ -5,16 +5,16 @@ const withHandlerInput = (initialStateInput: Object) => (Wrapped: any) => {
   return (props: any) => {
     const initialInput = useMemo(() => initialStateInput, []);
 
-    const [ input, setInput ] = useState(initialInput);
+    const [input, setInput] = useState(initialInput);
 
-    const whenChangingInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onInput = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.currentTarget;
       setInput((prevState) => ({ ...prevState, [name]: value }))
     }
 
     return (
       <Wrapped {...props}
-        whenChangingInput={whenChangingInput}
+        onInput={onInput}
         setInput={setInput}
         input={input} />
     )

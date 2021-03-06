@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
 import { auth, database } from "../../config/firebase";
-import { TChannel, TDatabaseSnapshot } from "../../types/reused-types";
+import { TChannel, TDatabaseSnapshot } from "../../types";
 import { connect } from "react-redux";
 
 import { TUser } from "../../types/redux";
@@ -10,7 +10,7 @@ import { TUser } from "../../types/redux";
 import { firebaseRef } from "../../config/ref";
 import { changeIsUser, setUsersOnline } from '../../actions';
 
-import { TAuth, TCommunication, TCurrentFilter, TFilter } from "../../types/redux-state";
+import { TAuth, TCommunication, TFilter } from "../../types/redux-state";
 
 import './channels-panel.scss';
 
@@ -20,10 +20,10 @@ type TChannelsPanel = {
   isUser: boolean
   setUsersOnline: (onlineUsers: Array<TUser> | null) => any
   usersOnline: Array<TUser> | null
-} & TCurrentFilter
+} & TFilter
 
 const ChannelsPanel: React.FC<TChannelsPanel> = (
-  { currentFilter, logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
+  { filter, logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
 
   // Определение состояния подключения (https://firebase.google.com/docs/database/web/offline-capabilities#section-connection-state) 
   const connectedRef = useMemo(() => database.ref('.info/connected'), []);
@@ -65,12 +65,12 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
 
   useEffect(() => {
     getDataWithDatabase(logInUser && logInUser.id)
-  }, [currentFilter.filterName, getDataWithDatabase, logInUser]);
+  }, [filter.filterName, getDataWithDatabase, logInUser]);
 
   useEffect(() => {
-    const isUser = currentFilter.filterName === firebaseRef.USERS ? true : false;
+    const isUser = filter.filterName === firebaseRef.USERS ? true : false;
     changeIsUser(isUser);
-  }, [changeIsUser, currentFilter.filterName])
+  }, [changeIsUser, filter.filterName])
 
 
   const setOnlineUserIdToDatabase = useCallback(async (uid: string) => {
@@ -151,7 +151,7 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
   return (
     <div className="channels-panel">
       <header className="channels-panel__header">
-        <h2 className="channels-panel__heading">{currentFilter.filterHeading}</h2>
+        <h2 className="channels-panel__heading">{filter.filterTitle}</h2>
       </header>
 
       <div className="channels-panel__list">
@@ -165,12 +165,11 @@ type TMapStateToProps = {
   communication: TCommunication
 } & TAuth
 
-const mapStateToProps = ({
-  filter: { currentFilter },
-  auth: { logInUser },
-  communication: { isUser, usersOnline }
-}: TMapStateToProps & TFilter) => {
-  return { currentFilter, logInUser, isUser, usersOnline }
+const mapStateToProps = ({ filter,
+                           auth: { logInUser },
+                           communication: { isUser, usersOnline }
+                         }: TMapStateToProps & TFilter) => {
+  return { filter, logInUser, isUser, usersOnline }
 }
 
 export default connect(mapStateToProps, { changeIsUser, setUsersOnline })(ChannelsPanel);

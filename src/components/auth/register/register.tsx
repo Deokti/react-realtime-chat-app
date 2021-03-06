@@ -14,6 +14,7 @@ import { firebaseRef } from '../../../config/ref';
 
 import './register.scss';
 import '../form-redirect.scss';
+import { TAuthError } from '../../../types';
 
 export type TUserRegister = {
   username: string
@@ -29,64 +30,73 @@ type TRegisterForm = {
   setLoading: (state: boolean) => void
   input: TUserRegister
   setInput: (state: TUserRegister) => any
-  whenChangingInput: (state: string) => void
+  onInput: (state: string) => void
 }
 
-const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, whenChangingInput }: TRegisterForm) => {
-  const onCreatedUserInDatabase = useCallback((createdUser) => {
-    return database.ref(firebaseRef.USERS).child(createdUser.user.uid).set({
-      id: createdUser.user.uid,
-      username: createdUser.user.displayName,
-      avatar: createdUser.user.photoURL,
-      isOnline: false
-    });
-  }, [])
+const Register: React.FC<TRegisterForm> = ({ loading, setLoading, hasError, setHasError, input, setInput, onInput }: TRegisterForm) => {
 
-  // firebase.auth.UserCredential
-  const onCreateUserWithEmailAndPassword = useCallback(() => {
-    return auth
-      .createUserWithEmailAndPassword(input.email, input.password)
-      .then((createdUser: any) => {
-        createdUser.user.updateProfile({
-          displayName: input.username,
-          photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
-        }).then(() => onCreatedUserInDatabase(createdUser))
-      })
-  }, [input, onCreatedUserInDatabase])
-
-  const whenSubmittingForm = useCallback((event: React.FormEvent) => {
+  function onSubmit(event: React.FormEvent) {
     event.preventDefault();
 
     if (isFormValid(input, setHasError)) {
       setLoading(true);
       setHasError('');
 
-      onCreateUserWithEmailAndPassword()
+      createUserWithEmailAndPassword()
         .then(() => console.log('Пользователь сохранён!'))
-        .then(() => {
-          setLoading(false);
-          setInput({
-            username: '',
-            email: '',
-            password: '',
-            passwordRepeat: '',
-          });
-        })
-        .catch((error) => {
-          setHasError(error.message);
-          setLoading(false);
-        })
+        .then(onSucsess)
+        .catch(onRejection)
     }
-  }, [input, onCreateUserWithEmailAndPassword, setHasError, setInput, setLoading])
+  }
+
+  async function createUserWithEmailAndPassword() {
+    const createdUser = await auth.createUserWithEmailAndPassword(input.email, input.password);
+
+    if (createdUser && createdUser.user) {
+      createdUser.user.updateProfile({
+        displayName: input.username,
+        photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email as string)}?d=identicon`
+      }).then(() => onCreatedUserInDatabase(createdUser))
+    }
+  }
+
+
+  function onCreatedUserInDatabase(createdUser: any) {
+    return database.ref(firebaseRef.USERS)
+      .child(createdUser.user.uid)
+      .set(onCreatedUser(createdUser));
+  }
+
+  function onCreatedUser(createdUser: any) {
+    return {
+      id: createdUser.user.uid,
+      username: createdUser.user.displayName,
+      avatar: createdUser.user.photoURL,
+      isOnline: false
+    }
+  }
+
+  function onSucsess() {
+    setLoading(false);
+    setInput({
+      username: '',
+      email: '',
+      password: '',
+      passwordRepeat: '',
+    });
+  }
+
+  function onRejection(error: TAuthError) {
+    setHasError(error.message);
+    setLoading(false);
+  }
 
   return (
-    <form className="login" onSubmit={whenSubmittingForm}>
-      <Input label="Имя пользователя" name="username" onChange={whenChangingInput} value={input.username} />
-      <Input label="Email" name="email" onChange={whenChangingInput} type="email" value={input.email} />
-      <Input label="Пароль" name="password" type="password" onChange={whenChangingInput}
-        value={input.password} />
-      <Input label="Повторите пароль" name="passwordRepeat" type="password" onChange={whenChangingInput}
-        value={input.passwordRepeat} />
+    <form className="login" onSubmit={onSubmit}>
+      <Input label="Имя пользователя" name="username" onChange={onInput} value={input.username} />
+      <Input label="Email" name="email" onChange={onInput} type="email" value={input.email} />
+      <Input label="Пароль" name="password" type="password" onChange={onInput} value={input.password} />
+      <Input label="Повторите пароль" name="passwordRepeat" type="password" onChange={onInput} value={input.passwordRepeat} />
 
       <Button className="button-auth-form" loading={loading}>Регистрация</Button>
 

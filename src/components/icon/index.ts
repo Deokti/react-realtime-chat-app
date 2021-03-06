@@ -14,8 +14,7 @@ import PaperclipIcon from "./paperclip-icon";
 import CloseIcon from "./close-icon";
 
 export type TIconSize = {
-  width?: string | number
-  height?: string | number
+  size?: string | number
   color?: string
 }
 

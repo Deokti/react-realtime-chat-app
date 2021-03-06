@@ -1,22 +1,21 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
 import { TCurrentActiveChannel } from '../../../types/redux';
-import { TCommunication, TCurrentFilter, TFilter } from '../../../types/redux-state';
+import { TCommunication, TFilter } from '../../../types/redux-state';
 import MessagePanelSearch from "../message-panel-search";
 
 import './message-panel-header.scss';
 
 type TMessagePanelHeader = {
   isUser: boolean
-} & TCurrentFilter
+} & TFilter
 
-const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ currentFilter, isUser }: TMessagePanelHeader) => {
-  // const headerTitleName = isUser ? 
+const MessagePanelHeader: React.FC<TMessagePanelHeader> = ({ filter, isUser }: TMessagePanelHeader) => {
 
   return (
     <header className="message-panel-header">
       <div className="message-panel-header__channel-info">
-        <h3 className="message-panel-header__title">{!currentFilter.filterName ? 'Куда хотели бы написать?' : 'channelName'}</h3>
+        <h3 className="message-panel-header__title">{!filter.filterName ? 'Куда хотели бы написать?' : 'channelName'}</h3>
         <span className="message-panel-header__participant">2 участника</span>
       </div>
 
@@ -33,11 +32,11 @@ type TMapStateToProps = {
 } & TFilter
 
 const mapStateToProps = ({
-  filter: { currentFilter },
+  filter,
   communication: { isUser },
   currentChannel: { activeChannel }
 }: TMapStateToProps) => {
-  return { currentFilter, isUser, activeChannel }
+  return { filter,  isUser, activeChannel }
 }
 
 export default connect(mapStateToProps)(memo(MessagePanelHeader));

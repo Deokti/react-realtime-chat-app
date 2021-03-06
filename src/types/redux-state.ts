@@ -26,12 +26,9 @@ export type TLogInUser = {
   logInUser: TUser | null
 }
 
-// Объект фильрации с его свойствовами
 export type TCurrentFilter = {
-  currentFilter: {
-    filterHeading: string
-    filterName: string
-  }
+  filterName: string
+  filterTitle: string
 }
 
 // Тип фильтра для получения в connect

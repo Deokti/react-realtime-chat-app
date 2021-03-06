@@ -3,7 +3,7 @@ import React from "react";
 import { setActiveChannel } from '../../../actions'
 import { connect } from "react-redux";
 
-import { TChannel } from "../../../types/reused-types";
+import { TChannel } from "../../../types";
 
 import './channels-panel-list.scss';
 import { TSetActivetChannel } from "../../../actions/action-creator/active-channel/set-active-channel";

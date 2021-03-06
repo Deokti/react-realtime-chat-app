@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import MessagePanelContent from "../message-panel-content";
 
-import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types/reused-types";
+import { TChannel, TDatabaseRef, TDatabaseSnapshot, TMessage } from "../../../types";
 
 import './message-panel-contents.scss';
 import '../../../assets/styles/scrollbar.scss';

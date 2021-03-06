@@ -4,7 +4,7 @@ import MessagePanelContents from "./message-panel-contents";
 import MessagePanelForm from "./message-panel-form";
 
 import { database } from "../../config/firebase";
-import { TDatabaseRef, TChannel } from "../../types/reused-types";
+import { TDatabaseRef, TChannel } from "../../types";
 
 import { connect } from "react-redux";
 

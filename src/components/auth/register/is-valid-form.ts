@@ -10,10 +10,8 @@ const isFormEmpty = ({ username, email, password, passwordRepeat }: TUserRegiste
 const isPasswordValid = (password: string, passwordRepeat: string, setRegisterError: any) => {
   if (password.length < 6 && passwordRepeat.length < 6) {
     setRegisterError('Длина пароля должна быть больше 6 символов!');
-    return false;
   } else if (password !== passwordRepeat) {
     setRegisterError('Пароли не совпадают!');
-    return false;
   }
 
   return true;
@@ -22,7 +20,6 @@ const isPasswordValid = (password: string, passwordRepeat: string, setRegisterEr
 const isFormValid = (userRegister: TUserRegister, setRegisterError: any) => {
   if (isFormEmpty(userRegister)) {
     setRegisterError('Все поля должны быть заполнены!');
-    return false
   } else if (!isPasswordValid(userRegister.password, userRegister.passwordRepeat, setRegisterError)) {
     return false
   }
