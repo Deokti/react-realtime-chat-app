@@ -11,14 +11,14 @@ import './control-panel-modal.scss';
 type TControlPanelModal = {
   input: { channelName: string }
   setInput: (state: { channelName: string }) => any
-  whenChangingInput: (state: string) => void
+  onInput: (state: string) => void
   modal: boolean
   closeModal: () => void
   username: string
   userAvatar: string
 }
 
-const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeModal, userAvatar, username }: TControlPanelModal) => {
+const ControlPanelModal = ({ input, setInput, onInput, modal, closeModal, userAvatar, username }: TControlPanelModal) => {
 
   const onCloseModal = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -70,7 +70,7 @@ const ControlPanelModal = ({ input, setInput, whenChangingInput, modal, closeMod
             name="channelName"
             value={input.channelName}
             className="control-panel-modal-input"
-            onChange={whenChangingInput} />
+            onChange={onInput} />
 
           <div className="control-panel-modal__buttons">
               <Button className="control-panel-modal__button control-panel-modal__cancel" onClick={onCloseModal}>Отменить</Button>
