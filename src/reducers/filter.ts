@@ -4,7 +4,7 @@ import { TCurrentFilter } from "../types/redux-state";
 type TCurrentControlFilterAction = {
   type: string
   payload: {
-    filterHeading: string,
+    filterTitle: string,
     filterName: string
   }
 }
@@ -12,10 +12,8 @@ type TCurrentControlFilterAction = {
 const updateCurrentControlFilter = (state: TCurrentFilter, action: TCurrentControlFilterAction): TCurrentFilter => {
   if (state === undefined) {
     return {
-      currentFilter: {
-        filterHeading: 'Чат-каналы',
-        filterName: 'CHANNELS'
-      },
+      filterTitle: 'Чат-каналы',
+      filterName: 'CHANNELS'
     }
   }
 
@@ -23,14 +21,14 @@ const updateCurrentControlFilter = (state: TCurrentFilter, action: TCurrentContr
     case CHANGE_FILTER: {
       return {
         ...state,
-        currentFilter: {
-          filterHeading: action.payload.filterHeading,
-          filterName: action.payload.filterName
-        }
+        filterTitle: action.payload.filterTitle,
+        filterName: action.payload.filterName
       }
     }
 
-    default: { return state }
+    default: {
+      return state
+    }
   }
 }
 

@@ -43,3 +43,9 @@ export type TSelectedImageAction = {
 
 // history для react router
 export type THistory = History<LocationState>
+
+export type TAuthError = {
+  a: any
+  code: string
+  message: string
+}

@@ -1,4 +1,4 @@
-import { TChannel } from "./reused-types"
+import { TChannel } from "."
 
 // Тип пользователь аутентицикациии
 

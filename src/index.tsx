@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from "./store";
 
-import MainRoot from "./main-root";
+import MainRoot from "./components/main-root";
 
 ReactDOM.render(
   <Provider store={store}>

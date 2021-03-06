@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MessagePanelFullpage from "../message-panel-fullpage";
 
 import { connect } from "react-redux";
-import { TMessage } from "../../../types/reused-types";
+import { TMessage } from "../../../types";
 import { TAuth } from "../../../types/redux-state";
 
 import './message-panel-content.scss';

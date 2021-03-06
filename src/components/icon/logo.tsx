@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 
-const Logo = ({ pointerEvents }: { pointerEvents: any }) => {
+const Logo = ({ pointerEvents = 'none' }: { pointerEvents?: any }) => {
   return (
-    <svg style={{ pointerEvents: pointerEvents }} width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg style={{ pointerEvents: pointerEvents }} width="50" height="50" viewBox="0 0 50 50" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
       <path
         d="M25 35.4168C11.5625 35.4168 1.04163 30.8335 1.04163 25.0002C1.04163 19.1668 11.5625 14.5835 25 14.5835C38.4375 14.5835 48.9583 19.1668 48.9583 25.0002C48.9583 30.8335 38.4375 35.4168 25 35.4168ZM25 16.6668C11.875 16.6668 3.12496 20.9377 3.12496 25.0002C3.12496 29.0627 11.875 33.3335 25 33.3335C38.125 33.3335 46.875 29.0627 46.875 25.0002C46.875 20.9377 38.125 16.6668 25 16.6668Z"
         fill="#80DEEA" />

@@ -1,44 +1,43 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
 
 import { changeFilter } from '../../../actions';
 import { connect } from "react-redux";
 
 import { firebaseRef } from "../../../config/ref";
-import { TCurrentFilter, TFilter } from "../../../types/redux-state";
 
 import './control-panel-filter.scss';
+import { TFilter } from "../../../types/redux-state";
 
 type TControlPanelFilter = {
   changeFilter: (filterHeading: string, filterName: string) => void
-} & TCurrentFilter
+} & TFilter
 
-const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, currentFilter }: TControlPanelFilter) => {
-  const controlPanelStatus = [
-    { name: firebaseRef.FAVORITES, title: 'Избранные каналы', component: <FavoritesIcon /> },
-    { name: firebaseRef.CHANNELS, title: 'Чат-каналы', component: <ChannelsIcon /> },
-    { name: firebaseRef.USERS, title: 'Личные сообщения', component: <ChatsIcon /> },
-  ];
+const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, filter }: TControlPanelFilter) => {
+  const controlPanelStatus = useMemo(() => [
+      { filterName: firebaseRef.FAVORITES, title: 'Избранные каналы', icon: <FavoritesIcon /> },
+      { filterName: firebaseRef.CHANNELS, title: 'Чат-каналы', icon: <ChannelsIcon /> },
+      { filterName: firebaseRef.USERS, title: 'Личные сообщения', icon: <ChatsIcon /> },
+    ], [])
 
-  const toggleCurrentStatus = useCallback((title: string, name: string) => {
-    if (currentFilter.filterName !== name) {
-      changeFilter(title, name)
+  const onChangeFilter = useCallback((title: string, filterName: string) => {
+    if (filter.filterName !== filterName) {
+      changeFilter(title, filterName)
     }
-  }, [changeFilter, currentFilter.filterName]);
+  }, [changeFilter, filter.filterName]);
 
   return (
     <ul className="control-panel-status">
       {
-        controlPanelStatus.map(({ name, title, component }) => {
-          const activeClass = currentFilter.filterName === name ? 'active' : '';
+        controlPanelStatus.map(({ filterName, title, icon }) => {
+          const activeClass = filter.filterName === filterName ? 'active' : '';
 
           return (
-            <li key={name}
-              onClick={() => toggleCurrentStatus(title, name)}
-              data-control-filter-title={title}
-              data-control-filter-name={name}
-              className={`control-panel-status__item ${activeClass}`}>
-              {component}
+            <li key={filterName}
+                onClick={() => onChangeFilter(title, filterName)}
+                className={`control-panel-status__item ${activeClass}`}
+            >
+              {icon}
             </li>
           )
         })
@@ -47,8 +46,8 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, curre
   )
 };
 
-const mapStateToProps = ({ filter: { currentFilter } }: TFilter) => {
-  return { currentFilter }
+const mapStateToProps = ({ filter }: TFilter) => {
+  return { filter }
 }
 
 export default connect(mapStateToProps, { changeFilter })(ControlPanelFilter);
