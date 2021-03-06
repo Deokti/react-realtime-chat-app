@@ -20,7 +20,7 @@ type TControlPanelStatus = {
 }
 
 type TItem = {
-  filter: TCurrentFilter,
+  active: string
   item: TControlPanelStatus,
   onClick: (filterTitle: string, filterName: string) => any
 }
@@ -46,8 +46,8 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, filte
           .map((item) => {
             const props = {
               key: item.filterName,
-              filter,
               item,
+              active: filter.filterName === item.filterName ? 'active' : '',
               onClick: onChangeFilter
             }
 
@@ -57,12 +57,11 @@ const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, filte
   )
 };
 
-function TemplatePanelFilterItem({ filter, item, onClick }: TItem) {
-  const activeClass = filter.filterName === item.filterName ? 'active' : '';
+function TemplatePanelFilterItem({ active, item, onClick }: TItem) {
 
   return (
     <li onClick={() => onClick(item.title, item.filterName)}
-        className={`control-panel-status__item ${activeClass}`}
+        className={`control-panel-status__item ${active}`}
     >
       {item.icon}
     </li>
