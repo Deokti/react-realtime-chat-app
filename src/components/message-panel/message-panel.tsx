@@ -25,7 +25,7 @@ const MessagePanel: React.FC<TMessagePanel> = ({ activeChannel, logInUser, isUse
 
   return (
     <div className="message-panel">
-      <MessagePanelHeader />
+      <MessagePanelHeader activeChannel={activeChannel && activeChannel.channelName} />
 
       <MessagePanelContents
         key={activeChannel && activeChannel.id}
