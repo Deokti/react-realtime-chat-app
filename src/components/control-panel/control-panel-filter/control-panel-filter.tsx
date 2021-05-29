@@ -1,75 +1,16 @@
-import React, { useCallback, useMemo } from "react";
-import { FavoritesIcon, ChatsIcon, ChannelsIcon } from "../../icon";
-
-import { changeFilter } from '../../../actions';
-import { connect } from "react-redux";
-
-import { firebaseRef } from "../../../config/ref";
+import React from "react";
+import { ChannelsIcon } from "../../icon";
 
 import './control-panel-filter.scss';
-import { TCurrentFilter, TFilter } from "../../../types/redux-state";
 
-type TControlPanelFilter = {
-  changeFilter: (filterHeading: string, filterName: string) => void
-} & TFilter
-
-type TControlPanelStatus = {
-  filterName: string
-  title: string
-  icon: JSX.Element
-}
-
-type TItem = {
-  active: string
-  item: TControlPanelStatus,
-  onClick: (filterTitle: string, filterName: string) => any
-}
-
-const ControlPanelFilter: React.FC<TControlPanelFilter> = ({ changeFilter, filter }: TControlPanelFilter) => {
-  const controlPanelStatus = useMemo<Array<TControlPanelStatus>>(() => [
-    { filterName: firebaseRef.FAVORITES, title: 'Избранные каналы', icon: <FavoritesIcon /> },
-    { filterName: firebaseRef.CHANNELS, title: 'Чат-каналы', icon: <ChannelsIcon /> },
-    { filterName: firebaseRef.USERS, title: 'Личные сообщения', icon: <ChatsIcon /> },
-  ], [])
-
-
-  const onChangeFilter = useCallback((title: string, filterName: string) => {
-    if (filter.filterName !== filterName) {
-      changeFilter(title, filterName)
-    }
-  }, [changeFilter, filter.filterName]);
-
+const ControlPanelFilter: React.FC = () => {
   return (
     <ul className="control-panel-status">
-      {
-        controlPanelStatus
-          .map((item) => {
-            const props = {
-              key: item.filterName,
-              item,
-              active: filter.filterName === item.filterName ? 'active' : '',
-              onClick: onChangeFilter
-            }
-
-            return <TemplatePanelFilterItem {...props} />
-          })}
+      <li className="control-panel-status__item active">
+        <ChannelsIcon />
+      </li>
     </ul>
   )
 };
 
-function TemplatePanelFilterItem({ active, item, onClick }: TItem) {
-
-  return (
-    <li onClick={() => onClick(item.title, item.filterName)}
-        className={`control-panel-status__item ${active}`}
-    >
-      {item.icon}
-    </li>
-  )
-}
-
-const mapStateToProps = ({ filter }: TFilter) => {
-  return { filter }
-}
-
-export default connect(mapStateToProps, { changeFilter })(ControlPanelFilter);
+export default ControlPanelFilter;

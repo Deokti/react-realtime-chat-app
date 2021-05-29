@@ -43,9 +43,8 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
   function onAuthStateChanged() {
     auth.onAuthStateChanged((logInUser) => {
       if (!logInUser) return isLogOff();
-      console.log('1231231233')
 
-      getUserFromDatabaseByUid(logInUser && logInUser.uid);
+      return getUserFromDatabaseByUid(logInUser && logInUser.uid);
     });
   }
 

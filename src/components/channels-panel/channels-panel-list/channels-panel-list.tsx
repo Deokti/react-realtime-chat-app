@@ -14,10 +14,9 @@ type TChannelsPanelList = {
   items: Array<TChannel | TUser> | null
   setActiveChannel: (channel: TChannel) => TSetActivetChannel
   activeChannel: TChannel | null
-  isUser: boolean
 }
 
-const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChannel, activeChannel, isUser }: TChannelsPanelList) => {
+const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChannel, activeChannel }: TChannelsPanelList) => {
   const setChannelAndIdChannel = (channel: TChannel) => {
     if (activeChannel && activeChannel.id === channel.id) return false;
     setActiveChannel(channel);
@@ -26,19 +25,12 @@ const ChannelsPanelList: React.FC<TChannelsPanelList> = ({ items, setActiveChann
   const createItem = (item: TChannel & TUser, isActive: boolean) => {
 
     return (
-      <li className={`channels-panel-list__item ${isActive ? 'active' : ''} ${isUser ? 'channels-panel-list__user' : ''}`}
+      <li className={`channels-panel-list__item ${isActive ? 'active' : ''}`}
         key={item.id}
         onClick={() => setChannelAndIdChannel(item)}
       >
-        {isUser && (
-          <div className={`channels-panel-list__avatar ${(isUser && item.isOnline) ? 'online' : 'offline'}`}>
-
-            <img src={item.avatar} alt={item.username} />
-          </div>
-        )}
         <div className="channels-panel-list__info">
-          <span className="channels-panel-list__name">{isUser ? item.username : `# ${item.channelName}`}</span>
-          {isUser && <span className="channels-panel-list__description">{isActive ? 'Вы общаетесь' : 'Написать человеку'}</span>}
+          <span className="channels-panel-list__name"># {item.channelName}</span>
         </div>
       </li>
     )

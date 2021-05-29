@@ -1,4 +1,4 @@
-import React, { createRef, memo, useEffect } from "react";
+import React, { createRef, memo, useCallback, useEffect } from "react";
 import { auth } from '../../../config/firebase';
 import { ChannelsIcon, LogoutIcon, UserIcon } from "../../icon";
 import ControlPanelPopupItem from "./control-panel-popu-item";
@@ -15,28 +15,22 @@ type TControlPanelMenu = {
 const ControlPanelMenu: React.FC<TControlPanelMenu> = ({ menu, closeMenu, username, openModal }: TControlPanelMenu) => {
   const controlPanelPopupRef = createRef<HTMLDivElement>();
 
-  useEffect(() => {
-    addEvent();
-
-    return () => removeEvent()
-
-  }, [addEvent, removeEvent]);
-
-  function addEvent() {
-    document.body.addEventListener('click', onClickNotOnElement);
-  }
-
-  function removeEvent() {
-    document.body.removeEventListener('click', onClickNotOnElement);
-  }
-
   // Если произошёл клик не по элементу, то активируется функция и закроет окно
-  function onClickNotOnElement(event: any) {
+  const onClickNotOnElement = useCallback((event: any) => {
     const path = event.path || (event.composedPath && event.composedPath());
     const elementToPath = path.includes(controlPanelPopupRef.current);
 
     if (path && !elementToPath) closeMenu();
-  }
+  }, [closeMenu, controlPanelPopupRef]);
+
+  useEffect(() => {
+    document.body.addEventListener('click', onClickNotOnElement)
+
+    return () => {
+      document.body.removeEventListener('click', onClickNotOnElement);
+    }
+
+  }, [onClickNotOnElement]);
 
   const isLogOut = () => auth
     .signOut()
@@ -48,7 +42,7 @@ const ControlPanelMenu: React.FC<TControlPanelMenu> = ({ menu, closeMenu, userna
         <ControlPanelPopupItem label={`Вы вошли как ${username}`} />
         <ControlPanelPopupItem label="Изменить аватар" icon={<UserIcon />} />
         <ControlPanelPopupItem label="Создать новый канал" onClick={openModal}
-                               icon={<ChannelsIcon size={12} />}
+          icon={<ChannelsIcon size={12} />}
         />
         <ControlPanelPopupItem label="Выйти из учётной записи" icon={<LogoutIcon />} onClick={isLogOut}
         />
