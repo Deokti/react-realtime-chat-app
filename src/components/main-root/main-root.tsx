@@ -6,7 +6,7 @@
  * сохранить данные и перебросить пользователя на главную страницу
  */
 
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { auth, database } from "../../config/firebase";
 import TemplateMainPage from './template-main-page';
@@ -38,8 +38,6 @@ type TMainRoot = {
 
 const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLoaded, setActiveChannel }: TMainRoot) => {
 
-  useEffect(onAuthStateChanged, [getUserFromDatabaseByUid, isLogOff]);
-
   function onAuthStateChanged() {
     auth.onAuthStateChanged((logInUser) => {
       if (!logInUser) return isLogOff();
@@ -48,31 +46,34 @@ const MainRoot: React.FC<TMainRoot> = ({ getLogInUser, history, logOutUser, isLo
     });
   }
 
-  function getUserFromDatabaseByUid(uid: string) {
+  const changePath = useCallback((path: string) => {
+    if (history.location.pathname !== path) {
+      history.push(path);
+    }
+  }, [history])
+
+  const isLoggedIn = useCallback((user: TUser) => {
+    getLogInUser(user);
+    changePath(routerPath.main);
+  }, [changePath, getLogInUser])
+
+  const isLogOff = useCallback(() => {
+    logOutUser();
+    setActiveChannel(null);
+    changePath(routerPath.loginPage);
+  }, [changePath, logOutUser, setActiveChannel])
+
+
+  const getUserFromDatabaseByUid = useCallback((uid: string) => {
     database.ref(firebaseRef.USERS)
       .child(uid)
       .on('value', (snap: TDatabaseSnapshot) => {
         const user: TUser = snap.val();
         isLoggedIn(user);
       })
-  }
+  }, [isLoggedIn])
 
-  function isLoggedIn(user: TUser) {
-    getLogInUser(user);
-    changePath(routerPath.main);
-  }
-
-  function isLogOff() {
-    logOutUser();
-    setActiveChannel(null);
-    changePath(routerPath.loginPage);
-  }
-
-  function changePath(path: string) {
-    if (history.location.pathname !== path) {
-      history.push(path);
-    }
-  }
+  useEffect(onAuthStateChanged, [getUserFromDatabaseByUid, isLogOff]);
 
   return <TemplateMainPage isLoaded={isLoaded} />
 };

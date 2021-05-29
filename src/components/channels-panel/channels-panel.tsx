@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ChannelsPanelList from "./channels-panel-list";
 
-import { auth, database } from "../../config/firebase";
+import { database } from "../../config/firebase";
 import { TChannel, TDatabaseSnapshot } from "../../types";
 import { connect } from "react-redux";
 
@@ -20,10 +20,10 @@ type TChannelsPanel = {
   isUser: boolean
   setUsersOnline: (onlineUsers: Array<TUser> | null) => any
   usersOnline: Array<TUser> | null
-} & TFilter
+}
 
 const ChannelsPanel: React.FC<TChannelsPanel> = (
-  { filter, logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
+  { logInUser, isUser, changeIsUser, usersOnline, setUsersOnline }: TChannelsPanel): JSX.Element => {
 
   // Определение состояния подключения (https://firebase.google.com/docs/database/web/offline-capabilities#section-connection-state) 
   const [channels, setChannels] = useState<Array<TChannel>>([]);
@@ -46,17 +46,12 @@ const ChannelsPanel: React.FC<TChannelsPanel> = (
 
   useEffect(() => {
     getDataWithDatabase(logInUser && logInUser.id)
-  }, [filter.filterName, getDataWithDatabase, logInUser]);
-
-  useEffect(() => {
-    const isUser = filter.filterName === firebaseRef.USERS ? true : false;
-    changeIsUser(isUser);
-  }, [changeIsUser, filter.filterName])
+  }, [getDataWithDatabase, logInUser]);
 
   return (
     <div className="channels-panel">
       <header className="channels-panel__header">
-        <h2 className="channels-panel__heading">{filter.filterTitle}</h2>
+        <h2 className="channels-panel__heading">Чат-каналы</h2>
       </header>
 
       <div className="channels-panel__list">
